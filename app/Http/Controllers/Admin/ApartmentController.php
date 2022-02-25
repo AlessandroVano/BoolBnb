@@ -31,7 +31,8 @@ class ApartmentController extends Controller
      */
     public function create()
     {
-        return view('admin.apartments.create');
+        $services = Service::all();
+        return view('admin.apartments.create', compact('services'));
     }
 
     /**
@@ -58,10 +59,10 @@ class ApartmentController extends Controller
         $data['slug'] = $slug;
 
         $new_apartment->fill($data);
-        $new_apartment->save;
+        $new_apartment->save();
 
         if (array_key_exists('services', $data)) {
-            $new_apartment->tags()->attach($data['services']);
+            $new_apartment->services()->attach($data['services']);
         }
 
         return redirect()->route('admin.apartments.show', $new_apartment->slug);

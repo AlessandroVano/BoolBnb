@@ -34,7 +34,7 @@
 
             <div class="mb-3">
                 <label for="rooms" class="form-label">Rooms</label>
-                <input type="text" class="form-control" name='rooms' id="rooms" value="{{ old('rooms') }}">
+                <input type="number" class="form-control" name='rooms' id="rooms" value="{{ old('rooms') }}">
                 @error('rooms')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -98,7 +98,7 @@
                 <input type="checkbox" name='visibility' id="visibility" value="{{ old('visibility') }}">
             </div>
 
-            {{-- services section
+          
             <div class="mb-3">
                 <h4>services</h4>
                 
@@ -115,7 +115,7 @@
                 @error('services')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror              
-            </div> --}}
+            </div> 
 
             <button class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
 
