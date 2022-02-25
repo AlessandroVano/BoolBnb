@@ -28,6 +28,10 @@ Auth::routes();
          ->prefix('admin')
          ->group(function(){
              Route::get('/', 'HomeController@index')->name('home');
+
+             // Apartments resource routes
+             Route::resource('/apartments', 'ApartmentController');
+             
          });
 
 // Home front 

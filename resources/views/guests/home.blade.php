@@ -9,7 +9,7 @@
 </head>
 <body>
      <div>
-         <h1>Weee TRIMONEEE!!</h1>
+         <h1>HOME</h1>
      </div>
 
      <script src="{{asset('js/front-office.js')}}"></script>
