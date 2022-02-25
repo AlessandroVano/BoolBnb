@@ -19,7 +19,9 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        //
+        $apartments = Apartment::all();
+
+        return view('admin.apartments.index' , compact('apartments'));
     }
 
     /**
@@ -83,8 +85,10 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Apartment $apartment)
     {
-        //
+        $apartment->delete();
+
+        redirect()->route('admin.apartments.index')->with('deleted', $apartment->name);
     }
 }
