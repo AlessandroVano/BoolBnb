@@ -14,7 +14,7 @@
             </div>
         @endif
     <div class="row">
-        @foreach ($apartments as $apartment )
+        @foreach ( $apartments as $apartment )
 
         <div class=" col-12 col-md-6 col-lg-4 my-3">
             <div class="card-container border p-2 mx-2">
@@ -34,7 +34,7 @@
 
                         <button class="btn btn-success">
                             <a class="text-decoration-none text-white"
-                            href="{{route('admin.apartments.show', $apartment->id)}}">View Details</a>
+                            href="{{route('admin.apartments.show', $apartment->slug)}}">View Details</a>
                         </button>
                         
                         <form action="{{route('admin.apartments.destroy', $apartment->id)}}" method="POST">
