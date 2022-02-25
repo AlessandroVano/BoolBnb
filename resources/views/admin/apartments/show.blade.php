@@ -55,7 +55,7 @@
                     </li>
 
                     <li class="list-group-item">
-                        <a href="{{ route('admin.sponsorships.index') }}">Sponsorship</a>
+                        <a href="{{ route('admin.sponsorships') }}">Sponsorship</a>
                     </li>
                 </ul>
             </div>
