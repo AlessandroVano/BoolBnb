@@ -42,7 +42,29 @@ class ApartmentController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate($this->validation_rules(), $this->validation_messages());
+
+        $data = $request->all();
+
+        $new_apartment = new Apartment();
+
+        $slug = Str::slug($data['name'], '-');
+        $count = 1;
+
+        while (Apartment::where('slug', $slug)->first()) {
+            $slug .= '-' . $count;
+            $count++;
+        }
+        $data['slug'] = $slug;
+
+        $new_apartment->fill($data);
+        $new_apartment->save;
+
+        if (array_key_exists('services', $data)) {
+            $new_apartment->tags()->attach($data['services']);
+        }
+
+        return redirect()->route('admin.apartments.show', $new_apartment->slug);
     }
 
     /**
@@ -130,5 +152,30 @@ class ApartmentController extends Controller
         $apartment->delete();
 
         redirect()->route('admin.apartments.index')->with('deleted', $apartment->name);
+    }
+
+    // Validation rules
+    private function validation_rules() {
+        return [
+            'name' => 'required',
+            'slug' => 'nullable|max:80',
+            'price' => 'required',
+            'description' => 'required',
+            'rooms' => 'required',
+            'max_people' => 'required',
+            'bathrooms' => 'required',
+            'square_meters' => 'required',
+            'latitude' => 'nullable',
+            'longitude' => 'nullable',
+            'visibility' => 'nullable'
+        ];
+    }
+
+    // Validation Messages
+    private function validation_messages() {
+        return [
+            'required' => 'This :attribute is a required field, be careful!',
+            'max' => 'Max :max characters allowed for the :attributes'
+        ];
     }
 }
