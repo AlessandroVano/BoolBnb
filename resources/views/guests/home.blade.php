@@ -9,7 +9,7 @@
 </head>
 <body>
      <div>
-         <h1>Weee TRIMONEEE!!</h1>
+         <img src="https://cdn-icons.flaticon.com/png/512/2998/premium/2998930.png?token=exp=1645779929~hmac=40c7a8a5da81138f17bb00f8fa8d65cc" alt="Porco">
      </div>
 
      <script src="{{asset('js/front-office.js')}}"></script>
