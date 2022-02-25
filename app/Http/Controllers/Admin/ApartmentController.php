@@ -94,11 +94,11 @@ class ApartmentController extends Controller
      */
     public function edit(Apartment $apartment)
     {
-        $service = Service::all();
+        $services = Service::all();
        if(! $apartment) {
         abort(404);
        }
-       return view('admin.apartments.edit', compact('apartment', 'service'));
+       return view('admin.apartments.edit', compact('apartment', 'services'));
     }
     /**
      * Update the specified resource in storage.
@@ -113,6 +113,13 @@ class ApartmentController extends Controller
          $request->validate($this->validation_rules(), $this->validation_messages());
 
          $data = $request->all();
+
+        //Viasibility
+        if (array_key_exists('visibility', $data)) {
+            $data['visibility'] = 1;
+        } else {
+            $data['visibility'] = 0;
+        }
 
          // update slug solo se il titolo cambia
          if($data['name'] != $apartment->name ) {
@@ -159,7 +166,7 @@ class ApartmentController extends Controller
     {
         $apartment->delete();
 
-        redirect()->route('admin.apartments.index')->with('deleted', $apartment->name);
+        return redirect()->route('admin.apartments.index')->with('deleted', $apartment->name);
     }
 
     // Validation rules
