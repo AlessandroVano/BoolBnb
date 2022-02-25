@@ -60,11 +60,14 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Apartment $apartment)
     {
-        //
+        $service = Service::all();
+       if(! $apartment) {
+        abort(404);
+       }
+       return view('admin.apartments.edit', compact('apartment', 'service'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -72,9 +75,46 @@ class ApartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Apartment $apartment)
     {
-        //
+         // richiamo funzione validazione
+         $request->validate($this->validation_rules(), $this->validation_messages());
+
+         $data = $request->all();
+
+         // update slug solo se il titolo cambia
+         if($data['name'] != $apartment->name ) {
+             $slug = Str::slug($data['name'], '-');
+             $count = 1;
+             //titolo apartment
+             $base_slug = $slug;
+
+             // ESECUZIONE CICLO SE TROVO UN POST CON LO SLUG ATTUALE
+             while(Apartment::where('slug', $slug)->first()) {
+                 //generazione nuovo slug con il suo contatore annesso
+
+                 $slug = $base_slug . '_' . $count;
+                 $count ++;
+             }
+             $data['slug'] = $slug;
+         } 
+         else {
+             $data['slug'] = $apartment->slug;
+         }
+         $apartment->update($data);
+
+         // UPDATE DELLE RELAZIONI DELLA PIVOT TRA APARTMENT E SERVICE
+         if(array_key_exists('services', $data)) {
+             // aggiunta di nuovi servizi (righe nella pivot) : aggiunta/ rimozione
+             // aggiungo o rimuovo tutti i service che ho selezionato nalla form
+             $apartment->services()->sync($data['services']);
+         }
+          else {
+             // nessun checkbox x service selezioanti pulliamo tutto
+             $apartment->services()->detach();
+         }
+
+         return redirect()->route('admin.apartments.show', $apartment->slug);
     }
 
     /**
