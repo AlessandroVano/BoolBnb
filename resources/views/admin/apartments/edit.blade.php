@@ -93,15 +93,20 @@
                    {{-- IMMAGINE --}}
                <div class="mb-3">
                    <h4>Image apartment</h4>
-                   <figure class="py-2">
-                     <div>Anteprima immagine preesistente:</div>
-                     <img width="200" src="{{$apartment->image}}" alt="{{$apartment->name}}">
+                    <figure class="py-2">
+                        @if (! $apartment->image)
+                            <img width="200" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{$apartment->name}}">
+                        @else
+                            <div>Apartment image preview:</div>
+                            <img width="200" src="{{ asset('storage/' . $apartment->image) }}" alt="{{$apartment->name}}">
+                        @endif
                     </figure>
-                     <label for="label-control" for="immage">Carica l'immagine da sostituire:</label>
-                     <input class="form-control-file" type="text" name="image" id="thumb" value="{{ old('image', $apartment->image) }}">
-                     @error('thumb')
-                     <div class="text-danger">{{ $message }}</div>
-                 @enderror  
+
+                    <label for="label-control" for="immage">Change/Upload apartment image:</label>
+                    <input type="file" class="form-control-file" name="image" id="image">
+                    @error('image')
+                        <div class="text-danger">{{$message}}</div>
+                    @enderror
                </div>
 
                {{-- Services --}}

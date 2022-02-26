@@ -6,7 +6,11 @@
             {{-- Name --}}
             <h1 class="col-12 text-center">{{ $apartment->name }}</h1>
             <div class="col-sm-12 col-md-6 my-4 text-center">
-                <img class="img-fluid" src="{{ $apartment->image }}" alt="{{ $apartment->name }}">
+                @if (! $apartment->image)
+                    <img class="img-fluid" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{ $apartment->name }}">
+                @else
+                    <img class="img-fluid rounded" src="{{ asset('storage/' . $apartment->image) }}" alt="{{ $apartment->name }}">
+                @endif
             </div>
             <div class="col-sm-12 col-md-6">
                 <ul class="list-group list-group-flush">
