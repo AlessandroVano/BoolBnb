@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row align-items-center">
             {{-- Name --}}
-            <h1 class="col-12 text-center">{{ $apartment->name }}</h1>
+            <h1 class="col-12 text-center text-white">{{ $apartment->name }}</h1>
             <div class="col-sm-12 col-md-6 my-4 text-center">
                 @if (! $apartment->image)
                     <img class="img-fluid" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{ $apartment->name }}">

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-<div class="container">
+<div class="container text-white">
     <h1 class="mb-5">Edit {{ $apartment->name }}</h1>
 
     @if ($errors->any())
@@ -28,7 +28,7 @@
                 </div>
                   {{-- DESCRIPTION --}}
                   <div class="mb-3">
-                    <label for="description" class="form-label">description</label>
+                    <label for="description" class="form-label">Description</label>
                     <input type="text" name="description" id="description"  class="form-control" value="{{old('description', $apartment->description) }}">
                     @error('description')
                         <div class="text-danger">{{$message}}</div>
@@ -36,7 +36,7 @@
                 </div>
                   {{-- PRICE --}}
                   <div class="mb-3">
-                    <label for="price" class="form-label">price</label>
+                    <label for="price" class="form-label">Price</label>
                     <input type="number" name="price" id="price"  class="form-control" value="{{old('price', $apartment->price) }}">
                     @error('price')
                         <div class="text-danger">{{$message}}</div>
@@ -44,7 +44,7 @@
                 </div>
                    {{-- ROOMS --}}
                    <div class="mb-3">
-                    <label for="rooms" class="form-label">rooms</label>
+                    <label for="rooms" class="form-label">Rooms</label>
                     <input type="number" name="rooms" id="rooms"  class="form-control" value="{{old('rooms', $apartment->rooms) }}">
                     @error('rooms')
                         <div class="text-danger">{{$message}}</div>
@@ -52,7 +52,7 @@
                 </div>
                    {{-- MAX PEOPLE --}}
                    <div class="mb-3">
-                    <label for="max_people" class="form-label">max_people</label>
+                    <label for="max_people" class="form-label">Max people</label>
                     <input type="number" name="max_people"  class="form-control" id="max_people" value="{{old('max_people', $apartment->max_people) }}">
                     @error('max_people')
                         <div class="text-danger">{{$message}}</div>
@@ -60,7 +60,7 @@
                 </div>
                    {{-- BATHROOMS --}}
                      <div class="mb-3">
-                        <label for="bathrooms" class="form-label">bathrooms</label>
+                        <label for="bathrooms" class="form-label">Bathrooms</label>
                         <input type="number" name="bathrooms"  class="form-control" id="bathrooms" value="{{old('bathrooms', $apartment->max_people) }}">
                         @error('bathrooms')
                             <div class="text-danger">{{$message}}</div>
@@ -68,7 +68,7 @@
                     </div>
                    {{-- SQUARE_METERS --}}
                    <div class="mb-3">
-                    <label for="square_meters" class="form-label">square meters</label>
+                    <label for="square_meters" class="form-label">Square meters</label>
                     <input type="number" name="square_meters"  class="form-control" id="square_meters" value="{{old('square_meters', $apartment->square_meters) }}">
                     @error('square_meters')
                         <div class="text-danger">{{$message}}</div>
@@ -76,7 +76,7 @@
                 </div>
                    {{-- LATITUDE --}}
                    <div class="mb-3">
-                    <label for="latitude" class="form-label">latitude</label>
+                    <label for="latitude" class="form-label">Latitude</label>
                     <input type="number" name="latitude"  class="form-control" id="latitude" value="{{old('latitude', $apartment->latitude) }}">
                     @error('latitude')
                         <div class="text-danger">{{$message}}</div>
@@ -84,7 +84,7 @@
                 </div>
                    {{-- LONGITUDINE --}}
                    <div class="mb-3">
-                    <label for="longitude" class="form-label">longitude</label>
+                    <label for="longitude" class="form-label">Longitude</label>
                     <input type="number"  class="form-control" name="longitude" id="longitude" value="{{old('longitude', $apartment->longitude) }}">
                     @error('longitude')
                         <div class="text-danger">{{$message}}</div>
@@ -130,7 +130,7 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                </div>
-                {{-- VISIBILITA --}}
+                {{-- VISIBILITA' --}}
                 <div class="d-flex align-items-center py-3">
                     <label for="visibility" class="m-0 mr-2">Visibilità</label>
                     <input type="checkbox" name="visibility" id="visibility" @if (old('visibility', $apartment->visibility)) checked @endif>

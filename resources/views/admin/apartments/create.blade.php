@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <section class="container">
+    <section class="container text-white">
         <h1>Add your apartment</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -114,7 +114,7 @@
 
             {{-- Services --}}
             <div class="mb-3">
-                <h4>services</h4>
+                <h4>Services</h4>
                 @foreach ($services as $service)
                     <span class="d-inline-block mr-3">
                         <input type="checkbox" name="services[]" id="service{{ $loop->iteration }}" value="{{ $service->id }}"

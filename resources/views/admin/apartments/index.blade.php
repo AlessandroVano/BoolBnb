@@ -2,9 +2,9 @@
 
 @section('content')
 
-<h1 class="text-center my-5">Your Apartments</h1>
+<h1 class="text-center text-white my-5">Your Apartments</h1>
 
-<div class="container">
+<div class="container bg-dark text-white">
     @if (session('deleted'))
             <div class="alert alert-success">
                 <strong>
@@ -30,8 +30,11 @@
                 <div class="p-1 text-center detail-container my-3">
                     <h5>
                         @if($apartment->visibility)
-                            Apartment Available
-                        @else Apartment NOT Available
+                            <span>Apartment Available</span>
+                            <img class="icon" src="{{ asset('storage/icon/Visible.png') }}" alt="Visibility Icon">
+                        @else 
+                            <span>Apartment NOT Available</span>
+                            <img class="icon" src="{{ asset('storage/icon/Not-visible.png') }}" alt="Not Visibility Icon">
                         @endif
                     </h5>
                     <div class="actions d-flex justify-content-around ">
