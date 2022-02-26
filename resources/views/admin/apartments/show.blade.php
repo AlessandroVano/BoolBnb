@@ -4,8 +4,15 @@
     <div class="container">
         <div class="row align-items-center">
             {{-- Name --}}
-            <h1 class="col-12 text-center">{{ $apartment->name }}</h1>
-            <div class="col-sm-12 col-md-6 my-4 text-center">
+            <div class="col-12 d-flex justify-content-center align-items-center">
+                <h1 class="d-inline">{{ $apartment->name }}</h1>
+                @if ( $apartment->visibility == 1 )
+                    <img class="icon" src="{{ asset('storage/icon/Visible.png') }}" alt="Visible">
+                @else
+                    <img class="icon" src="{{ asset('storage/icon/Not-visible.png') }}" alt="Not visible">
+                @endif
+            </div>
+            <div class="col-sm-12 col-md-6 my-4 align-self-start text-center">
                 @if (! $apartment->image)
                     <img class="img-fluid" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{ $apartment->name }}">
                 @else
@@ -45,17 +52,20 @@
                         @if ( $apartment->services->isEmpty())
                         Sorry no service available has been specified.
                         @else
-                        @foreach ($apartment->services as $service)
-                        <img class="icon" src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}'s icon">
-                        <span class="badge rounded-pill bg-success ms-1">{{ $service->name }}</span>
-                        @endforeach
+                        <div class="row">
+                            @foreach ($apartment->services as $service)
+                            <div class="col-2 col-md-4 col-lg-6 py-1">
+                                <img class="icon" src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}'s icon">
+                                <span class="ms-1 d-none d-lg-inline-block">{{ $service->name }}</span>
+                            </div>
+                            @endforeach
+                        </div>
                         @endif
                     </li>
                     {{-- ACTIONS --}}
                     <li class="list-group-item">
-                        <strong>Actions: </strong>
-                        <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary mx-2">Return to list</a>
-                        <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="btn btn-success mx-2">Edit details</a>
+                        <a href="{{ route('admin.apartments.index') }}" class="btn btn-pink mx-2">Return to list</a>
+                        <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="btn btn-transparent btn-edit mx-2">Edit details</a>
                     </li>
 
                     <li class="list-group-item">
