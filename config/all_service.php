@@ -1,75 +1,75 @@
 <?php
 return [
     [
-        "name"=> "Vasca da bagno",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/3130/premium/3130222.png?token=exp=1645780016~hmac=10059b3d7c72e15ba65a474eceda5ff3"
+        "name"=> "Bath tub",
+        "icon"=> "icon/Bath tub.png"
     ],
     [
-        "name"=> "Doccia",
-        "icon"=> "https://cdn-icons-png.flaticon.com/512/900/900685.png"
+        "name"=> "Shower",
+        "icon"=> "icon/Shower.png"
     ],
     [
-        "name"=> "Asciugacapelli",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/4483/premium/4483676.png?token=exp=1645780051~hmac=e9cfa75fcc55206e8802af57621f2675"
+        "name"=> "Hairdryer",
+        "icon"=> "icon/Hairdryer.png"
     ],
     [
-        "name"=> "Lavatrice",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/3124/premium/3124706.png?token=exp=1645780081~hmac=0ac3554001abf4e04b74468e1e260870"
+        "name"=> "Washing machine",
+        "icon"=> "icon/Washing machine.png"
     ],
     [
-        "name"=> "Grucce",
-        "icon"=> "https://cdn-icons-png.flaticon.com/512/25/25770.png"
+        "name"=> "Hangers",
+        "icon"=> "icon/Hangers.png"
     ],
     [
-        "name"=> "Ferro da stiro",
-        "icon"=> "https://cdn-icons-png.flaticon.com/512/2990/2990664.png"
+        "name"=> "Iron",
+        "icon"=> "icon/Iron.png"
     ],
     [
         "name"=> "TV",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/942/premium/942151.png?token=exp=1645780173~hmac=1d49dd4026ce002524b39590e9a4d5c2"
+        "icon"=> "icon/TV.png"
     ],
     [
-        "name"=> "Riscaldamento",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/3999/premium/3999685.png?token=exp=1645780216~hmac=b1fcd43518e11b30596dfb5f8fcd254b"
+        "name"=> "Radiators",
+        "icon"=> "icon/Radiators.png"
     ],
     [
         "name"=> "Wi-Fi",
-        "icon"=> "https://cdn-icons-png.flaticon.com/512/93/93158.png"
+        "icon"=> "icon/Wi-Fi.png"
     ],
     [
-        "name"=> "Cucina",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/1888/premium/1888928.png?token=exp=1645780258~hmac=3d85a9174b06544f4d37e03a5385a97a"
+        "name"=> "Kitchen",
+        "icon"=> "icon/Kitchen.png"
     ],
     [
-        "name"=> "Frigorifero",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/395/premium/395598.png?token=exp=1645780289~hmac=0ce6752b738a1bfc208de4c13b0b6f93"
+        "name"=> "Fridge",
+        "icon"=> "icon/Fridge.png"
     ],
     [
-        "name"=> "Microonde",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/2333/premium/2333382.png?token=exp=1645780304~hmac=c54a69d94da4c3564cbbcad2785cd761"
+        "name"=> "Microwave",
+        "icon"=> "icon/Microwave.png"
     ],
     [
-        "name"=> "Lavastoviglie",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/3321/premium/3321412.png?token=exp=1645780327~hmac=8f22dd26ff49ef1d6b4878c44b866417"
+        "name"=> "Dishwasher",
+        "icon"=> "icon/Dishwasher.png"
     ],
     [
-        "name"=> "Macchina del caffè",
-        "icon"=> "https://cdn-icons-png.flaticon.com/512/1268/1268783.png"
+        "name"=> "Coffee machine",
+        "icon"=> "icon/Coffee machine.png"
     ],
     [
-        "name"=> "Aria condizionata",
-        "icon"=> "https://cdn-icons-png.flaticon.com/512/900/900233.png"
+        "name"=> "Air conditioning",
+        "icon"=> "icon/Air conditioning.png"
     ],
     [
-        "name"=> "Ascensore",
-        "icon"=> "https://cdn-icons-png.flaticon.com/512/3320/3320987.png"
+        "name"=> "Lift",
+        "icon"=> "icon/Lift.png"
     ],
     [
-        "name"=> "Culla",
-        "icon"=> "https://cdn-icons.flaticon.com/png/512/3333/premium/3333780.png?token=exp=1645780412~hmac=40c6f2a0502497ec7c80515d96e4f452"
+        "name"=> "Baby cot",
+        "icon"=> "icon/Baby cot.png"
     ],
     [
-        "name"=> "Parcheggio",
-        "icon"=> "https://cdn-icons-png.flaticon.com/512/2830/2830180.png"
+        "name"=> "Parking area",
+        "icon"=> "icon/Parking area.png"
     ],
 ];

@@ -16,14 +16,14 @@
                     </li>
                     {{-- Rooms and occupants --}}
                     <li class="list-group-item">
-                        <img class="icon" src="https://cdn-icons.flaticon.com/png/512/2400/premium/2400622.png?token=exp=1645804588~hmac=187dd772442bbbf969bdda797c63da86" alt="Rooms's icon">
+                        <img class="icon" src="{{ asset('storage/icon/Rooms.png') }}" alt="Rooms's icon">
                         {{ $apartment->rooms }} <strong>Rooms </strong> 
-                        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/615/615075.png" alt="Max occupants's icon">
+                        <img class="icon" src="{{ asset('storage/icon/Max occupants.png') }}" alt="Max occupants's icon">
                         {{ $apartment->max_people }} <strong>Max occupants</strong>
                     </li>
                     {{-- Bathrooms --}}
                     <li class="list-group-item">
-                        <img class="icon" src="https://cdn-icons-png.flaticon.com/512/1606/1606212.png" alt="Bathroom's icon">
+                        <img class="icon" src="{{ asset('storage/icon/Bathrooms.png') }}" alt="Bathroom's icon">
                         {{ $apartment->bathrooms }} <strong>Bathroom</strong> 
                     </li>
                     {{-- Description --}}
@@ -32,7 +32,7 @@
                     </li>
                     {{-- Geography position --}}
                     <li class="list-group-item">
-                        <img class="icon" src="https://cdn-icons.flaticon.com/png/512/2204/premium/2204655.png?token=exp=1645804359~hmac=d4bdba58f78557dd331e1fc6ca5634de" alt="Geography's icon">
+                        <img class="icon" src="{{ asset('storage/icon/Geography.png') }}" alt="Geography's icon">
                         <strong>Geography position: </strong> LAT {{ $apartment->latitude }} LONG {{ $apartment->longitude }}
                     </li>
                     {{-- Services --}}
@@ -42,7 +42,7 @@
                         Sorry no service available has been specified.
                         @else
                         @foreach ($apartment->services as $service)
-                        <img class="icon" src="{{ $service->icon }}" alt="{{ $service->name }}'s icon">
+                        <img class="icon" src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}'s icon">
                         <span class="badge rounded-pill bg-success ms-1">{{ $service->name }}</span>
                         @endforeach
                         @endif
