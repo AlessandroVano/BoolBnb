@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Storage;
+
 use App\Apartment;
 use App\Service;
 use App\Sponsorship;
@@ -46,6 +48,12 @@ class ApartmentController extends Controller
         $request->validate($this->validation_rules(), $this->validation_messages());
 
         $data = $request->all();
+
+        //Add apartment image
+        if (array_key_exists('image', $data)) {
+            $img_path = Storage::put('img-apartments', $data['image']);
+            $data['image'] = $img_path;
+        }
 
         $new_apartment = new Apartment();
 
@@ -121,6 +129,15 @@ class ApartmentController extends Controller
             $data['visibility'] = 0;
         }
 
+        //Update apartment image
+        if (array_key_exists('image', $data)) {
+            if ($apartment->image) {
+                Storage::delete($apartment->image);
+            }
+
+            $data['image'] = Storage::put('img-apartments', $data['image']);
+        }
+
          // update slug solo se il titolo cambia
          if($data['name'] != $apartment->name ) {
              $slug = Str::slug($data['name'], '-');
@@ -164,6 +181,12 @@ class ApartmentController extends Controller
      */
     public function destroy(Apartment $apartment)
     {
+
+        //Remouve local image if already exists
+        if ($apartment->image) {
+            Storage::delete($apartment->image);
+        }
+
         $apartment->delete();
 
         return redirect()->route('admin.apartments.index')->with('deleted', $apartment->name);
@@ -180,9 +203,10 @@ class ApartmentController extends Controller
             'max_people' => 'required',
             'bathrooms' => 'required',
             'square_meters' => 'required',
-            'latitude' => 'nullable',
-            'longitude' => 'nullable',
-            'visibility' => 'nullable'
+            'latitude' => 'required',
+            'longitude' => 'required',
+            'visibility' => 'nullable',
+            'image' => 'nullable|file|mimes:jpg,jpeg,bmp,png,webp',
         ];
     }
 
