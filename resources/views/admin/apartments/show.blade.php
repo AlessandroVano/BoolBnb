@@ -53,6 +53,10 @@
                         <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary mx-2">Return to list</a>
                         <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="btn btn-success mx-2">Edit details</a>
                     </li>
+
+                    <li class="list-group-item">
+                        <a href="{{ route('admin.sponsorships') }}">Sponsorship</a>
+                    </li>
                 </ul>
             </div>
         </div>

@@ -32,6 +32,7 @@ Auth::routes();
              // Apartments resource routes
              Route::resource('/apartments', 'ApartmentController');
              
+             Route::get('/sponsorships', 'SponsorshipController@index')->name('sponsorships');
          });
 
 // Home front 
