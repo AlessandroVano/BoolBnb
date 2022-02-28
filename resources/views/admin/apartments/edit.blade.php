@@ -113,15 +113,15 @@
                <div class="mb-3">
                    <h4>Services</h4>
                     @foreach ($services as $service)
-                        <span class="d-inline-block mr-3">
-                            <input type="checkbox" name="services[]" id="service{{ $loop->iteration }}" value="{{ $service->id }}"
+                        <span class="d-inline-block mr-3 custom-control custom-switch">
+                            <input class="custom-control-input" type="checkbox" name="services[]" id="customSwitch{{ $loop->iteration }}" value="{{ $service->id }}"
                                 @if ($errors->any() && in_array($service->id, old('services')))
                                     checked
                                 @elseif (!$errors->any() && $apartment->services->contains($service->id))
                                     checked
                                 @endif>
                                 
-                            <label for="service{{ $loop->iteration }}">
+                            <label class="custom-control-label" for="customSwitch{{ $loop->iteration }}">
                                 {{ $service->name }}
                             </label>
                         </span>
@@ -130,7 +130,8 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                </div>
-                {{-- VISIBILITA' --}}
+
+               {{-- VISIBILITA' --}}
                 <div class="d-flex align-items-center py-3">
                     <label for="visibility" class="m-0 mr-2">Visibilità</label>
                     <input type="checkbox" name="visibility" id="visibility" @if (old('visibility', $apartment->visibility)) checked @endif>

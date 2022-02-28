@@ -4,6 +4,7 @@
 
 <h1 class="text-center text-white my-5">Your Apartments</h1>
 
+@if (!$apartments->count() == 0)
 <div class="container bg-dark text-white">
     @if (session('deleted'))
             <div class="alert alert-success">
@@ -31,10 +32,10 @@
                     <h5>
                         @if($apartment->visibility)
                             <span>Apartment Available</span>
-                            <img class="icon" src="{{ asset('storage/icon/Visible.png') }}" alt="Visibility Icon">
+                            <img class="icon invert" src="{{ asset('storage/icon/Visible.png') }}" alt="Visibility Icon">
                         @else 
                             <span>Apartment NOT Available</span>
-                            <img class="icon" src="{{ asset('storage/icon/Not-visible.png') }}" alt="Not Visibility Icon">
+                            <img class="icon invert" src="{{ asset('storage/icon/Not-visible.png') }}" alt="Not Visibility Icon">
                         @endif
                     </h5>
                     <div class="actions d-flex justify-content-around ">
@@ -57,5 +58,8 @@
         @endforeach
     </div>
 </div>
+@else
+<h3 class="text-center text-white">There's no apartment, start from here to <a href="{{ route('admin.apartments.create') }}">add one</a></h3>
+@endif
 
 @endsection

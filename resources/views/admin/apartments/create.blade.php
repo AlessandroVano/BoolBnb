@@ -115,20 +115,23 @@
             {{-- Services --}}
             <div class="mb-3">
                 <h4>Services</h4>
+                <div class="row">
                 @foreach ($services as $service)
-                    <span class="d-inline-block mr-3">
-                        <input type="checkbox" name="services[]" id="service{{ $loop->iteration }}" value="{{ $service->id }}"
+                    <div class="custom-control custom-switch col-4">
+                        <input class="custom-control-input" 
+                            type="checkbox" 
+                            name="services[]" 
+                            id="customSwitch{{ $loop->iteration }}"
+                            value="{{ $service->id }}"
                             @if (in_array($service->id, old('services', [] ))) checked @endif>
-                            
-                        <label for="service{{ $loop->iteration }}">
-                            {{ $service->name }}
-                        </label>
-                    </span>
+                        <label class="custom-control-label" for="customSwitch{{ $loop->iteration }}">{{ $service->name }}</label>
+                    </div>
                 @endforeach
+                </div>
                 @error('services')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
-            </div> 
+            </div>
 
             <button class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
 
