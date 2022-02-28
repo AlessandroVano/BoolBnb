@@ -18,8 +18,8 @@
 
             {{-- Name --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Name*</label>
-                <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}">
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -45,7 +45,7 @@
 
             {{-- Price --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Price for a night</label>
+                <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" name='price' id="price" value="{{ old('price') }}">
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
@@ -79,14 +79,24 @@
                 @enderror
             </div>
 
-            {{-- Address --}}
+            {{-- Latitude --}}
             <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <input type="number" class="form-control" name='address' id="address" value="{{ old('address') }}">
-                @error('address')
+                <label for="latitude" class="form-label">Latitude</label>
+                <input type="text" class="form-control" name='latitude' id="latitude" value="{{ old('latitude') }}">
+                @error('latitude')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+
+            {{-- Longitude --}}
+            <div class="mb-3">
+                <label for="longitude" class="form-label">Longitude</label>
+                <input type="number" class="form-control" name='longitude' id="longitude" value="{{ old('longitude') }}">
+                @error('longitude')
+                    <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </div>
+
             {{-- Image --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Uploade an image</label>
@@ -103,7 +113,7 @@
             </div>
 
             {{-- Services --}}
-            <div class="mb-5 container">
+            <div class="mb-3">
                 <h4>Services</h4>
                 <div class="row">
                 @foreach ($services as $service)
