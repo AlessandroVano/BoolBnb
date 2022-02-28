@@ -11,7 +11,7 @@ return [
         "square_meters"=> 20,
         "latitude"=> 45.2649,
         "longitude"=> 8.85869,
-        "image"=> "https://images-ext-2.discordapp.net/external/UCOCm1fZjzakO90Y8SNuQMn-JoURRk6PVke396jVo74/%3Fq%3Dtbn%3AANd9GcQhB7zlYQvckAf9dsIrW1xmN1T8dxL4GcVvGo5E7Dx8BTH203vsoyxoy5p48-LEUfn4jT0%26usqp%3DCAU/https/encrypted-tbn0.gstatic.com/images",
+        "image"=> null,
         "visibility"=> 1,
     ],
     [
@@ -25,7 +25,7 @@ return [
         "square_meters"=> 23,
         "latitude"=> 41.162532,
         "longitude"=> 16.245832,
-        "image"=> "https://images-ext-2.discordapp.net/external/UCOCm1fZjzakO90Y8SNuQMn-JoURRk6PVke396jVo74/%3Fq%3Dtbn%3AANd9GcQhB7zlYQvckAf9dsIrW1xmN1T8dxL4GcVvGo5E7Dx8BTH203vsoyxoy5p48-LEUfn4jT0%26usqp%3DCAU/https/encrypted-tbn0.gstatic.com/images",
+        "image"=> null,
         "visibility"=> 1,
     ],
     [
@@ -39,7 +39,7 @@ return [
         "square_meters"=> 15,
         "latitude"=> 43.162542,
         "longitude"=> 17.245732,
-        "image"=> "https://images-ext-2.discordapp.net/external/UCOCm1fZjzakO90Y8SNuQMn-JoURRk6PVke396jVo74/%3Fq%3Dtbn%3AANd9GcQhB7zlYQvckAf9dsIrW1xmN1T8dxL4GcVvGo5E7Dx8BTH203vsoyxoy5p48-LEUfn4jT0%26usqp%3DCAU/https/encrypted-tbn0.gstatic.com/images",
+        "image"=> null,
         "visibility"=> 1,
     ],
 ];

@@ -5,11 +5,11 @@
         <div class="row align-items-center">
             {{-- Name --}}
             <div class="col-12 d-flex justify-content-center align-items-center">
-                <h1 class="d-inline">{{ $apartment->name }}</h1>
+                <h1 class="d-inline text-white">{{ $apartment->name }}</h1>
                 @if ( $apartment->visibility == 1 )
-                    <img class="icon" src="{{ asset('storage/icon/Visible.png') }}" alt="Visible">
+                    <img class="icon invert" src="{{ asset('storage/icon/Visible.png') }}" alt="Visible">
                 @else
-                    <img class="icon" src="{{ asset('storage/icon/Not-visible.png') }}" alt="Not visible">
+                    <img class="icon invert" src="{{ asset('storage/icon/Not-visible.png') }}" alt="Not visible">
                 @endif
             </div>
             <div class="col-sm-12 col-md-6 my-4 align-self-start text-center">
@@ -20,7 +20,7 @@
                 @endif
             </div>
             <div class="col-sm-12 col-md-6">
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush rounded">
                     {{-- Price for night --}}
                     <li class="list-group-item">
                         {{ $apartment->price }} € /<strong>For night</strong> 

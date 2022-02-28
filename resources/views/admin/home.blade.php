@@ -11,8 +11,12 @@
                 </div>
 
                 <div class="card-body">
-                    <h2>What to do now? Choose, edit or check your amazing apartments</h2>
-                    <h3><a href="{{ route('admin.apartments.index') }}">Go to your apartments, actually you have {{ $apartments->count() }}</a></h3>
+                    <h2 class="mt-3">What to do now? Choose, edit or check your amazing apartments</h2>
+                    @if ($apartments->count() > 0)
+                        <h3><a href="{{ route('admin.apartments.index') }}">Go to your apartments, actually you have {{ $apartments->count() }}</a></h3>
+                    @else
+                        <h3>Actually there's no apartment, <a href="{{ route('admin.apartments.create') }}">add one</a></h3>
+                    @endif
                 </div>
             </div>
         </div>
