@@ -82,7 +82,7 @@
             {{-- Address --}}
             <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
-                <input type="number" class="form-control" name='address' id="address" value="{{ old('address') }}">
+                <input type="text" class="form-control" name='address' id="address" value="{{ old('address') }}">
                 @error('address')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
