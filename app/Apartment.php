@@ -8,6 +8,7 @@ class Apartment extends Model
 {
     protected $table = 'Apartments';
     protected $fillable = [
+         'user_id',
          'name',
          'slug',
          'price',

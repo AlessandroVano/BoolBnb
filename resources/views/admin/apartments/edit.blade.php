@@ -37,7 +37,7 @@
                   {{-- PRICE --}}
                   <div class="mb-3">
                     <label for="price" class="form-label">Price for a night</label>
-                    <input type="number" name="price" id="price"  class="form-control" value="{{old('price', $apartment->price) }}">
+                    <input type="number" min="0" name="price" id="price"  class="form-control" value="{{old('price', $apartment->price) }}">
                     @error('price')
                         <div class="text-danger">{{$message}}</div>
                     @enderror
@@ -45,7 +45,7 @@
                    {{-- ROOMS --}}
                    <div class="mb-3">
                     <label for="rooms" class="form-label">Rooms</label>
-                    <input type="number" name="rooms" id="rooms"  class="form-control" value="{{old('rooms', $apartment->rooms) }}">
+                    <input type="number" min="0" name="rooms" id="rooms"  class="form-control" value="{{old('rooms', $apartment->rooms) }}">
                     @error('rooms')
                         <div class="text-danger">{{$message}}</div>
                     @enderror
@@ -53,7 +53,7 @@
                    {{-- MAX PEOPLE --}}
                    <div class="mb-3">
                     <label for="max_people" class="form-label">Max people</label>
-                    <input type="number" name="max_people"  class="form-control" id="max_people" value="{{old('max_people', $apartment->max_people) }}">
+                    <input type="number" min="0" name="max_people"  class="form-control" id="max_people" value="{{old('max_people', $apartment->max_people) }}">
                     @error('max_people')
                         <div class="text-danger">{{$message}}</div>
                     @enderror
@@ -61,7 +61,7 @@
                    {{-- BATHROOMS --}}
                      <div class="mb-3">
                         <label for="bathrooms" class="form-label">Bathrooms</label>
-                        <input type="number" name="bathrooms"  class="form-control" id="bathrooms" value="{{old('bathrooms', $apartment->max_people) }}">
+                        <input type="number" min="0" name="bathrooms"  class="form-control" id="bathrooms" value="{{old('bathrooms', $apartment->max_people) }}">
                         @error('bathrooms')
                             <div class="text-danger">{{$message}}</div>
                         @enderror
@@ -69,7 +69,7 @@
                    {{-- SQUARE_METERS --}}
                    <div class="mb-3">
                     <label for="square_meters" class="form-label">Square meters</label>
-                    <input type="number" name="square_meters"  class="form-control" id="square_meters" value="{{old('square_meters', $apartment->square_meters) }}">
+                    <input type="number" min="0" name="square_meters"  class="form-control" id="square_meters" value="{{old('square_meters', $apartment->square_meters) }}">
                     @error('square_meters')
                         <div class="text-danger">{{$message}}</div>
                     @enderror

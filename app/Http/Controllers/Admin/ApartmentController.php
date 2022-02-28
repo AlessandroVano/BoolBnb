@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
+use Auth;
 use App\Apartment;
 use App\Service;
 use App\Sponsorship;
@@ -48,6 +49,8 @@ class ApartmentController extends Controller
         $request->validate($this->validation_rules(), $this->validation_messages());
 
         $data = $request->all();
+
+        $data['user_id'] = Auth::id;
 
         //Add apartment image
         if (array_key_exists('image', $data)) {
