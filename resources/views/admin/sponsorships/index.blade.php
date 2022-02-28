@@ -2,16 +2,22 @@
 
 @section('content')
     <section class="container">
-        <h1>Find your ideal sponsorship</h1>
+        <h1 class="text-white">Find your ideal sponsorship</h1>
 
-        @foreach ($sponsorships as $sponsorship)
-            <div class="card my-2">
-                <div>{{ $sponsorship->name }}</div>
-                <div>{{ $sponsorship->price }}</div>
-                <div>{{ $sponsorship->duration }}</div>
+        <div class="row mb-3">
+            @foreach ($sponsorships as $sponsorship)
+            <div class="col-lg-4 col-sm-12 m-sm-2 m-lg-0">
+                <div class="card text-center card-hover">
+                    <div class="card-body">
+                        <h2 class="card-title"> <strong>Type:</strong> {{ $sponsorship->name }}</h2>
+                        <h3 class="card-subtitle mb-2"><strong>Price:</strong> {{ $sponsorship->price}} €</h3>
+                        <h4 class="card-subtitle mb-2"><strong>Duration:</strong> {{$sponsorship->duration }} H</h4>
+                    </div>
+                </div>
             </div>
-            <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary mx-2">Return to list</a>
-        @endforeach
-
+            @endforeach
+        </div>
+            
+        <a href="{{ route('admin.apartments.index') }}" class="btn btn-primary mx-2">Return to list</a>
     </section>
 @endsection

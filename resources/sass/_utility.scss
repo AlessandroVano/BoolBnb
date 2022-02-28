@@ -1,4 +1,4 @@
-//Image utilities
+//Image Utilities
 .icon {
     width: 30px;
     height: 30px;
@@ -8,4 +8,13 @@
 .img-apartment {
     width: 100%;
     height: 200px;
+}
+
+// Sponsorship Utilities
+.card-hover {
+    cursor: pointer;
+    transition: transform 0.5s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+    }
 }

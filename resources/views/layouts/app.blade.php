@@ -11,11 +11,11 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet"> 
 </head>
 
-<body>
+<body class="bg-dark">
     <div id="app">
         @include('layouts.partials.header')
      
-        <main class="py-4">
+        <main class="py-4 h-50">
             @yield('content')
         </main>
  
