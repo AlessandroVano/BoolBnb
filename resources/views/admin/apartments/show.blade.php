@@ -12,9 +12,10 @@
                     <img class="icon invert" src="{{ asset('storage/icon/Not-visible.png') }}" alt="Not visible">
                 @endif
             </div>
+            {{-- Image --}}
             <div class="col-sm-12 col-md-6 my-4 align-self-start text-center">
                 @if (! $apartment->image)
-                    <img class="img-fluid" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{ $apartment->name }}">
+                    <img class="img-fluid rounded" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{ $apartment->name }}">
                 @else
                     <img class="img-fluid rounded" src="{{ asset('storage/' . $apartment->image) }}" alt="{{ $apartment->name }}">
                 @endif
@@ -23,28 +24,49 @@
                 <ul class="list-group list-group-flush rounded">
                     {{-- Price for night --}}
                     <li class="list-group-item">
-                        {{ $apartment->price }} € /<strong>For night</strong> 
+                        @if ( $apartment->price )
+                            {{ $apartment->price }} € /<strong>For night</strong>
+                        @else
+                            <strong>Price per night not specified</strong>
+                        @endif
                     </li>
                     {{-- Rooms and occupants --}}
                     <li class="list-group-item">
                         <img class="icon" src="{{ asset('storage/icon/Rooms.png') }}" alt="Rooms's icon">
-                        {{ $apartment->rooms }} <strong>Rooms </strong> 
-                        <img class="icon" src="{{ asset('storage/icon/Max occupants.png') }}" alt="Max occupants's icon">
-                        {{ $apartment->max_people }} <strong>Max occupants</strong>
+                        @if ($apartment->rooms)
+                            {{ $apartment->rooms }} <strong>Rooms </strong> 
+                        @else
+                            <strong>Total rooms not specified </strong>
+                                <br/>
+                        @endif
+                        <img class="icon mt-2" src="{{ asset('storage/icon/Max occupants.png') }}" alt="Max occupants's icon">
+                        @if ( $apartment->max_people )
+                            {{ $apartment->max_people }} <strong>Max occupants</strong>
+                        @else
+                            <strong>Maximum capacity of people not specified </strong>
+                        @endif
                     </li>
                     {{-- Bathrooms --}}
-                    <li class="list-group-item">
-                        <img class="icon" src="{{ asset('storage/icon/Bathrooms.png') }}" alt="Bathroom's icon">
-                        {{ $apartment->bathrooms }} <strong>Bathroom</strong> 
-                    </li>
+                    @if ( $apartment->bathrooms )
+                        <li class="list-group-item">
+                            <img class="icon" src="{{ asset('storage/icon/Bathrooms.png') }}" alt="Bathroom's icon">
+                            {{ $apartment->bathrooms }} <strong>Bathroom</strong> 
+                        </li>
+                    @endif
                     {{-- Description --}}
-                    <li class="list-group-item">
-                        <strong>Something about: </strong> <br> {{ $apartment->description }}
-                    </li>
+                    @if ( $apartment->description )
+                        <li class="list-group-item">
+                            <strong>Something about: </strong> <br> {{ $apartment->description }}
+                        </li>
+                    @endif
                     {{-- Geography position --}}
                     <li class="list-group-item">
                         <img class="icon" src="{{ asset('storage/icon/Geography.png') }}" alt="Geography's icon">
-                        <strong>Geography position: </strong> LAT {{ $apartment->latitude }} LONG {{ $apartment->longitude }}
+                        @if ( $apartment->address )
+                            <strong>Address: </strong> {{ $apartment->address }}
+                        @else
+                            <strong>Address not specified </strong>
+                        @endif
                     </li>
                     {{-- Services --}}
                     <li class="list-group-item">

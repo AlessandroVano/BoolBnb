@@ -23,7 +23,7 @@
 
                 <div class="text-center img-container">
                     @if (! $apartment->image)
-                        <img class="w-100" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{$apartment->name}}">
+                        <img class="rounded img-apartment" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{$apartment->name}}">
                     @else
                         <img class="rounded img-apartment"src="{{ asset('storage/' . $apartment->image) }}" alt="{{$apartment->name}}">
                     @endif
@@ -49,7 +49,9 @@
                             @csrf
                             @method('DELETE')
                             
-                            <button type="submit" class="btn btn-danger">Delete Apartment</button>
+                            <button type="submit" class="btn btn-danger"
+                            onclick="return confirm('Are you sure you want to delete this apartment?')"
+                            >Delete Apartment</button>
                         </form>
                     </div>
                 </div>

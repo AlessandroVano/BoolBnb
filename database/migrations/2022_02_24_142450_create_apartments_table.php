@@ -18,16 +18,17 @@ class CreateApartmentsTable extends Migration
             $table->id();
             $table->string('name', 80);
             $table->string('slug', 80)->unique();
-            $table->unsignedSmallInteger('price');
-            $table->text('description');
-            $table->tinyInteger('rooms');
-            $table->tinyInteger('max_people');
-            $table->tinyInteger('bathrooms');
-            $table->smallInteger('square_meters');
-            $table->decimal('latitude', $precision = 8, $scale = 6 );
-            $table->decimal('longitude', $precision = 9, $scale = 6 );
+            $table->decimal('price', 5, 2)->nullable();
+            $table->text('description')->nullable();
+            $table->tinyInteger('rooms')->nullable();
+            $table->tinyInteger('max_people')->nullable();
+            $table->tinyInteger('bathrooms')->nullable();
+            $table->smallInteger('square_meters')->nullable();
+            $table->text('address')->nullable();
+            $table->decimal('latitude', 8, 6 )->nullable();
+            $table->decimal('longitude', 9, 6 )->nullable();
             $table->text('image')->nullable();
-            $table->boolean('visibility')->default(1);  
+            $table->boolean('visibility')->nullable();
             $table->timestamps();
         });
     }

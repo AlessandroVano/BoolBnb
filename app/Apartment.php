@@ -16,6 +16,7 @@ class Apartment extends Model
          'max_people',
          'bathrooms',
          'square_meters',
+         'address',
          'latitude',
          'longitude',
          'image',
