@@ -6,8 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
 
-use Auth;
 use App\Apartment;
 use App\Service;
 use App\Sponsorship;
@@ -22,7 +22,8 @@ class ApartmentController extends Controller
      */
     public function index()
     {
-        $apartments = Apartment::all();
+        $current_id = Auth::id();
+        $apartments = Apartment::where('user_id', '=', $current_id)->get();
 
         return view('admin.apartments.index' , compact('apartments'));
     }
@@ -50,7 +51,7 @@ class ApartmentController extends Controller
 
         $data = $request->all();
 
-        $data['user_id'] = Auth::id;
+        $data['user_id'] = Auth::id();
 
         //Add apartment image
         if (array_key_exists('image', $data)) {
@@ -89,9 +90,16 @@ class ApartmentController extends Controller
     {
         //Show apartment details
         $apartment = Apartment::where('slug', $slug)->first();
+        
+                if (!$apartment) {
+                    abort(404);
+                }
 
-        if (!$apartment) {
-            abort(404);
+        if( $apartment['user_id'] != Auth::id() ) {
+            $current_id = Auth::id();
+            $apartments = Apartment::where('user_id', '=', $current_id)->get();
+
+            return view('admin.apartments.index', compact('apartments'));
         }
 
         return view('admin.apartments.show', compact('apartment'));
@@ -109,6 +117,13 @@ class ApartmentController extends Controller
        if(! $apartment) {
         abort(404);
        }
+
+        if ($apartment['user_id'] != Auth::id()) {
+            $current_id = Auth::id();
+            $apartments = Apartment::where('user_id', '=', $current_id)->get();
+
+            return view('admin.apartments.index', compact('apartments'));
+        }
        return view('admin.apartments.edit', compact('apartment', 'services'));
     }
     /**
@@ -188,6 +203,16 @@ class ApartmentController extends Controller
         //Remouve local image if already exists
         if ($apartment->image) {
             Storage::delete($apartment->image);
+        }
+        if (!$apartment) {
+            abort(404);
+        }
+
+        if ($apartment['user_id'] != Auth::id()) {
+            $current_id = Auth::id();
+            $apartments = Apartment::where('user_id', '=', $current_id)->get();
+
+            return view('admin.apartments.index', compact('apartments'));
         }
 
         $apartment->delete();
