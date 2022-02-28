@@ -18,8 +18,8 @@
 
             {{-- Name --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Name*</label>
-                <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}">
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -45,7 +45,7 @@
 
             {{-- Price --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Price for a night</label>
+                <label for="price" class="form-label">Price</label>
                 <input type="number" class="form-control" name='price' id="price" value="{{ old('price') }}">
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
@@ -103,7 +103,7 @@
             </div>
 
             {{-- Services --}}
-            <div class="mb-5 container">
+            <div class="mb-3">
                 <h4>Services</h4>
                 <div class="row">
                 @foreach ($services as $service)
