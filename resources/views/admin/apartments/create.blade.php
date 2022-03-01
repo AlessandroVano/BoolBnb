@@ -19,7 +19,7 @@
             {{-- Name --}}
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
-                <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}">
+                <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}" required>
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
