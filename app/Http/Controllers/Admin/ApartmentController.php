@@ -50,7 +50,7 @@ class ApartmentController extends Controller
         $request->validate($this->validation_rules(), $this->validation_messages());
 
         $data = $request->all();
-
+        dump($data);
         $data['user_id'] = Auth::id();
 
         //Add apartment image
