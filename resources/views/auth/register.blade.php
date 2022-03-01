@@ -98,6 +98,11 @@
                                 </button>
                             </div>
                         </div>
+
+                        <div class="text-right mt-3">
+                            <span class="fs-3">All fields marked with * are <strong>mandatory</strong></span>
+                        </div>
+
                     </form>
                 </div>
             </div>
