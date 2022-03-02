@@ -31,7 +31,6 @@
                             >
                         </li>
                     </ul>
-
                 </div>
 
                 <!-- Right Side -->
@@ -84,14 +83,42 @@
 <script>
 export default {
     name: "Header",
+    /* COME CALCOLARE LA DISTANZA PD */
+    data() {
+        return {
+            lat1 : 45.47289, //Milano
+            lon1 : 9.12244, //Milano
+            lat2 : 45.464211, //Duomo
+            lon2 : 9.191383, //Duomo
+
+            d : null, //Distance
+        }
+    },
+    created() {
+        this.getDiscance(this.lat1,this.lon1,this.lat2,this.lon2);
+    },
+    methods: {
+        distance(lat1, lon1, lat2, lon2) { 
+            var p = 0.017453292519943295;
+            var c = Math.cos; 
+            var a = 0.5 - c((lat2 - lat1) * p)/2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))/2; 
+            var distance = 12742 * Math.asin(Math.sqrt(a));
+            console.log( distance.toFixed(3) );
+            return this.d = distance.toFixed(3);
+        },
+        getDiscance(lat1, lon1, lat2, lon2) {
+            this.distance(lat1, lon1, lat2, lon2);
+            console.log( this.d);
+        }
+    },
 };
 </script>
 
 <style lang="scss" scoped>
-    .central-side {
-        display: flex;
-        justify-content: center;
-        flex-grow: 1;
-        text-align: center;
-    }
+.central-side {
+    display: flex;
+    justify-content: center;
+    flex-grow: 1;
+    text-align: center;
+}
 </style>
