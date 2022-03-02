@@ -5,6 +5,7 @@ import VueRouter from "vue-router";
 // COMPONENTI PER ROTTA
 import Home from "./pages/Home.vue";
 import AdvancedSearch from "./pages/AdvancedSearch";
+import BestApartments from "./pages/BestApartments";
 
 // ATTIVAZIONE ROUTER IN VUE
 Vue.use(VueRouter);
@@ -23,6 +24,12 @@ const router = new VueRouter({
             path: "/advanced-search",
             name: "advanced-search",
             component: AdvancedSearch,
+        },
+
+        {
+            path: "/bestapartments",
+            name: "bestapartments",
+            component: BestApartments,
         },
     ],
 });
