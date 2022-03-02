@@ -18,8 +18,8 @@
 
             {{-- Name --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Name*</label>
-                <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                <label for="name" class="form-label">Name</label>
+                <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}" required>
                 @error('name')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -45,7 +45,7 @@
 
             {{-- Price --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Price for a night</label>
+                <label for="price" class="form-label">Price per night</label>
                 <input type="number" min="0" class="form-control" name='price' id="price" value="{{ old('price') }}">
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
@@ -80,13 +80,33 @@
             </div>
 
             {{-- Address --}}
-            <div class="mb-3">
+            {{-- <div class="mb-3">
                 <label for="address" class="form-label">Address</label>
                 <input type="text" class="form-control" name='address' id="address" value="{{ old('address') }}">
                 @error('address')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
-            </div>
+            </div> --}}
+
+            <Search>
+            </Search>
+            {{-- <div class="map-view">
+                <div class="tt-side-panel">
+                  <header class="tt-side-panel__header"></header>
+                  <div class="tt-tabs js-tabs">
+                    <div class="tt-tabs__panel">
+                      <div class="js-results" hidden="hidden"></div>
+                      <div class="js-results-loader" hidden="hidden">
+                        <div class="loader-center"><span class="loader"></span></div>
+                      </div>
+                      <div class="tt-tabs__placeholder js-results-placeholder"></div>
+                    </div>
+                  </div>
+                </div>
+                <div id="map" class="full-map"></div>
+              </div> --}}
+
+
             {{-- Image --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Uploade an image</label>
@@ -103,7 +123,7 @@
             </div>
 
             {{-- Services --}}
-            <div class="mb-5 container">
+            <div class="mb-3">
                 <h4>Services</h4>
                 <div class="row">
                 @foreach ($services as $service)

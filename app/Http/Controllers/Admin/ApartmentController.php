@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Apartment;
 use App\Service;
 use App\Sponsorship;
+use App\View;
 
 
 class ApartmentController extends Controller
@@ -50,7 +51,7 @@ class ApartmentController extends Controller
         $request->validate($this->validation_rules(), $this->validation_messages());
 
         $data = $request->all();
-
+        
         $data['user_id'] = Auth::id();
 
         //Add apartment image
@@ -101,6 +102,17 @@ class ApartmentController extends Controller
 
             return view('admin.apartments.index', compact('apartments'));
         }
+
+        
+            $ipAddress = request()->ip();
+
+            $new_view = new View();
+            $new_view->apartment_id = $apartment['id'];
+            $new_view->ip_address = $ipAddress;
+
+            if (!View::where('ip_address', '=', $ipAddress)->exists() || !View::where('apartment_id', '=',$new_view->apartment_id)->exists()) {
+                $new_view->save();
+            }
 
         return view('admin.apartments.show', compact('apartment'));
     }

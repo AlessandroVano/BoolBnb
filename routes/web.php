@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Admin\HomeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +29,10 @@ Auth::routes();
          ->prefix('admin')
          ->group(function(){
              Route::get('/', 'HomeController@index')->name('home');
-
+             
              // Apartments resource routes
              Route::resource('/apartments', 'ApartmentController');
+            //  Route::get('/apartments/client/ip', [HomeController::class, 'getIp']);
              
              Route::get('/sponsorships', 'SponsorshipController@index')->name('sponsorships');
          });
