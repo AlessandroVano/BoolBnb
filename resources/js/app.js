@@ -7,6 +7,8 @@ import Search from './components/Search'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ require('./bootstrap');
+ 
 Vue.component('Search' , Search);
 
 const app = new Vue({
