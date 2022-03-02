@@ -87,13 +87,7 @@
 <script>
 export default {
     name: "Header",
-
-    data() {},
-
-    created() {},
-
-    methods: {},
-};
+}
 </script>
 
 <style></style>
