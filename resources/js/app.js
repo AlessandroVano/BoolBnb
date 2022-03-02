@@ -1,5 +1,7 @@
+
 import Vue from 'vue';
-import Search from './components/Search'
+
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -7,9 +9,7 @@ import Search from './components/Search'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- require('./bootstrap');
- 
-Vue.component('Search' , Search);
+Vue.component('Search' , require('./components/Search').default);
 
 const app = new Vue({
     el: '#app',
