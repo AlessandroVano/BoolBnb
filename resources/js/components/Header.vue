@@ -21,13 +21,13 @@
                             >
                         </li>
                         <li class="nav-item mx-2 mx-md-3 mx-lg-3">
-                            <router-link class="nav-link" :to="{ name: 'home' }"
+                            <router-link class="nav-link" :to="{ name: 'advanced-search' }"
                                 >Advanced Search</router-link
                             >
                         </li>
                         <li class="nav-item mx-2 mx-md-3 mx-lg-3">
-                            <router-link class="nav-link" :to="{ name: 'home' }"
-                                >Contact Us</router-link
+                            <router-link class="nav-link" :to="{ name: 'bestapartments' }"
+                                >Best Apartments</router-link
                             >
                         </li>
                     </ul>

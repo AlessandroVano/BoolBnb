@@ -143,7 +143,7 @@
                 <div class="col-5">
                     <ul class="d-flex m-0 p-0 justify-content-end font-weight-bold">
                         <li class="mr-2">
-                            <a href="https://www.facebook.com/AirbnbItalia" class="ml-1">Facebbok</a>
+                            <a href="https://www.facebook.com/AirbnbItalia" class="ml-1">Facebook</a>
                         </li>
                         <li class="mr-2">
                             <a href="https://twitter.com/airbnb_it" class="ml-1">Twitter</a>

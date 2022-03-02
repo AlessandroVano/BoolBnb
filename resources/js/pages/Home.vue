@@ -10,9 +10,11 @@
                         Explore and Discover our best apartments
                     </h2>
                     <button class="btn btn-link text-white">
-                        <a class="text-decoration-none text-white" href="/"
-                            >Find more</a
-                        >
+                        <router-link
+                        class="link-custom"
+                        :to="{ name: 'bestapartments' }"
+                        >Find More
+                    </router-link>
                     </button>
                 </div>
             </div>
@@ -24,9 +26,11 @@
                     Find the best solution for your Holiday!
                 </h2>
                 <button class="btn btn-link text-white">
-                    <a class="text-decoration-none text-white" href="/"
-                        >Find more</a
-                    >
+                    <router-link
+                        class="link-custom"
+                        :to="{ name: 'advanced-search' }"
+                        >Find More
+                    </router-link>
                 </button>
             </div>
         </section>
@@ -34,7 +38,6 @@
 </template>
 
 <script>
-
 export default {
     name: "Home",
 };
@@ -44,11 +47,13 @@ export default {
 h2 {
     font-size: 2.5rem;
 }
-a {
+.link-custom {
     border-radius: 10px;
     padding: 0.5rem;
-    border: 1px solid white;
+    border: 3px solid white;
     font-size: 1.5rem;
+    color: #ffff;
+    text-decoration: none;
 }
 .votati {
     background-color: #ff385c;

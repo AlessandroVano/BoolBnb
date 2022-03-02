@@ -33,9 +33,8 @@ export default {
 
     methods: {
         getApartments() {
-            axios.get("http://127.0.0.1:8001/api/apartments").then((res) => {
+            axios.get("http://127.0.0.1:8000/api/apartments").then((res) => {
                 this.apartmentsList = res.data;
-                console.log(res.data);
             });
         },
     },
