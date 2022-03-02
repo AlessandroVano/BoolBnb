@@ -12,7 +12,7 @@
 
 <script>
 export default {
-    name: 'Tags',
+    name: 'Services',
     props: {
         list:Array
     }

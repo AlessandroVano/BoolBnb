@@ -6,6 +6,7 @@ import VueRouter from "vue-router";
 import Home from "./pages/Home.vue";
 import AdvancedSearch from "./pages/AdvancedSearch";
 import BestApartments from "./pages/BestApartments";
+import ApartmentDetails from "./pages/ApartmentDetails";
 
 // ATTIVAZIONE ROUTER IN VUE
 Vue.use(VueRouter);
@@ -31,6 +32,11 @@ const router = new VueRouter({
             name: "bestapartments",
             component: BestApartments,
         },
+        {
+            path: "/apartments/:slug",
+            name: "apartment-details",
+            component: ApartmentDetails,
+        }
     ],
 });
 

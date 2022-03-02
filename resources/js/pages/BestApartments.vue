@@ -9,7 +9,14 @@
                 >
                     <h4>{{ element.name }}</h4>
                     <p>{{ element.description }}</p>
-                    <p>{{element.price}}€</p>
+                    <p>{{ element.price }}€</p>
+                    <!-- <router-link
+                        :to="{
+                            name: 'apartment-details',
+                            params: { slug: apartment.slug }
+                        }"
+                    >
+                    </router-link> -->
                 </li>
             </ul>
         </div>
