@@ -79,17 +79,11 @@
                 @enderror
             </div>
 
-            {{-- Address --}}
-            {{-- <div class="mb-3">
-                <label for="address" class="form-label">Address</label>
-                <input type="text" class="form-control" name='address' id="address" value="{{ old('address') }}">
-                @error('address')
-                    <div class="text-danger">{{ $message }}</div>
-                @enderror
-            </div> --}}
+          
 
             <Search>
             </Search>
+            
             {{-- <div class="map-view">
                 <div class="tt-side-panel">
                   <header class="tt-side-panel__header"></header>
@@ -142,6 +136,9 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
+
+               
+
 
             <button class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
 
