@@ -1,9 +1,159 @@
 <template>
     <footer>
-        <div class="container">
-            <ul>
-                <li class="title-list">Assistenza</li>
-            </ul>
+        <div class="container mt-5 mb-3">
+            <div class="row mb-3">
+                <!-- Support -->
+                <ul class="col-3">
+                    <li class="title-list">Support</li>
+                    <li>
+                        <a href="https://www.airbnb.it/help/home?from=footer">
+                            Service center
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/trust">
+                            Safety information
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/help/article/2701/extenuating-circumstances-policy-and-the-coronavirus-covid19">
+                            Cancellation options
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/d/covidsafety">
+                            Our response to the COVID-19 emergency
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/accessibility">
+                            Accessibility for all
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/neighbors">
+                            Report problems in the neighborhood
+                        </a>
+                    </li>
+                </ul>
+                <!-- Comunity -->
+                <ul class="col-3">
+                    <li class="title-list">Comunity</li>
+                    <li>
+                        <a href="https://www.airbnb.org/?locale=it&_ga=2.21193336.2107814870.1646233770-2061375270.1646233770">
+                            Airbnb.org: a safe haven
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.org/refugees?_ga=2.21193336.2107814870.1646233770-2061375270.1646233770">
+                            Support Afghan refugees
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/against-discrimination">
+                            Against discrimination
+                        </a>
+                    </li>
+                </ul>
+                <!-- To host -->
+                <ul class="col-3">
+                    <li class="title-list">To host</li>
+                    <li>
+                        <a href="https://www.airbnb.it/host/homes?from_footer=1">
+                            Try hosting
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.org/refugees?_ga=2.21193336.2107814870.1646233770-2061375270.1646233770">
+                            AirCover: protected hosts
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/resources">
+                            Explore resources by host
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/help/community?s=footer">
+                            Go to the comunity form
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/help/responsible-hosting">
+                            How to host responsibly
+                        </a>
+                    </li>
+                </ul>
+                <!-- Information -->
+                <ul class="col-3">
+                    <li class="title-list">Information</li>
+                    <li>
+                        <a href="https://www.airbnb.it/press/news">
+                            Newsroom
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/2021-winter">
+                            Discover the new features
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://news.airbnb.com/what-makes-airbnb-airbnb?_ga=2.268716466.2107814870.1646233770-2061375270.1646233770">
+                            Letter from our founders
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/careers">
+                            Job opportunities
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://investors.airbnb.com/?_ga=2.24797817.2107814870.1646233770-2061375270.1646233770">
+                            Investors
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.airbnb.it/luxury">
+                            Airbnb Luxe
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr>
+            <div class="row">
+                <div class="col-7">
+                    <ul class="d-flex m-0 p-0">
+                        <li class="mr-2">
+                            © 2022 Airbnb, Inc.
+                        </li>
+                        <li class="mr-2">
+                            · <a href="https://www.airbnb.it/terms/privacy_policy" class="ml-1">Privacy</a>
+                        </li>
+                        <li class="mr-2">
+                            · <a href="https://www.airbnb.it/terms" class="ml-1">Terms</a>
+                        </li>
+                        <li class="mr-2">
+                            · <a href="https://www.airbnb.it/sitemaps/v2" class="ml-1">Map of the site</a>
+                        </li>
+                        <li class="mr-2">
+                            · <a href="https://www.airbnb.it/about/company-details" class="ml-1">Company details</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-5">
+                    <ul class="d-flex m-0 p-0 justify-content-end font-weight-bold">
+                        <li class="mr-2">
+                            <a href="https://www.facebook.com/AirbnbItalia" class="ml-1">Facebbok</a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="https://twitter.com/airbnb_it" class="ml-1">Twitter</a>
+                        </li>
+                        <li class="mr-2">
+                            <a href="https://instagram.com/airbnb" class="ml-1">Instagram</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     </footer>
 </template>
@@ -12,4 +162,19 @@
 export default {};
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+ul {
+    list-style: none;
+    line-height: 2.3rem;
+
+    .title-list {
+        font-weight: 600;
+    }
+
+    li {
+        a {
+            color: #000;
+        }
+    }
+}
+</style>
