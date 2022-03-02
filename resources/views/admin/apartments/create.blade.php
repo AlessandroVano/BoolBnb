@@ -37,7 +37,7 @@
             {{-- Rooms --}}
             <div class="mb-3">
                 <label for="rooms" class="form-label">Rooms</label>
-                <input type="number" class="form-control" name='rooms' id="rooms" value="{{ old('rooms') }}">
+                <input type="number" min="0" class="form-control" name='rooms' id="rooms" value="{{ old('rooms') }}">
                 @error('rooms')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -45,8 +45,8 @@
 
             {{-- Price --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Price</label>
-                <input type="number" class="form-control" name='price' id="price" value="{{ old('price') }}">
+                <label for="price" class="form-label">Price per night</label>
+                <input type="number" min="0" class="form-control" name='price' id="price" value="{{ old('price') }}">
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -55,7 +55,7 @@
             {{-- Max people --}}
             <div class="mb-3">
                 <label for="max_people" class="form-label">Max people</label>
-                <input type="number" class="form-control" name='max_people' id="max_people" value="{{ old('max_people') }}">
+                <input type="number" min="0" class="form-control" name='max_people' id="max_people" value="{{ old('max_people') }}">
                 @error('max_people')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -64,7 +64,7 @@
             {{-- Bathrooms --}}
             <div class="mb-3">
                 <label for="bathrooms" class="form-label">Bathrooms</label>
-                <input type="number" class="form-control" name='bathrooms' id="bathrooms" value="{{ old('bathrooms') }}">
+                <input type="number" min="0" class="form-control" name='bathrooms' id="bathrooms" value="{{ old('bathrooms') }}">
                 @error('bathrooms')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -73,7 +73,7 @@
             {{-- Square meters --}}
             <div class="mb-3">
                 <label for="square_meters" class="form-label">Square meters</label>
-                <input type="number" class="form-control" name='square_meters' id="square_meters" value="{{ old('square_meters') }}">
+                <input type="number" min="0" class="form-control" name='square_meters' id="square_meters" value="{{ old('square_meters') }}">
                 @error('square_meters')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
