@@ -4,6 +4,7 @@ import VueRouter from "vue-router";
 
 // COMPONENTI PER ROTTA
 import Home from "./pages/Home.vue";
+import AdvancedSearch from "./pages/AdvancedSearch";
 
 // ATTIVAZIONE ROUTER IN VUE
 Vue.use(VueRouter);
@@ -17,6 +18,11 @@ const router = new VueRouter({
             path: "/",
             name: "home",
             component: Home,
+        },
+        {
+            path: "/advanced-search",
+            name: "advanced-search",
+            component: AdvancedSearch,
         },
     ],
 });
