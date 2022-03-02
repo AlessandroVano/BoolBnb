@@ -75,13 +75,17 @@
                     @enderror
                 </div>
                    {{-- ADDRESS --}}
-                   <div class="mb-3">
+                   {{-- <div class="mb-3">
                     <label for="address" class="form-label">Address</label>
                     <input type="text" class="form-control" name="address" id="address" value="{{old('address', $apartment->address) }}">
                     @error('address')
                         <div class="text-danger">{{$message}}</div>
                     @enderror
-                </div>
+                </div> --}}
+
+                <Search>
+                </Search>
+
                    {{-- IMMAGINE --}}
                <div class="mb-3">
                    <h4>Image apartment</h4>
