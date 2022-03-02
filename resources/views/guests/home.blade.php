@@ -9,9 +9,9 @@
 </head>
 <body>
     {{-- @include('layouts.partials.header') --}}
-     <div>
-         <h1>HOME</h1>
-          <a href="{{route('admin.home')}}">Login</a> 
+     <div id="root">
+       {{--   <h1>HOME</h1>
+          <a href="{{route('admin.home')}}">Login</a>  --}}
      </div>
 
      <script src="{{asset('js/front-office.js')}}"></script>
