@@ -37,11 +37,10 @@
         </div>
 
         <section v-if="apartmentsList == 0">
-            <h2>Porco il clero</h2>
+            <h2>No Apartments</h2>
         </section>
 
         <section v-else>
-            <h2>Elden ring è facile e Ale non vuole giocarci</h2>
             <ul
                 class="d-flex"
                 v-for="(apartment, index) in apartmentsList"

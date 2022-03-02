@@ -83,7 +83,6 @@
 <script>
 export default {
     name: "Header",
-}
     /* COME CALCOLARE LA DISTANZA PD */
     data() {
         return {
