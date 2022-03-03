@@ -84,12 +84,32 @@
             {{-- <Search>
             </Search> --}}
 
-            <div class="mb-3"></div>
-
-
-            <div id="mappa">
-
+            <div id="searchbar" class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <input type="text" id="address" name="address" class="form-control">
+                <ul id="list" class="list-unstyled bg-white text-dark">
+                    
+                </ul>
             </div>
+            
+
+            <label for="latitude" class="form-label" hidden>Latitude</label>
+            <input
+                type="text"
+                class="form-control"
+                name="latitude"
+                id="latitude"
+                hidden
+            />
+        <!-- LON -->
+        <label for="longitude" class="form-label" hidden>Longitude</label>
+            <input
+                type="text"
+                class="form-control"
+                name="longitude"
+                id="longitude"
+                hidden
+            />
 
 
             {{-- Image --}}
@@ -127,8 +147,7 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-            <button class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
-
+            <button id="gps"class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
         </form>
 
     </section>
