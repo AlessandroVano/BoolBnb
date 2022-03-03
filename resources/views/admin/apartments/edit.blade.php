@@ -135,6 +135,10 @@
                     <input type="checkbox" name="visibility" id="visibility" @if (old('visibility', $apartment->visibility)) checked @endif>
                 </div>
                 
+                <div class="text-right mt-3">
+                    <span class="fs-3">All fields marked with * are <strong>mandatory</strong></span>
+                </div>
+
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>

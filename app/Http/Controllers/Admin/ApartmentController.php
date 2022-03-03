@@ -96,11 +96,8 @@ class ApartmentController extends Controller
                     abort(404);
                 }
 
-        if( $apartment['user_id'] != Auth::id() ) {
-            $current_id = Auth::id();
-            $apartments = Apartment::where('user_id', '=', $current_id)->get();
-
-            return view('admin.apartments.index', compact('apartments'));
+        if ($apartment['user_id'] != Auth::id()) {
+            return redirect('/admin');
         }
 
         
@@ -131,10 +128,7 @@ class ApartmentController extends Controller
        }
 
         if ($apartment['user_id'] != Auth::id()) {
-            $current_id = Auth::id();
-            $apartments = Apartment::where('user_id', '=', $current_id)->get();
-
-            return view('admin.apartments.index', compact('apartments'));
+            return redirect('/admin');
         }
        return view('admin.apartments.edit', compact('apartment', 'services'));
     }
@@ -221,10 +215,7 @@ class ApartmentController extends Controller
         }
 
         if ($apartment['user_id'] != Auth::id()) {
-            $current_id = Auth::id();
-            $apartments = Apartment::where('user_id', '=', $current_id)->get();
-
-            return view('admin.apartments.index', compact('apartments'));
+            return redirect('/admin');
         }
 
         $apartment->delete();
@@ -237,12 +228,12 @@ class ApartmentController extends Controller
         return [
             'name' => 'required',
             'slug' => 'nullable|max:80',
-            'price' => 'nullable',
+            'price' => 'require',
             'description' => 'nullable',
-            'rooms' => 'nullable',
+            'rooms' => 'require',
             'max_people' => 'nullable',
-            'bathrooms' => 'nullable',
-            'square_meters' => 'nullable',
+            'bathrooms' => 'require',
+            'square_meters' => 'require',
             'latitude' => 'nullable',
             'longitude' => 'nullable',
             'visibility' => 'nullable',

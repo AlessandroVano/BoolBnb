@@ -18,7 +18,7 @@
 
             {{-- Name --}}
             <div class="mb-3">
-                <label for="name" class="form-label">Name</label>
+                <label for="name" class="form-label">Name*</label>
                 <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}" required>
                 @error('name')
                     <div class="text_danger">{{ $message }}</div>
@@ -36,8 +36,8 @@
 
             {{-- Rooms --}}
             <div class="mb-3">
-                <label for="rooms" class="form-label">Rooms</label>
-                <input type="number" min="0" class="form-control" name='rooms' id="rooms" value="{{ old('rooms') }}">
+                <label for="rooms" class="form-label">Rooms*</label>
+                <input type="number" min="1" class="form-control" name='rooms' id="rooms" value="{{ old('rooms') }}" required>
                 @error('rooms')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -45,8 +45,8 @@
 
             {{-- Price --}}
             <div class="mb-3">
-                <label for="price" class="form-label">Price per night</label>
-                <input type="number" min="0" class="form-control" name='price' id="price" value="{{ old('price') }}">
+                <label for="price" class="form-label">Price per night*</label>
+                <input type="number" min="1" class="form-control" name='price' id="price" value="{{ old('price') }}" required>
                 @error('price')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -63,8 +63,8 @@
 
             {{-- Bathrooms --}}
             <div class="mb-3">
-                <label for="bathrooms" class="form-label">Bathrooms</label>
-                <input type="number" min="0" class="form-control" name='bathrooms' id="bathrooms" value="{{ old('bathrooms') }}">
+                <label for="bathrooms" class="form-label">Bathrooms*</label>
+                <input type="number" min="0" class="form-control" name='bathrooms' id="bathrooms" value="{{ old('bathrooms') }}" required>
                 @error('bathrooms')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
@@ -72,34 +72,15 @@
 
             {{-- Square meters --}}
             <div class="mb-3">
-                <label for="square_meters" class="form-label">Square meters</label>
-                <input type="number" min="0" class="form-control" name='square_meters' id="square_meters" value="{{ old('square_meters') }}">
+                <label for="square_meters" class="form-label">Square meters*</label>
+                <input type="number" min="0" class="form-control" name='square_meters' id="square_meters" value="{{ old('square_meters') }}" required>
                 @error('square_meters')
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
 
-          
-
             <Search>
             </Search>
-            
-            {{-- <div class="map-view">
-                <div class="tt-side-panel">
-                  <header class="tt-side-panel__header"></header>
-                  <div class="tt-tabs js-tabs">
-                    <div class="tt-tabs__panel">
-                      <div class="js-results" hidden="hidden"></div>
-                      <div class="js-results-loader" hidden="hidden">
-                        <div class="loader-center"><span class="loader"></span></div>
-                      </div>
-                      <div class="tt-tabs__placeholder js-results-placeholder"></div>
-                    </div>
-                  </div>
-                </div>
-                <div id="map" class="full-map"></div>
-              </div> --}}
-
 
             {{-- Image --}}
             <div class="mb-3">
@@ -113,7 +94,7 @@
             {{-- Visibility --}}
             <div class="mb-3">
                 <label for="visibility" class="form-label">Visibility</label>
-                <input type="checkbox" name='visibility' id="visibility" value="{{ old('visibility') }}">
+                <input type="checkbox" name='visibility' id="visibility" value="1" @if (old('visibility')) checked @endif>
             </div>
 
             {{-- Services --}}
@@ -137,8 +118,9 @@
                 @enderror
             </div>
 
-               
-
+            <div class="text-right mt-3">
+                <span class="fs-3">All fields marked with * are <strong>mandatory</strong></span>
+            </div>
 
             <button class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
 

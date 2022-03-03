@@ -15,7 +15,7 @@
                     @if ($apartments->count() > 0)
                         <h3><a href="{{ route('admin.apartments.index') }}">Go to your apartments, actually you have {{ $apartments->count() }}</a></h3>
                     @else
-                        <h3>Actually there's no apartment, <a href="{{ route('admin.apartments.create') }}">add one</a></h3>
+                        <h3>Do you want to become a host? <a href="{{ route('admin.apartments.create') }}">Create your first apartment</a></h3>
                     @endif
                 </div>
             </div>
