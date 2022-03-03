@@ -111,9 +111,11 @@
             </div>
 
             {{-- Visibility --}}
-            <div class="mb-3">
-                <label for="visibility" class="form-label">Visibility</label>
-                <input type="checkbox" name='visibility' id="visibility" value="{{ old('visibility') }}">
+            <div class="mb-3 custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" id="visibility" name='visibility' value="1" @if (old("visibility"))
+                    checked  
+                @endif>
+                <label class="custom-control-label" for="visibility">Visibility</label>
             </div>
 
             {{-- Services --}}
