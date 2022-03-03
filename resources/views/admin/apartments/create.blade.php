@@ -79,8 +79,18 @@
                 @enderror
             </div>
 
-            <Search>
-            </Search>
+
+          
+
+            {{-- <Search>
+            </Search> --}}
+
+            <div class="mb-3"></div>
+
+
+            <div id="mappa">
+
+            </div>
 
             {{-- Image --}}
             <div class="mb-3">
@@ -122,8 +132,11 @@
                 <span class="fs-3">All fields marked with * are <strong>mandatory</strong></span>
             </div>
 
+
             <button class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
 
         </form>
+
     </section>
+    
 @endsection
