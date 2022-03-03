@@ -18,12 +18,12 @@ class CreateApartmentsTable extends Migration
             $table->id();
             $table->string('name', 80);
             $table->string('slug', 80)->unique();
-            $table->decimal('price', 5, 2)->nullable();
+            $table->decimal('price', 5, 2);
             $table->text('description')->nullable();
-            $table->tinyInteger('rooms')->nullable();
+            $table->tinyInteger('rooms');
             $table->tinyInteger('max_people')->nullable();
-            $table->tinyInteger('bathrooms')->nullable();
-            $table->smallInteger('square_meters')->nullable();
+            $table->tinyInteger('bathrooms');
+            $table->smallInteger('square_meters');
             $table->text('address')->nullable();
             $table->decimal('latitude', 8, 6 )->nullable();
             $table->decimal('longitude', 9, 6 )->nullable();
