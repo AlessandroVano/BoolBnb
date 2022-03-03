@@ -1,15 +1,30 @@
 <template>
     <section class="container">
-        <div v-if="apartment">
-            <h1>{{ apartment.name }}</h1>
-            <Service :list="apartment.service" />
-            <figure v-if="apartment.image">
-                <img :src="apartment.image" alt="apartment.name" />
-            </figure>
+        <div class="row align-items-center">
+            <div v-if="apartment">
+                <div
+                    class="col-12 d-flex justify-content-center align-items-center"
+                >
+                    <h1 class="d-inline mt-3">{{ apartment.name }}</h1>
+                </div>
+                <div
+                    class="col-sm-12 col-md-6 my-4  "
+                    v-if="apartment.image"
+                >
+                    <img
+                        class="img-fluid "
+                        :src="apartment.image"
+                        alt="apartment.name"
+                    />
+                </div>
 
-            <p>{{ apartment.description }}</p>
+                <div class="col-sm-12 col-md-6">   
+                            <p>{{ apartment.description }}</p> 
+                </div>
+            </div>
         </div>
     </section>
+    <!-- <Service :list="apartment.service" /> -->
 </template>
 
 <script>
