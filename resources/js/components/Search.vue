@@ -2,7 +2,6 @@
     <div>
         <label for="address" class="form-label">Address</label>
         <input
-            v-model="query"
             @keyup="getAddress()"
             type="text"
             class="form-control"
@@ -63,7 +62,10 @@ export default {
     },
 
     methods: {
-        getAddress() {
+        getAddress() { 
+            let test = document.getElementById('address').value;
+            this.query = test;
+            console.log(this.query)
             axios
                 .get(
                     `https://api.tomtom.com/search/2/search/${this.query}.json?key=rSkxFlbVNJrDJk4qCwxbY0Z0qN6UEcFu&limit=5`

@@ -81,24 +81,15 @@
 
           
 
-            <Search>
-            </Search>
-            
-            {{-- <div class="map-view">
-                <div class="tt-side-panel">
-                  <header class="tt-side-panel__header"></header>
-                  <div class="tt-tabs js-tabs">
-                    <div class="tt-tabs__panel">
-                      <div class="js-results" hidden="hidden"></div>
-                      <div class="js-results-loader" hidden="hidden">
-                        <div class="loader-center"><span class="loader"></span></div>
-                      </div>
-                      <div class="tt-tabs__placeholder js-results-placeholder"></div>
-                    </div>
-                  </div>
-                </div>
-                <div id="map" class="full-map"></div>
-              </div> --}}
+            {{-- <Search>
+            </Search> --}}
+
+            <div class="mb-3"></div>
+
+
+            <div id="mappa">
+
+            </div>
 
 
             {{-- Image --}}
@@ -136,12 +127,10 @@
                     <div class="text-danger">{{ $message }}</div>
                 @enderror
             </div>
-
-               
-
-
             <button class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
 
         </form>
+
     </section>
+    
 @endsection
