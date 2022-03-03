@@ -10,10 +10,12 @@ class ApartmentController extends Controller
 {
     /* APARTMENT ARCHIVE */
     public function index() {
-     /*    return 'TRIMONEEE'; */
-
         $apartments = Apartment::all();
-
+        foreach ($apartments as $apartment ) {
+            if ($apartment->image) {
+                $apartment->image = url('storage/' . $apartment->image);
+            }
+        }
         return response()->json($apartments); 
     }  
 
