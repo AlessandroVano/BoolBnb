@@ -74,17 +74,31 @@
                         <div class="text-danger">{{$message}}</div>
                     @enderror
                 </div>
-                   {{-- ADDRESS --}}
-                   {{-- <div class="mb-3">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" name="address" id="address" value="{{old('address', $apartment->address) }}">
-                    @error('address')
-                        <div class="text-danger">{{$message}}</div>
-                    @enderror
-                </div> --}}
 
-                <Search>
-                </Search>
+                <div id="searchbar" class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input type="text" id="address" name="address" class="form-control" value="{{old('address', $apartment->address)}}">
+                    <ul id="list" class="list-unstyled bg-white text-dark">
+                    </ul>
+                </div>
+
+                <label for="latitude" class="form-label" hidden>Latitude</label>
+            <input
+                type="text"
+                class="form-control"
+                name="latitude"
+                id="latitude"
+                hidden
+            />
+        <!-- LON -->
+        <label for="longitude" class="form-label" hidden>Longitude</label>
+            <input
+                type="text"
+                class="form-control"
+                name="longitude"
+                id="longitude"
+                hidden
+            />
 
                    {{-- IMMAGINE --}}
                <div class="mb-3">
