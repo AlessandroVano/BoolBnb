@@ -25,6 +25,8 @@ Route::namespace('Api')->group(function() {
  // APARTMENT
  Route::get('/apartments', 'ApartmentController@index');
 
+ Route::get('/services', 'ServiceController@index');
+ 
   // ROTTA SHOW DI SINGOLO APARTMENT
   Route::get('/apartments/{slug}', 'ApartmentController@show');
 });

@@ -41,12 +41,12 @@
 let mappa = document.getElementById('mappa');
 var options = {
     searchOptions: {
-        key: "rSkxFlbVNJrDJk4qCwxbY0Z0qN6UEcFu",
+        key: "ue74ZxVT9w3YLf0sEeYAz5GOv1v6G1md",
         language: "en-GB",
         limit: 5,
     },
     autocompleteOptions: {
-        key: "rSkxFlbVNJrDJk4qCwxbY0Z0qN6UEcFu",
+        key: "ue74ZxVT9w3YLf0sEeYAz5GOv1v6G1md",
         language: "en-GB",
     },
 };
