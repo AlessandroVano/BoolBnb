@@ -17,7 +17,7 @@
                         }"
                     >
                     show apartment
-                    </router-link> 
+                    </router-link>  
                 </li>
             </ul>
         </div>
