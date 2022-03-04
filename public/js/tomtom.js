@@ -8,8 +8,24 @@ let array = [];
 
 inputAddress.addEventListener('keyup', getGps);
 
+let mappa = document.getElementById('mappa');
+var options = {
+    searchOptions: {
+        key: "ue74ZxVT9w3YLf0sEeYAz5GOv1v6G1md",
+        language: "en-GB",
+        limit: 5,
+    },
+    autocompleteOptions: {
+        key: "ue74ZxVT9w3YLf0sEeYAz5GOv1v6G1md",
+        language: "en-GB",
+    },
+};
+var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
+var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
+mappa.append(searchBoxHTML);
 function getGps(){
     let li = document.getElementsByTagName('li');
+
 
     while (li.length > 0) {
 

@@ -10,6 +10,29 @@
                 aria-describedby="addon-wrapping"
                 v-model.trim="newText"
             />
+            <div class="dropdown mr-3">
+                <button
+                    class="btn btn-secondary dropdown-toggle"
+                    type="button"
+                    id="dropdownMenuButton"
+                    data-toggle="dropdown"
+                    aria-expanded="false"
+                >
+                    Select filter
+                </button>
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                    <div class="custom-control custom-switch" v-for="service in servicesList" :key="`service-${service.id}`">
+                        <input
+                            type="checkbox"
+                            class="custom-control-input"
+                            id="customSwitch1"
+                        />
+                        <label class="custom-control-label" for="customSwitch1"
+                            >{{ service.name }}</label
+                        >
+                    </div>
+                </div>
+            </div>
             <button
                 @click="getApartments"
                 class="btn btn-dark my-2 my-sm-0 input-group-text border-custom"
@@ -20,33 +43,29 @@
             </button>
         </div>
 
-        <!-- <section v-if="apartmentsList == null">
-            <h2>Start your journey, choose a place</h2>
-        </section> -->
 
         <section v-if="newText != ''" class="mt-5">
-            <ul
-                class="d-flex"
-                v-for="(apartment, index) in inputSearch"
-                :key="`apartment-${index}`"
-            >
-                <li class="card" v-if="apartment.visibility">
-                    {{ apartment.name }}
-                    {{ apartment.address }}
-                    {{ apartment.bathroom }}
-                </li>
-
-                <li class="card" style="width: 18rem">
-                    <img
-                        :src="apartment.image"
-                        class="card-img-top"
-                        :alt="apartment.name"
-                    />
-                    <div class="card-body">
+            <ul class="card-container row">
+                <li
+                    class="card border-rounded col-12 col-md-6 col-lg-4 my-3"
+                    v-for="(apartment, index) in inputSearch"
+                    :key="`apartment-${index}`"
+                >
+                    <div class="text-center img-container">
+                        <img
+                            class="card-img-top img-apartment w-0"
+                            :src="apartment.image"
+                            :alt="apartment.name"
+                        />
+                    </div>
+                    <div
+                        class="card-body p-1 text-center detail-container my-3"
+                    >
                         <h5 class="card-title">{{ apartment.name }}</h5>
                         <p class="card-text">
                             {{ apartment.description }}
                         </p>
+                        <div card-subtitle>{{ apartment.address }}</div>
                         <a href="#" class="btn btn-primary">Go somewhere</a>
                     </div>
                 </li>
@@ -65,10 +84,12 @@ export default {
         return {
             newText: "",
             apartmentsList: null,
+            servicesList: null,
         };
     },
     created() {
         this.getApartments();
+        this.getServices();
     },
     computed: {
         inputSearch() {
@@ -90,6 +111,14 @@ export default {
                 .get("http://127.0.0.1:8000/api/apartments")
                 .then((response) => {
                     this.apartmentsList = response.data;
+                })
+                .catch((error) => console.log(error));
+        },
+        getServices() {
+            axios
+                .get("http://127.0.0.1:8000/api/services")
+                .then((response) => {
+                    this.servicesList = response.data;
                 })
                 .catch((error) => console.log(error));
         },
