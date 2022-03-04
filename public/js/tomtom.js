@@ -9,7 +9,7 @@ let array = [];
 inputAddress.addEventListener('keyup', getGps);
 
 function getGps(){
-    let li = document.getElementsByTagName('li');
+    let li = document.getElementsByClassName('suggestions');
 
 
     while (li.length > 0) {
@@ -35,17 +35,19 @@ function getGps(){
             contenitore.innerHTML = testo
             
             //settare il value dell input al click
+          
+            contenitore.addEventListener('click', setValue)
             function setValue(){
                 inputAddress.value = contenitore.innerText
                 inputLatitude.value = latitude
                 inputLongitude.value = longitude
+
                 while (li.length > 0) {
 
                     // New JS remove Function
                     li[0].remove();
-                    }
+                }
             }
-            contenitore.addEventListener('click', setValue)
         })
     });
 }
