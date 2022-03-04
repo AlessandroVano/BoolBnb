@@ -7,34 +7,33 @@
                 >
                     <h1 class="d-inline mt-3">{{ apartment.name }}</h1>
                 </div>
-                <div
-                    class="col-sm-12 col-md-6 my-4  "
-                    v-if="apartment.image"
-                >
+                <div class="col-sm-12 col-md-6 my-4" v-if="apartment.image">
                     <img
-                        class="img-fluid "
+                        class="img-fluid"
                         :src="apartment.image"
                         alt="apartment.name"
                     />
                 </div>
+                <div
+                    v-for="service in apartment.services"
+                    :key="`service-${service.id}`"
+                >
+                    <span>{{ service.name }}</span>
+                    <img class="w-25" :src="service.icon" alt="service.name" />
+                </div>
 
-                <div class="col-sm-12 col-md-6">   
-                            <p>{{ apartment.description }}</p> 
+                <div class="col-sm-12 col-md-6">
+                    <p>{{ apartment.description }}</p>
                 </div>
             </div>
         </div>
     </section>
-    <!-- <Service :list="apartment.service" /> -->
 </template>
 
 <script>
 import axios from "axios";
-import Services from "../components/Services.vue";
 export default {
     name: "ApartmentDetail",
-    components: {
-        Services,
-    },
 
     data() {
         return {
