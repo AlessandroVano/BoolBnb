@@ -27,8 +27,7 @@ function getGps(){
         array.forEach((item) => {
             let latitude = item.position.lat
             let longitude = item.position.lon
-            //stampare array suggerimenti 
-            console.log(item.address.freeformAddress)
+            //stampare array suggerimenti
             const testo = item.address.freeformAddress
             const contenitore = document.createElement('li');
             contenitore.classList.add('suggestions')
@@ -36,12 +35,10 @@ function getGps(){
             contenitore.innerHTML = testo
             
             //settare il value dell input al click
+          
             contenitore.addEventListener('click', setValue)
-
             function setValue(){
                 inputAddress.value = contenitore.innerText
-                console.log(contenitore.innerText)
-                console.log(latitude)
                 inputLatitude.value = latitude
                 inputLongitude.value = longitude
 

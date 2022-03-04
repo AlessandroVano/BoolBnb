@@ -65,7 +65,6 @@ export default {
         getAddress() { 
             let test = document.getElementById('address').value;
             this.query = test;
-            console.log(this.query)
             axios
                 .get(
                     `https://api.tomtom.com/search/2/search/${this.query}.json?key=rSkxFlbVNJrDJk4qCwxbY0Z0qN6UEcFu&limit=5`

@@ -10,7 +10,9 @@ class ApartmentController extends Controller
 {
     /* APARTMENT ARCHIVE */
     public function index() {
-        $apartments = Apartment::all();
+        $apartments = Apartment::with(['services:name'])
+                                ->select(['id', 'user_id', 'name', 'slug', 'price', 'description', 'rooms', 'max_people', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude', 'image', 'visibility'])
+                                ->get();
         foreach ($apartments as $apartment ) {
             if ($apartment->image) {
                 $apartment->image = url('storage/' . $apartment->image);
