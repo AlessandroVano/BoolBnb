@@ -1,42 +1,12 @@
-(function () {
-    window.SS = window.SS || {};
-    SS.Require = function (callback) {
-        if (typeof callback === "function") {
-            if (window.SS && SS.EventTrack) {
-                callback();
-            } else {
-                var siteSpect =
-                    document.getElementById("siteSpectLibraries");
-                var head = document.getElementsByTagName("head")[0];
-                if (
-                    siteSpect === null &&
-                    typeof head !== "undefined"
-                ) {
-                    siteSpect = document.createElement("script");
-                    siteSpect.type = "text/javascript";
-                    siteSpect.src =
-                        "/__ssobj/core.js+ssdomvar.js+generic-adapter.js";
-                    siteSpect.async = true;
-                    siteSpect.id = "siteSpectLibraries";
-                    head.appendChild(siteSpect);
-                }
-                if (window.addEventListener) {
-                    siteSpect.addEventListener(
-                        "load",
-                        callback,
-                        false
-                    );
-                } else {
-                    siteSpect.attachEvent(
-                        "onload",
-                        callback,
-                        false
-                    );
-                }
-            }
-        }
-    };
-})();
+let inputAddress = document.getElementById('address');
+let searchbar = document.getElementById('searchbar')
+let inputLatitude = document.getElementById('latitude')
+let inputLongitude = document.getElementById('longitude')
+let list = document.getElementById('list')
+let array = [];
+
+
+inputAddress.addEventListener('keyup', getGps);
 
 let mappa = document.getElementById('mappa');
 var options = {
@@ -53,8 +23,49 @@ var options = {
 var ttSearchBox = new tt.plugins.SearchBox(tt.services, options);
 var searchBoxHTML = ttSearchBox.getSearchBoxHTML();
 mappa.append(searchBoxHTML);
+function getGps(){
+    let li = document.getElementsByTagName('li');
 
 
+    while (li.length > 0) {
 
+    // New JS remove Function
+    li[0].remove();
+    }
+    let query = inputAddress.value
+    axios.get(`https://api.tomtom.com/search/2/search/${query}.json?key=Y2IIAoAdWKhX1tzkK6euoDxhJkGubCd9&limit=5`)
+    .then((res) => {
+        array = res.data.results
+        console.log(array)
+        //creare array di suggerimenti
 
+        array.forEach((item) => {
+            let latitude = item.position.lat
+            let longitude = item.position.lon
+            //stampare array suggerimenti 
+            console.log(item.address.freeformAddress)
+            const testo = item.address.freeformAddress
+            const contenitore = document.createElement('li');
+            contenitore.classList.add('suggestions')
+            list.appendChild(contenitore)
+            contenitore.innerHTML = testo
+            
+            //settare il value dell input al click
 
+            function setValue(){
+                inputAddress.value = contenitore.innerText
+                console.log(contenitore.innerText)
+                console.log(latitude)
+                inputLatitude.value = latitude
+                inputLongitude.value = longitude
+                while (li.length > 0) {
+
+                    // New JS remove Function
+                    li[0].remove();
+                    }
+            }
+            contenitore.addEventListener('click', setValue)
+        })
+    });
+
+}

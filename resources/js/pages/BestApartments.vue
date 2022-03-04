@@ -10,13 +10,14 @@
                     <h4>{{ element.name }}</h4>
                     <p>{{ element.description }}</p>
                     <p>{{ element.price }}€</p>
-                    <!-- <router-link
+                    <router-link
                         :to="{
                             name: 'apartment-details',
-                            params: { slug: apartment.slug }
+                            params: { slug: element.slug },
                         }"
                     >
-                    </router-link> -->
+                    show apartment
+                    </router-link> 
                 </li>
             </ul>
         </div>

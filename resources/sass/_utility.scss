@@ -28,3 +28,9 @@
 input, textarea {
     caret-color: $primary-pink;
 }
+
+.suggestions{
+cursor: pointer;
+padding: 10px 5px;
+border-bottom: 1px solid grey;
+}
