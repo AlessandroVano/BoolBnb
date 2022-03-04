@@ -29,6 +29,14 @@ class ApartmentController extends Controller
         } elseif ($apartment->image) {
             $apartment->image = url('storage/' . $apartment->image);
         }
+         if(! $apartment) {
+            $apartment['not_found'] = true;
+        } else {
+           /*  $apartment->services['icon'] = url('storage/' . $apartment->services['icon']); */
+           foreach ($apartment->services as $service ) {
+               $service->icon = url('storage/' . $service->icon);
+           }
+        }  
         // RITORNO I DATI
         return response()->json($apartment);
     }
