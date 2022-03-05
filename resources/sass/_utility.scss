@@ -35,10 +35,6 @@ padding: 10px 5px;
 border-bottom: 1px solid grey;
 }
 
-input[type="checkbox"]{
-    color: red;
-}
-
 .custom-control-input:checked ~ 
 .custom-control-label::before {
       border-color: $primary-pink !important;

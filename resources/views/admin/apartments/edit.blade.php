@@ -75,7 +75,7 @@
                     @enderror
                 </div>
 
-                <div id="searchbar" class="mb-3">
+                <div id="searchbar" class="mb-4">
                     <label for="address" class="form-label">Address</label>
                     <input type="text" id="address" name="address" class="form-control" value="{{old('address', $apartment->address)}}">
                     <ul id="list" class="list-unstyled bg-white text-dark">
@@ -83,25 +83,25 @@
                 </div>
 
                 <label for="latitude" class="form-label" hidden>Latitude</label>
-            <input
-                type="text"
-                class="form-control"
-                name="latitude"
-                id="latitude"
-                hidden
-            />
+                <input
+                    type="text"
+                    class="form-control"
+                    name="latitude"
+                    id="latitude"
+                    hidden
+                />
         <!-- LON -->
-        <label for="longitude" class="form-label" hidden>Longitude</label>
-            <input
-                type="text"
-                class="form-control"
-                name="longitude"
-                id="longitude"
-                hidden
-            />
+                <label for="longitude" class="form-label" hidden>Longitude</label>
+                <input
+                    type="text"
+                    class="form-control"
+                    name="longitude"
+                    id="longitude"
+                    hidden
+                />
 
                    {{-- IMMAGINE --}}
-               <div class="mb-3">
+               <div class="mb-4">
                    <h4>Image apartment</h4>
                     <figure class="py-2">
                         @if (! $apartment->image)
@@ -119,6 +119,13 @@
                     @enderror
                </div>
 
+               <div class="mb-3 custom-control custom-switch">
+                <input class="custom-control-input" type="checkbox" id="visibility" name='visibility' value="1" @if (old("visibility"))
+                    checked  
+                @endif>
+                <label class="custom-control-label" for="visibility">Visibility</label>
+            </div>
+               
                {{-- Services --}}
                <div class="mb-3 container">
                    <h4>Services</h4>
@@ -142,18 +149,12 @@
                         <div class="text-danger">{{ $message }}</div>
                     @enderror
                </div>
-
-               {{-- VISIBILITA' --}}
-                <div class="d-flex align-items-center py-3">
-                    <label for="visibility" class="m-0 mr-2">Visibility</label>
-                    <input type="checkbox" name="visibility" id="visibility" @if (old('visibility', $apartment->visibility)) checked @endif>
-                </div>
-                
+                                
                 <div class="text-right mt-3">
                     <span class="fs-3">All fields marked with * are <strong>mandatory</strong></span>
                 </div>
 
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class=" align-self-center btn btn-transparent">Confirm</button>
             </form>
         </div>
     </div>
