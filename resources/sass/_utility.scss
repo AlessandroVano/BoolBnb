@@ -34,3 +34,19 @@ cursor: pointer;
 padding: 10px 5px;
 border-bottom: 1px solid grey;
 }
+
+input[type="checkbox"]{
+    color: red;
+}
+
+.custom-control-input:checked ~ 
+.custom-control-label::before {
+      border-color: $primary-pink !important;
+      background-color: $primary-pink !important;
+  }
+  .custom-control-input:focus ~ 
+          .custom-control-label::before {
+            border-color: $primary-pink !important;
+            box-shadow:
+                  0 0 0 0rem rgba(0, 0, 0, 0) !important;
+            }

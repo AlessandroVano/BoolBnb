@@ -2,7 +2,7 @@
 
 @section('content')
     <section class="container text-white">
-        <h1>Add your apartment</h1>
+        <h1 class="text-center">Add your apartment</h1>
         @if ($errors->any())
             <div class="alert alert-danger">
                 <ul>
@@ -79,12 +79,6 @@
                 @enderror
             </div>
 
-
-          
-
-            {{-- <Search>
-            </Search> --}}
-
             <div id="searchbar" class="mb-3">
                 <label for="address" class="form-label">Address</label>
                 <input type="text" id="address" name="address" class="form-control">
@@ -155,7 +149,7 @@
             </div>
 
 
-            <button class="btn btn-primary align-self-center w-25" type="submit">Add your new apartment</button>
+            <button class="btn btn-transparent align-self-center w-25" type="submit">Add your new apartment</button>
 
         </form>
 
