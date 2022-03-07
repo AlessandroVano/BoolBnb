@@ -286,9 +286,10 @@ export default {
                     if (this.filteredServices.includes(service.name)) {
                         if (!this.newArray.includes(apartment)) {
                             return this.newArray.push(apartment);
-                        } else if (this.newArray.includes(apartment)) {
-                            return this.newArray.shift(apartment)
-                        }
+                         } 
+                        // else if (this.newArray.includes(apartment)) {
+                        //     return this.newArray.shift(apartment)
+                        // }
                     }
                 });
             });
