@@ -1,6 +1,3 @@
-console.log('FRONT OFFICE'); 
-
-
 /* IMPORTAZIONE DI VUE */
 import Vue from 'vue';
 

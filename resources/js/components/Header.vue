@@ -57,19 +57,19 @@
                                     class="dropdown-item"
                                     href="http://127.0.0.1:8000/login"
                                 >
-                                    Log In
+                                    <i class="fa-solid fa-arrow-right-to-bracket mr-2"></i> Log In
                                 </a>
                                 <a
                                     class="dropdown-item"
                                     href="http://127.0.0.1:8000/register"
                                 >
-                                    Register
+                                    <i class="fa-solid fa-registered mr-2"></i> Register
                                 </a>
                                 <a
                                     class="dropdown-item"
                                     href="http://127.0.0.1:8000/admin"
                                 >
-                                    View profile
+                                    <i class="fa-solid fa-user mr-2"></i> View profile
                                 </a>
                             </div>
                         </li>
@@ -86,31 +86,29 @@ export default {
     /* COME CALCOLARE LA DISTANZA PD */
     data() {
         return {
-            lat1 : 45.47289, //Milano
-            lon1 : 9.12244, //Milano
-            lat2 : 45.464211, //Duomo
-            lon2 : 9.191383, //Duomo
+        //     lat1 : 45.47289, //Milano
+        //     lon1 : 9.12244, //Milano
+        //     lat2 : 45.464211, //Duomo
+        //     lon2 : 9.191383, //Duomo
 
-            d : null, //Distance
-        }
+        //     d : null, //Distance
+         }
     },
-    created() {
-        this.getDiscance(this.lat1,this.lon1,this.lat2,this.lon2);
-    },
-    methods: {
-        distance(lat1, lon1, lat2, lon2) { 
-            var p = 0.017453292519943295;
-            var c = Math.cos; 
-            var a = 0.5 - c((lat2 - lat1) * p)/2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))/2; 
-            var distance = 12742 * Math.asin(Math.sqrt(a));
-            console.log( distance.toFixed(3) );
-            return this.d = distance.toFixed(3);
-        },
-        getDiscance(lat1, lon1, lat2, lon2) {
-            this.distance(lat1, lon1, lat2, lon2);
-            console.log( this.d);
-        }
-    },
+    // created() {
+    //     this.getDiscance(this.lat1,this.lon1,this.lat2,this.lon2);
+    // },
+    // methods: {
+    //     distance(lat1, lon1, lat2, lon2) { 
+    //         var p = 0.017453292519943295;
+    //         var c = Math.cos; 
+    //         var a = 0.5 - c((lat2 - lat1) * p)/2 + c(lat1 * p) * c(lat2 * p) * (1 - c((lon2 - lon1) * p))/2; 
+    //         var distance = 12742 * Math.asin(Math.sqrt(a));
+    //         return this.d = distance.toFixed(3);
+    //     },
+    //     getDiscance(lat1, lon1, lat2, lon2) {
+    //         this.distance(lat1, lon1, lat2, lon2);
+    //     }
+    // },
 };
 </script>
 
