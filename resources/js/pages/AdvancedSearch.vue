@@ -4,23 +4,30 @@
             <i class="fa-solid fa-map"></i> Search your next place
         </h1>
         <div class="my-2 my-lg-0">
-            <div class="input-group mb-3">
+            <div class="mb-3">
+                <label for="address" class="form-label"></label>
                 <input
                     type="text"
-                    class="mr-3 fs-10 border-custom fw-light"
+                    class="mr-3 fs-10 border-custom fw-light form-control"
                     placeholder="Search"
                     aria-label="Search"
                     aria-describedby="addon-wrapping"
-                    v-model.trim="newText"
+                    v-model="query"
+                    @keyup ="getAddress()"
                 />
-                <!-- <button
-                    @click="getApartments"
-                    class="btn btn-dark my-2 my-sm-0 input-group-text border-custom"
-                    id="addon-wrapping "
-                    type="submit"
+            <ul class="list-unstyled  cursor-pointer bg-white text-dark">
+                <li
+                    :id="`${index}`"
+                    @click="setValue(index)"
+                    class="list-unstyled p-1"
+                    v-for="(element, index) in suggestionsArray"
+                    :key="`suggestion${index}`"
                 >
-                    Search
-                </button> -->
+                    {{ element.address.freeformAddress }}
+                </li>
+            </ul>
+            <div class="bg-white text-dark">
+        </div>
             </div>
             <section>
                 <section class="row">
@@ -126,9 +133,12 @@
                             </ul>
                         </div>
                     </div>
-                    <div class="d-flex flex-column col-sm-12 col-md-6 col-lg-8">
+                     <div 
+                     v-if="!filteredAparments || query == ''"
+                     class="d-flex flex-column col-sm-12 col-md-6 col-lg-8">
                         <div
-                            v-for="(apartment, index) in inputSearch"
+                            
+                            v-for="(apartment, index) in apartmentsList"
                             :key="`apartment-${index}`"
                             class="card mb-3"
                             style="max-width: 540px"
@@ -167,7 +177,7 @@
                                             ></i>
                                             {{ apartment.price }} € / notte
                                         </div>
-                                        <!-- <div card-subtitle>{{ apartment.services }}</div> -->
+                                        <!-- <div card-subtitle>{{ apartment.services.name }}</div> -->
                                         <div class="text-right">
                                             <router-link
                                                 class="link-custom mb-2"
@@ -185,6 +195,68 @@
                             </div>
                         </div>
                     </div>
+
+                    <div v-else
+                     class="d-flex flex-column col-sm-12 col-md-6 col-lg-8">
+                        <div
+                            v-for="(apartment, index) in filteredAparments"
+                            :key="`apartment-${index}`"
+                            class="card mb-3"
+                            style="max-width: 540px"
+                        >
+                            <div class="row no-gutters">
+                                <div class="col-md-4">
+                                    <img
+                                        class="img-apartment img-custom"
+                                        :src="apartment.image"
+                                        :alt="apartment.name"
+                                    />
+                                </div>
+                                <div class="col-md-8">
+                                    <div class="card-body">
+                                        <h5 class="card-title">
+                                            <i
+                                                class="fa-solid fa-house mr-2"
+                                            ></i>
+                                            {{ apartment.name }}
+                                        </h5>
+                                        <p class="card-text">
+                                            <i
+                                                class="fa-solid fa-rectangle-list mr-2"
+                                            ></i>
+                                            {{ getExcerpt(apartment.description, 120) }}
+                                        </p>
+                                        <div class="card-subtitle mb-2">
+                                            <i
+                                                class="fa-solid fa-location-dot mr-2"
+                                            ></i>
+                                            {{ apartment.address }}
+                                        </div>
+                                        <div class="card-subtitle mb-2">
+                                            <i
+                                                class="fa-solid fa-money-bill-wave mr-2"
+                                            ></i>
+                                            {{ apartment.price }} € / notte
+                                        </div>
+                                        <!-- <div card-subtitle>{{ apartment.services.name }}</div> -->
+                                        <div class="text-right">
+                                            <router-link
+                                                class="link-custom mb-2"
+                                                :to="{
+                                                    name: 'apartment-details',
+                                                    params: {
+                                                        slug: apartment.slug,
+                                                    },
+                                                }"
+                                                >Find More
+                                            </router-link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </section>
             </section>
         </div>
@@ -230,30 +302,35 @@ export default {
             numRooms: 0,
             maxPeople: 0,
             filteredServices: [],
-            newText: "",
+            query: "",
             apartmentsList: null,
+            filteredAparments: null,
             servicesList: null,
             newArray: [],
+            suggestionsArray : [],
+            selectedLat : "",
+            selectedLon : "",
+            d : 0,
         };
     },
     mounted() {
         this.getApartments();
         this.getServices();
     },
-    computed: {
-        inputSearch() {
-            if (this.newText.length > 0) {
-                return this.apartmentsList.filter((item) => {
-                    return this.newText
-                        .toLowerCase()
-                        .split(" ")
-                        .every((v) => item.address.toLowerCase().includes(v));
-                });
-            } else {
-                return this.apartmentsList;
-            }
-        },
-    },
+    // computed: {
+    //     inputSearch() {
+    //         if (this.newText.length > 0) {
+    //             return this.apartmentsList.filter((item) => {
+    //                 return this.newText
+    //                     .toLowerCase()
+    //                     .split(" ")
+    //                     .every((v) => item.address.toLowerCase().includes(v));
+    //             });
+    //         } else {
+    //             return this.apartmentsList;
+    //         }
+    //     },
+    // },
     methods: {
         getApartments() {
             axios
@@ -271,8 +348,35 @@ export default {
                 })
                 .catch((error) => console.log(error));
         },
-        setValue(text) {
-            this.inputText = text;
+
+         //Funzione per calcolare la distanza in km tra due punti terrrestr
+        distance(startLat, startLon, lat2, lon2) { 
+            const p = 0.017453292519943295;
+            const c = Math.cos; 
+            const a = 0.5 - c((lat2 - startLat) * p)/2 + c(startLat * p) * c(lat2 * p) * (1 - c((lon2 - startLon) * p))/2; 
+            const distance = 12742 * Math.asin(Math.sqrt(a));
+            this.d = distance.toFixed(3);
+            console.log(this.d)
+        },
+
+        setValue(index) {
+            this.filteredAparments = [];
+            let element = document.getElementById(index);
+            this.query = element.innerHTML.trim();
+            this.selectedLat = this.suggestionsArray[index].position.lat;
+            this.selectedLon = this.suggestionsArray[index].position.lon;
+            this.suggestionsArray = [];
+
+            this.apartmentsList.forEach( element => {
+                this.distance(this.selectedLat, this.selectedLon, element.latitude, element.longitude);
+                    console.log(element)
+                    
+                if(this.d < 20) {
+                    this.filteredAparments.push(element)
+                }
+            });
+           
+
         },
         getExcerpt(text, maxLength) {
             if (text.length > maxLength) {
@@ -328,7 +432,14 @@ export default {
             //     });
             // });
         },
-    },
+        getAddress(){
+            delete axios.defaults.headers.common['X-Requested-With'];
+            axios.get(`https://api.tomtom.com/search/2/search/${this.query}.json?key=ue74ZxVT9w3YLf0sEeYAz5GOv1v6G1md&limit=5`)
+            .then((res) => {
+                this.suggestionsArray = res.data.results;
+        });
+         }
+    }
 };
 </script>
 

@@ -11,9 +11,9 @@ import router from './routes';
 
 const root = new Vue({
     // NODO CHE PORTIAMO DA
-     el: '#root',  
-
+    el: '#root',  
+    
     router,
-
+    
     render: h => h(App)
 })
