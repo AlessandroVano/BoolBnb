@@ -153,7 +153,7 @@
                                             <i
                                                 class="fa-solid fa-rectangle-list mr-2"
                                             ></i>
-                                            {{ apartment.description }}
+                                            {{ getExcerpt(apartment.description, 120) }}
                                         </p>
                                         <div class="card-subtitle mb-2">
                                             <i
@@ -273,6 +273,12 @@ export default {
         },
         setValue(text) {
             this.inputText = text;
+        },
+        getExcerpt(text, maxLength) {
+            if (text.length > maxLength) {
+                return text.substr(0, maxLength) + "...";
+            }
+            return text;
         },
         filteredSearch() {
             this.apartmentsList.filter((apartment) => {
