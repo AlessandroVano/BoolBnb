@@ -34,30 +34,31 @@
                     </div>
                 </section>
                 <!-- Maps + Detail apartment -->
-                <section  class="mt-5 container">
+                <section class="mt-5 container">
                     <div class="row d-flex">
-
                         <div class="col-6">
                             <div>
-                            <h5>Description:</h5>
-                            <p>{{ apartment.description }}</p>
-                            </div>  
-                            <div class="d-flex ">
-                            <h5>Number of rooms:</h5>
-                            <p class="mx-3">{{ apartment.rooms }}</p>
-                            </div> 
-                            <div class="d-flex ">
-                            <h5>Price:</h5>
-                            <p class="mx-3">{{ apartment.price }}</p>
-                            </div> 
-                            <div class="d-flex ">
-                            <h5>Address:</h5>
-                            <p class="mx-3">{{ apartment.address }}</p>
-                            </div> 
-                            <div class="d-flex ">
-                            <h5>Square meters:</h5>
-                            <p class="mx-3">{{ apartment.square_meters }}</p>
-                            </div> 
+                                <h5>Description:</h5>
+                                <p>{{ apartment.description }}</p>
+                            </div>
+                            <div class="d-flex">
+                                <h5>Number of rooms:</h5>
+                                <p class="mx-3">{{ apartment.rooms }}</p>
+                            </div>
+                            <div class="d-flex">
+                                <h5>Price:</h5>
+                                <p class="mx-3">{{ apartment.price }}</p>
+                            </div>
+                            <div class="d-flex">
+                                <h5>Address:</h5>
+                                <p class="mx-3">{{ apartment.address }}</p>
+                            </div>
+                            <div class="d-flex">
+                                <h5>Square meters:</h5>
+                                <p class="mx-3">
+                                    {{ apartment.square_meters }}
+                                </p>
+                            </div>
                         </div>
 
                         <div class="col-6" id="cartina">
@@ -65,8 +66,10 @@
                         </div>
                     </div>
                 </section>
-
-                <!-- description -->
+                
+                <!-- MessageForm -->
+                <MessageForm :apartment_id="apartment.id"/>
+              
             </div>
         </div>
     </section>
@@ -74,13 +77,18 @@
 
 <script>
 import axios from "axios";
+import MessageForm from '../components/MessageForm.vue';
 export default {
     name: "ApartmentDetail",
+
+    components: {
+        MessageForm,
+    },
 
     data() {
         return {
             apartment: null,
-            latitude : 0,
+            latitude: 0,
             longitude: 0,
         };
     },
@@ -97,26 +105,27 @@ export default {
                 )
                 .then((res) => {
                     this.apartment = res.data;
-                    this.latitude = res.data.latitude
-                    this.longitude = res.data.longitude 
+                    this.latitude = res.data.latitude;
+                    this.longitude = res.data.longitude;
                     if (res.data.not_found) {
                         this.$router.push({ name: "not-found" });
                     } else {
                         this.apartment = res.data;
                     }
-                axios.get(`https://api.tomtom.com/map/1/staticimage?key=Y2IIAoAdWKhX1tzkK6euoDxhJkGubCd9&zoom=16&center=${res.data.longitude},${res.data.latitude}&width=400&height=400&`)
-                .then((res1) => {
-                    
-                    console.log(res1);
-                    let cartina = document.getElementById('cartina')
-                    cartina.style.backgroundImage = `url("${res1.config.url}")`
+                    axios
+                        .get(
+                            `https://api.tomtom.com/map/1/staticimage?key=A7Tus1YOQbGV9cHnXAwNc3DFV88QJw2X&zoom=16&center=${res.data.longitude},${res.data.latitude}&width=400&height=400&`
+                        )
+                        .then((res1) => {
+                           /*  console.log(res1); */
+                            let cartina = document.getElementById("cartina");
+                            cartina.style.backgroundImage = `url("${res1.config.url}")`;
 
-                    // let circle = document.createElement('div')
-                    // circle.classList.add('marker')
-                    // cartina.append(circle)
-                })
-
-            })
+                            // let circle = document.createElement('div')
+                            // circle.classList.add('marker')
+                            // cartina.append(circle)
+                        });
+                });
         },
     },
 };
@@ -136,7 +145,7 @@ export default {
     width: 30px;
 }
 
-#cartina{
+#cartina {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -147,7 +156,7 @@ export default {
     object-fit: contain;
 }
 
-.marker{
+.marker {
     width: 34px;
     height: 34px;
     background-color: #ff385c;
