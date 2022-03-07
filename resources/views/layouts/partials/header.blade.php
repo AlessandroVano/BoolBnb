@@ -49,18 +49,18 @@
     
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">
-                                    Views your apartments
+                                    <i class="fa-solid fa-house-user mr-2"></i> Views your apartments 
                                </a>
-                                <a class="dropdown-item" href="{{ route('admin.apartments.create') }}">
-                                     Add new apartment
+                               <a class="dropdown-item" href="{{ route('admin.apartments.create') }}">
+                                <i class="fa-solid fa-plus mr-2"></i> Add new apartment 
                                 </a>
                                 <a class="dropdown-item" href="{{ route('admin.home') }}">
-                                    Back to your dashboard
+                                    <i class="fa-solid fa-circle-left mr-2"></i> Back to your dashboard 
                                </a>
     
                                   <a class="dropdown-item" href="{{ route('logout') }}"
                                    onclick="event.preventDefault();
-                                                 document.getElementById('logout-form').submit();">
+                                                 document.getElementById('logout-form').submit();"><i class="fa-solid fa-right-from-bracket mr-2"></i> 
                                     {{ __('Logout') }}
                                 </a>
     

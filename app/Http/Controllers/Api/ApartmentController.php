@@ -10,13 +10,17 @@ class ApartmentController extends Controller
 {
     /* APARTMENT ARCHIVE */
     public function index() {
-        $apartments = Apartment::with(['services:name'])
+        $apartments = Apartment::with(['services'])
                                 ->select(['id', 'user_id', 'name', 'slug', 'price', 'description', 'rooms', 'max_people', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude', 'image', 'visibility'])
                                 ->get();
+                             
         foreach ($apartments as $apartment ) {
             if ($apartment->image) {
                 $apartment->image = url('storage/' . $apartment->image);
-            }
+            }       
+        }
+        foreach ($apartment->services as $service ) {
+            $service->icon = url('storage/' . $service->icon);
         }
         return response()->json($apartments); 
     }  
@@ -34,7 +38,6 @@ class ApartmentController extends Controller
          if(! $apartment) {
             $apartment['not_found'] = true;
         } else {
-           /*  $apartment->services['icon'] = url('storage/' . $apartment->services['icon']); */
            foreach ($apartment->services as $service ) {
                $service->icon = url('storage/' . $service->icon);
            }

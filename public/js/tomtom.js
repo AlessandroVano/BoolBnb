@@ -18,7 +18,7 @@ function getGps(){
     li[0].remove();
     }
     let query = inputAddress.value
-    axios.get(`https://api.tomtom.com/search/2/search/${query}.json?key=Y2IIAoAdWKhX1tzkK6euoDxhJkGubCd9&limit=5`)
+    axios.get(`https://api.tomtom.com/search/2/search/${query}.json?key=ue74ZxVT9w3YLf0sEeYAz5GOv1v6G1md&limit=5`)
     .then((res) => {
         array = res.data.results
         console.log(array)

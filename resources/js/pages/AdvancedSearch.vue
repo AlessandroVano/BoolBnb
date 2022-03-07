@@ -13,14 +13,14 @@
                     aria-describedby="addon-wrapping"
                     v-model.trim="newText"
                 />
-                <button
+                <!-- <button
                     @click="getApartments"
                     class="btn btn-dark my-2 my-sm-0 input-group-text border-custom"
                     id="addon-wrapping "
                     type="submit"
                 >
                     Search
-                </button>
+                </button> -->
             </div>
             <section>
                 <section class="row">
@@ -30,7 +30,7 @@
                             <h3>Services</h3>
                             <ul>
                                 <li
-                                    v-for="(service) in servicesList"
+                                    v-for="service in servicesList"
                                     :key="`service-${service.id}`"
                                     class="custom-control custom-switch"
                                 >
@@ -40,7 +40,7 @@
                                         :id="`customSwitch-${service.id}`"
                                         :value="service.name"
                                         v-model="filteredServices"
-                                        @click="filteredSearch"
+                                        @change="filteredSearch()"
                                     />
                                     <label
                                         class="custom-control-label"
@@ -93,7 +93,9 @@
                                     </div>
                                 </li>
                                 <li>
-                                    <div class="input-group mb-3 d-flex flex-column">
+                                    <div
+                                        class="input-group mb-3 d-flex flex-column"
+                                    >
                                         <h3>How many rooms?</h3>
                                         <div class="input-group-prepend">
                                             <label
@@ -234,7 +236,7 @@ export default {
             newArray: [],
         };
     },
-    created() {
+    mounted() {
         this.getApartments();
         this.getServices();
     },
@@ -242,7 +244,10 @@ export default {
         inputSearch() {
             if (this.newText.length > 0) {
                 return this.apartmentsList.filter((item) => {
-                    return this.newText.toLowerCase().split(" ").every((v) => item.address.toLowerCase().includes(v));
+                    return this.newText
+                        .toLowerCase()
+                        .split(" ")
+                        .every((v) => item.address.toLowerCase().includes(v));
                 });
             } else {
                 return this.apartmentsList;
@@ -270,20 +275,53 @@ export default {
             this.inputText = text;
         },
         filteredSearch() {
-            this.apartmentsList.filter((item) => {
-                let itemServ = item.services;
-                for (let i = 0; i < itemServ.length; i++) {
-                    return itemServ[i].name
-                }
-                 
-            })
+            this.apartmentsList.filter((apartment) => {
+                apartment.services.forEach((service) => {
+                    if (this.filteredServices.includes(service.name)) {
+                        if (!this.newArray.includes(apartment)) {
+                            return this.newArray.push(apartment);
+                        } else if (this.newArray.includes(apartment)) {
+                            return this.newArray.shift(apartment)
+                        }
+                    }
+                });
+            });
+            // this.apartmentsList.forEach((apartment) => {
+            //     let apartmentService = apartment.services;
+            //     apartmentService.forEach((service) => {
+            //         if (this.filteredServices.includes(service.name)) {
+            //             if (!this.newArray.includes(apartment)) {
+            //                 this.newArray.push(apartment);
+            //             }
+            //         } else if (!this.filteredServices.includes(service.name)) {
+            //             this.newArray = this.newArray.filter(el => {
+            //                 el.services.forEach((service) => {
+            //                     this.filteredServices.includes(service)
+            //                     return el
+            //                 })
+            //             });
+            //         }
+            //     });
+            // });
+            // this.apartmentsList.forEach((apartment) => {
+            //     let apartmentService = apartment.services;
+            //     apartmentService.forEach((service) => {
+            //         // console.log(service.name)
+            //         if (myService === service.name) {
+            //             if (!this.newArray.includes(apartment)) {
+            //                 this.newArray.push(apartment);
+            //             }
+            //         } else if (myService != service.name) {
+            //             this.newArray = this.newArray.filter(el => {
+            //                 if (!this.filteredServices.includes(service.name)) {
+            //                     return el
+            //                 }
+            //             });
+            //         }
+            //     });
+            // });
         },
-        //  newFilter() {
-        //     this.newArray = this.apartmentsList.filter(el => {
-        //         return el.service.name = this.filteredServices;
-        //     })
-        // },
-    }
+    },
 };
 </script>
 
