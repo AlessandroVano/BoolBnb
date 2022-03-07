@@ -29,4 +29,10 @@ Route::namespace('Api')->group(function() {
  
   // ROTTA SHOW DI SINGOLO APARTMENT
   Route::get('/apartments/{slug}', 'ApartmentController@show');
+
+  // SALVATAGGIO DEI NUOVI MESSAGGI
+  Route::get('/messages', 'MessageController@index');
+
+  Route::post('/messages', 'MessageController@store');
 });
+
