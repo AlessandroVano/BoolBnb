@@ -11,7 +11,6 @@ inputAddress.addEventListener('keyup', getGps);
 function getGps(){
     let li = document.getElementsByClassName('suggestions');
 
-
     while (li.length > 0) {
 
     // New JS remove Function
