@@ -30,6 +30,10 @@ Route::namespace('Api')->group(function() {
   // ROTTA SHOW DI SINGOLO APARTMENT
   Route::get('/apartments/{slug}', 'ApartmentController@show');
 
+  Route::get('/apartments/filteredApartments/{services}', 'ApartmentController@filteredApartments');
+
+  Route::post('/apartments/', 'ApartmentController@filter');
+
   // SALVATAGGIO DEI NUOVI MESSAGGI
   // Route::get('/messages', 'MessageController@index');
 

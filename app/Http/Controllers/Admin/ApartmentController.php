@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 
 use App\Apartment;
+use App\Message;
 use App\Service;
 use App\Sponsorship;
 use App\View;
@@ -99,8 +100,9 @@ class ApartmentController extends Controller
         if ($apartment['user_id'] != Auth::id()) {
             return redirect('/admin');
         }
-
         
+            $messages = Message::where('apartment_id', $apartment->id)->get();
+
             $ipAddress = request()->ip();
 
             $new_view = new View();
@@ -111,7 +113,7 @@ class ApartmentController extends Controller
                 $new_view->save();
             }
 
-        return view('admin.apartments.show', compact('apartment'));
+        return view('admin.apartments.show', compact('apartment', 'messages'));
     }
 
     /**

@@ -1,5 +1,8 @@
 <template>
     <section class="container">
+        <button class="btn" @click="postFilteredAparments">
+            OOOOOOOHHHHHHHHHHH
+        </button>
         <h1 class="my-4">
             <i class="fa-solid fa-map"></i> Search your next place
         </h1>
@@ -13,21 +16,20 @@
                     aria-label="Search"
                     aria-describedby="addon-wrapping"
                     v-model="query"
-                    @keyup ="getAddress()"
+                    @keyup="getAddress()"
                 />
-            <ul class="list-unstyled  cursor-pointer bg-white text-dark">
-                <li
-                    :id="`${index}`"
-                    @click="setValue(index)"
-                    class="list-unstyled p-1"
-                    v-for="(element, index) in suggestionsArray"
-                    :key="`suggestion${index}`"
-                >
-                    {{ element.address.freeformAddress }}
-                </li>
-            </ul>
-            <div class="bg-white text-dark">
-        </div>
+                <ul class="list-unstyled cursor-pointer bg-white text-dark">
+                    <li
+                        :id="`${index}`"
+                        @click="setValue(index)"
+                        class="list-unstyled p-1"
+                        v-for="(element, index) in suggestionsArray"
+                        :key="`suggestion${index}`"
+                    >
+                        {{ element.address.freeformAddress }}
+                    </li>
+                </ul>
+                <div class="bg-white text-dark"></div>
             </div>
             <section>
                 <section class="row">
@@ -133,11 +135,11 @@
                             </ul>
                         </div>
                     </div>
-                     <div 
-                     v-if="!filteredAparments || query == ''"
-                     class="d-flex flex-column col-sm-12 col-md-6 col-lg-8">
+                    <div
+                        v-if="!filteredAparments || query == ''"
+                        class="d-flex flex-column col-sm-12 col-md-6 col-lg-8"
+                    >
                         <div
-                            
                             v-for="(apartment, index) in apartmentsList"
                             :key="`apartment-${index}`"
                             class="card mb-3"
@@ -163,7 +165,13 @@
                                             <i
                                                 class="fa-solid fa-rectangle-list mr-2"
                                             ></i>
-                                            {{ getExcerpt(apartment.description, 120) }}
+                                            <!-- {{
+                                                getExcerpt(
+                                                    apartment.description,
+                                                    120
+                                                )
+                                            }} -->
+                                             {{ apartment.description }}
                                         </p>
                                         <div class="card-subtitle mb-2">
                                             <i
@@ -196,8 +204,10 @@
                         </div>
                     </div>
 
-                    <div v-else
-                     class="d-flex flex-column col-sm-12 col-md-6 col-lg-8">
+                    <div
+                        v-else
+                        class="d-flex flex-column col-sm-12 col-md-6 col-lg-8"
+                    >
                         <div
                             v-for="(apartment, index) in filteredAparments"
                             :key="`apartment-${index}`"
@@ -224,7 +234,13 @@
                                             <i
                                                 class="fa-solid fa-rectangle-list mr-2"
                                             ></i>
-                                            {{ getExcerpt(apartment.description, 120) }}
+                                            <!-- {{
+                                                getExcerpt(
+                                                    apartment.description,
+                                                    120
+                                                )
+                                            }} -->
+                                            {{ apartment.description }}
                                         </p>
                                         <div class="card-subtitle mb-2">
                                             <i
@@ -256,7 +272,6 @@
                             </div>
                         </div>
                     </div>
-
                 </section>
             </section>
         </div>
@@ -299,6 +314,7 @@ export default {
     components: {},
     data() {
         return {
+            filter: ",",
             numRooms: 0,
             maxPeople: 0,
             filteredServices: [],
@@ -307,10 +323,10 @@ export default {
             filteredAparments: null,
             servicesList: null,
             newArray: [],
-            suggestionsArray : [],
-            selectedLat : "",
-            selectedLon : "",
-            d : 0,
+            suggestionsArray: [],
+            selectedLat: "",
+            selectedLon: "",
+            d: 0,
         };
     },
     mounted() {
@@ -349,14 +365,20 @@ export default {
                 .catch((error) => console.log(error));
         },
 
-         //Funzione per calcolare la distanza in km tra due punti terrrestr
-        distance(startLat, startLon, lat2, lon2) { 
+        //Funzione per calcolare la distanza in km tra due punti terrestri
+        distance(startLat, startLon, lat2, lon2) {
             const p = 0.017453292519943295;
-            const c = Math.cos; 
-            const a = 0.5 - c((lat2 - startLat) * p)/2 + c(startLat * p) * c(lat2 * p) * (1 - c((lon2 - startLon) * p))/2; 
+            const c = Math.cos;
+            const a =
+                0.5 -
+                c((lat2 - startLat) * p) / 2 +
+                (c(startLat * p) *
+                    c(lat2 * p) *
+                    (1 - c((lon2 - startLon) * p))) /
+                    2;
             const distance = 12742 * Math.asin(Math.sqrt(a));
             this.d = distance.toFixed(3);
-            console.log(this.d)
+            console.log(this.d);
         },
 
         setValue(index) {
@@ -367,79 +389,77 @@ export default {
             this.selectedLon = this.suggestionsArray[index].position.lon;
             this.suggestionsArray = [];
 
-            this.apartmentsList.forEach( element => {
-                this.distance(this.selectedLat, this.selectedLon, element.latitude, element.longitude);
-                    console.log(element)
-                    
-                if(this.d < 20) {
-                    this.filteredAparments.push(element)
+            this.apartmentsList.forEach((element) => {
+                this.distance(
+                    this.selectedLat,
+                    this.selectedLon,
+                    element.latitude,
+                    element.longitude
+                );
+                if (this.d < 20) {
+                    this.filteredAparments.push(element);
                 }
             });
-           
-
         },
-        getExcerpt(text, maxLength) {
-            if (text.length > maxLength) {
-                return text.substr(0, maxLength) + "...";
-            }
-            return text;
-        },
+        // getExcerpt(text, maxLength) {
+        //     if (text.length > maxLength) {
+        //         return text.substr(0, maxLength) + "...";
+        //     }
+        //     return text;
+        // },
         filteredSearch() {
             this.apartmentsList.filter((apartment) => {
                 apartment.services.forEach((service) => {
                     if (this.filteredServices.includes(service.name)) {
                         if (!this.newArray.includes(apartment)) {
                             return this.newArray.push(apartment);
-                         } 
+                        }
                         // else if (this.newArray.includes(apartment)) {
                         //     return this.newArray.shift(apartment)
                         // }
                     }
                 });
             });
-            // this.apartmentsList.forEach((apartment) => {
-            //     let apartmentService = apartment.services;
-            //     apartmentService.forEach((service) => {
-            //         if (this.filteredServices.includes(service.name)) {
-            //             if (!this.newArray.includes(apartment)) {
-            //                 this.newArray.push(apartment);
-            //             }
-            //         } else if (!this.filteredServices.includes(service.name)) {
-            //             this.newArray = this.newArray.filter(el => {
-            //                 el.services.forEach((service) => {
-            //                     this.filteredServices.includes(service)
-            //                     return el
-            //                 })
-            //             });
-            //         }
-            //     });
-            // });
-            // this.apartmentsList.forEach((apartment) => {
-            //     let apartmentService = apartment.services;
-            //     apartmentService.forEach((service) => {
-            //         // console.log(service.name)
-            //         if (myService === service.name) {
-            //             if (!this.newArray.includes(apartment)) {
-            //                 this.newArray.push(apartment);
-            //             }
-            //         } else if (myService != service.name) {
-            //             this.newArray = this.newArray.filter(el => {
-            //                 if (!this.filteredServices.includes(service.name)) {
-            //                     return el
-            //                 }
-            //             });
-            //         }
-            //     });
-            // });
         },
-        getAddress(){
-            delete axios.defaults.headers.common['X-Requested-With'];
-            axios.get(`https://api.tomtom.com/search/2/search/${this.query}.json?key=ue74ZxVT9w3YLf0sEeYAz5GOv1v6G1md&limit=5`)
-            .then((res) => {
-                this.suggestionsArray = res.data.results;
-        });
-         }
-    }
+        getAddress() {
+            delete axios.defaults.headers.common["X-Requested-With"];
+            axios
+                .get(
+                    `https://api.tomtom.com/search/2/search/${this.query}.json?key=ue74ZxVT9w3YLf0sEeYAz5GOv1v6G1md&limit=5`
+                )
+                .then((res) => {
+                    this.suggestionsArray = res.data.results;
+                });
+        },
+        // apiFilter(filter = ',') {
+        //     if (filter === ',') {
+        //         this.getApartments;
+        //     } else {
+        //         axios.get(`http://127.0.0.1:8000/api/apartments/filteredApartments/${filter}`)
+        //         .then((result => {
+        //             this.apartmentsList = result.data.data;
+        //         }))
+        //     }
+        // },
+        // updateFilter() {
+        //     this.apiFilter = filter;
+        // }
+        postFilteredAparments() {
+            axios.post(`http://127.0.0.1:8000/api/apartments/`, {
+                selectedLat: this.selectedLat,
+                selectedLon: this.selectedLon,
+                filteredServices: this.filteredServices,
+                maxPeople: this.maxPeople,
+                maxRoom: this.numRooms,
+            })
+            .then((result => {
+                console.log(result)
+            }))
+            .catch((error => {
+                console.log(error)
+            }));
+        },
+    },
 };
 </script>
 
