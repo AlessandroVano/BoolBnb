@@ -47,7 +47,7 @@
                                         type="checkbox"
                                         class="custom-control-input"
                                         :id="`customSwitch-${service.id}`"
-                                        :value="service.name"
+                                        :value="service.id"
                                         v-model="filteredServices"
                                         @change="filteredSearch()"
                                     />
@@ -410,7 +410,7 @@ export default {
         filteredSearch() {
             this.apartmentsList.filter((apartment) => {
                 apartment.services.forEach((service) => {
-                    if (this.filteredServices.includes(service.name)) {
+                    if (this.filteredServices.includes(service.id)) {
                         if (!this.newArray.includes(apartment)) {
                             return this.newArray.push(apartment);
                         }
