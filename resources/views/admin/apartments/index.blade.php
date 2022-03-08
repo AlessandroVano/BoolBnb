@@ -45,13 +45,44 @@
                             href="{{route('admin.apartments.show', $apartment->slug)}}">View Details</a>
                         </button>
                         
+                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                        data-target="#exampleModal{{$apartment->id}}">
+                            Delete Apartment
+                        </button>
                         <form action="{{route('admin.apartments.destroy', $apartment->id)}}" method="POST">
                             @csrf
                             @method('DELETE')
                             
-                            <button type="submit" class="btn btn-danger"
-                            onclick="return confirm('Are you sure you want to delete this apartment?')"
-                            >Delete Apartment</button>
+                            <div
+                                class="modal fade text-danger"
+                                id="exampleModal{{ $apartment->id }}"
+                                tabindex="-1"
+                                aria-labelledby="exampleModalLabel"
+                                aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title"                     id="exampleModalLabel">
+                                                Warning
+                                            </h5>
+                                            <button
+                                                type="button"
+                                                class="close"
+                                                data-dismiss="modal"
+                                                aria-label="Close"
+                                            >
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">are you sure  that you want to permanently delete this apartment?</div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-danger">
+                                                Delete message
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

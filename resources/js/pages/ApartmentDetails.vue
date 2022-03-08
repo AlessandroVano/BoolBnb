@@ -1,10 +1,10 @@
 <template>
-    <section class="container">
-        <div>
+    <section class="container my-4">
+        <div class="card p-4">
             <div v-if="apartment">
                 <!-- name -->
                 <div
-                    class="col-12 mt-3 justify-content-center align-items-center text-center"
+                    class="col-12 justify-content-center align-items-center text-center"
                 >
                     <h1 class="d-inline mt-3">{{ apartment.name }}</h1>
                 </div>
@@ -38,26 +38,30 @@
                     <div class="row d-flex">
                         <div class="col-6">
                             <div>
-                                <h5>Description:</h5>
+                                <strong>Description:</strong>
                                 <p>{{ apartment.description }}</p>
                             </div>
                             <div class="d-flex">
-                                <h5>Number of rooms:</h5>
-                                <p class="mx-3">{{ apartment.rooms }}</p>
+                                <strong>Number of rooms:</strong>
+                                <span class="mx-3">{{ apartment.rooms }}</span>
                             </div>
                             <div class="d-flex">
-                                <h5>Price:</h5>
-                                <p class="mx-3">{{ apartment.price }}</p>
+                                <strong>Price:</strong>
+                                <span class="mx-3"
+                                    >{{ apartment.price }} €</span
+                                >
                             </div>
                             <div class="d-flex">
-                                <h5>Address:</h5>
-                                <p class="mx-3">{{ apartment.address }}</p>
+                                <strong>Address:</strong>
+                                <span class="mx-3">{{
+                                    apartment.address
+                                }}</span>
                             </div>
                             <div class="d-flex">
-                                <h5>Square meters:</h5>
-                                <p class="mx-3">
-                                    {{ apartment.square_meters }}
-                                </p>
+                                <strong>Square meters:</strong>
+                                <span class="mx-3">
+                                    {{ apartment.square_meters }} m2
+                                </span>
                             </div>
                         </div>
 
@@ -66,10 +70,9 @@
                         </div>
                     </div>
                 </section>
-                
+
                 <!-- MessageForm -->
-                <MessageForm :apartment_id="apartment.id"/>
-              
+                <MessageForm :apartment_id="apartment.id" />
             </div>
         </div>
     </section>
@@ -77,7 +80,7 @@
 
 <script>
 import axios from "axios";
-import MessageForm from '../components/MessageForm.vue';
+import MessageForm from "../components/MessageForm.vue";
 export default {
     name: "ApartmentDetail",
 
@@ -117,7 +120,7 @@ export default {
                             `https://api.tomtom.com/map/1/staticimage?key=A7Tus1YOQbGV9cHnXAwNc3DFV88QJw2X&zoom=16&center=${res.data.longitude},${res.data.latitude}&width=400&height=400&`
                         )
                         .then((res1) => {
-                           /*  console.log(res1); */
+                            /*  console.log(res1); */
                             let cartina = document.getElementById("cartina");
                             cartina.style.backgroundImage = `url("${res1.config.url}")`;
 
