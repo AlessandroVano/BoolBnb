@@ -94,11 +94,31 @@
                         <a href="{{ route('admin.sponsorships') }}">Sponsorship</a>
                     </li>
 
+                    {{-- <li class="list-group-item">
+                        <a href="{{ route('admin.messages', $apartment->id) }}">Messages</a>
+                    </li> --}}
+
                     <li class="list-group-item">
-                        <a href="{{ route('admin.messages') }}">Messages</a>
+                        <p>
+                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                              Messages
+                            </a>
+                          </p>
+                          <div class="collapse" id="collapseExample">
+                            <div class="card card-body">
+                                <ul>
+                                    @foreach ($messages as $message)
+                                    <li>
+                                        <div>{{ $message->name }}</div>
+                                        <div>{{ $message->email }}</div>
+                                        <div>{{ $message->message }}</div>
+                                    </li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                          </div>
+                
                     </li>
-
-
                 </ul>
             </div>
         </div>
