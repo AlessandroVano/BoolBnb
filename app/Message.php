@@ -14,7 +14,7 @@ class Message extends Model
         'message',
     ];
 
-    public function apartments() {
+    public function apartment() {
         return $this->belongsTo('App\Apartment');
     }
 }

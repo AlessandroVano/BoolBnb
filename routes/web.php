@@ -35,6 +35,8 @@ Auth::routes();
             //  Route::get('/apartments/client/ip', [HomeController::class, 'getIp']);
              
              Route::get('/sponsorships', 'SponsorshipController@index')->name('sponsorships');
+
+             Route::get('/messages', 'MessageController@index')->name('messages');
          });
 
 // Home front 

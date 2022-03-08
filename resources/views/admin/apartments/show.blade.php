@@ -93,6 +93,12 @@
                     <li class="list-group-item">
                         <a href="{{ route('admin.sponsorships') }}">Sponsorship</a>
                     </li>
+
+                    <li class="list-group-item">
+                        <a href="{{ route('admin.messages') }}">Messages</a>
+                    </li>
+
+
                 </ul>
             </div>
         </div>
