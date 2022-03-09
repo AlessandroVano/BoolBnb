@@ -49,22 +49,28 @@ class ApartmentController extends Controller
     }
 
     public function filter(Request $request) {
+        //Se sono stati inseriti servizi
         if( count($request->filteredServices) > 0 ) {
+
+            //Creazione di un array di array con NOME COLONNA e ID
             $filtersArray = [];
             foreach($request->filteredServices as $filterId) {
                 $filtersArray[] = ['service_id', strval($filterId)];
             }
-            
+
+            //Creazione di un array di ID dei filtri selezionati e dei relativi APPARTAMENTI
             $apartmentsFilteredByServices = DB::table('apartment_service')->where($filtersArray)
                                         ->select('apartment_id')
                                         ->distinct()
                                         ->get();
 
+            //
             $apartmentsIdFilteredByServices = [];
             foreach ($apartmentsFilteredByServices as $apartment) {
                 $apartmentsIdFilteredByServices[] = $apartment->apartment_id;
             }
 
+            //Interrogazione del DB con i criteri passati
             $apartments = Apartment::where('max_people', '>=', $request->maxPeople)
                                     ->where('rooms', '>=', $request->maxRoom)
                                     ->where('visibility', 1)
@@ -72,31 +78,36 @@ class ApartmentController extends Controller
                                     ->get();
 
         } else {
+            //Interrogazione del DB con i criteri passati
             $apartments = Apartment::where('max_people', '>=', $request->maxPeople)
                                     ->where('rooms', '>=', $request->maxRoom)
                                     ->where('visibility', 1)
                                     ->get();
         }
 
-
-
-        //Calcolo della distanza di ogni appartamento preso dal DB rispetto al punto selezionato
-        $p = 0.017453292519943295;
-        $filteredApartments = [];
-        foreach ($apartments as $apartment) {
-            $a =
-            0.5 -
-            cos(($apartment->latitude - $request->selectedLat) * $p) / 2 +
-            (cos($request->selectedLat * $p) *
-            cos($apartment->latitude * $p) *
-            (1 - cos(($apartment->longitude - $request->selectedLon) * $p))) /
-            2;
-            $distance = 12742 * asin(sqrt($a));
-            if ($distance < 20) {
+        //Se non viene selezionata un luogo NON FILTRA PER DISTANZA
+        if( !$request->selectedLat || !$request->selectedLon) {
+            foreach( $apartments as $apartment ) {
                 $filteredApartments[] = $apartment;
             }
+        } else {
+            //Calcolo della distanza di ogni appartamento preso dal DB rispetto al punto selezionato
+            $p = 0.017453292519943295;
+            $filteredApartments = [];
+            foreach ( $apartments as $apartment ) {
+                $a =
+                0.5 -
+                cos(($apartment->latitude - $request->selectedLat) * $p) / 2 +
+                (cos($request->selectedLat * $p) *
+                cos($apartment->latitude * $p) *
+                (1 - cos(($apartment->longitude - $request->selectedLon) * $p))) /
+                2;
+                $distance = 12742 * asin(sqrt($a));
+                if ($distance < $request->selectedDistance) {
+                    $filteredApartments[] = $apartment;
+                }
+            }
         }
-
         return response()->json($filteredApartments);
     }
 

@@ -49,7 +49,6 @@
                                         :id="`customSwitch-${service.id}`"
                                         :value="service.id"
                                         v-model="filteredServices"
-                                        @change="filteredSearch()"
                                     />
                                     <label
                                         class="custom-control-label"
@@ -128,6 +127,29 @@
                                                 <option value="8">8</option>
                                                 <option value="9">9</option>
                                                 <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div
+                                        class="input-group mb-3 d-flex flex-column"
+                                    >
+                                        <h3>Searchs range</h3>
+                                        <div class="input-group-prepend">
+                                            <label
+                                                class="input-group-text"
+                                                for="inputGroupSelect01"
+                                                >Km</label
+                                            >
+                                            <select
+                                                class="custom-select"
+                                                id="inputGroupSelect01"
+                                                v-model="selectedDistance"
+                                            >
+                                                <option value="20">20</option>
+                                                <option value="40">40</option>
+                                                <option value="60">60</option>
                                             </select>
                                         </div>
                                     </div>
@@ -254,7 +276,6 @@
                                             ></i>
                                             {{ apartment.price }} € / notte
                                         </div>
-                                        <!-- <div card-subtitle>{{ apartment.services.name }}</div> -->
                                         <div class="text-right">
                                             <router-link
                                                 class="link-custom mb-2"
@@ -275,34 +296,6 @@
                 </section>
             </section>
         </div>
-
-        <!-- <section v-if="newText != ''" class="mt-5">
-            <ul class="card-container row">
-                <li
-                    class="card border-rounded col-12 col-md-6 col-lg-4 my-3"
-                    v-for="(apartment, index) in inputSearch"
-                    :key="`apartment-${index}`"
-                >
-                    <div class="text-center img-container rounded-pills">
-                        <img
-                            class="card-img-top img-apartment w-0"
-                            :src="apartment.image"
-                            :alt="apartment.name"
-                        />
-                    </div>
-                    <div
-                        class="card-body p-1 text-center detail-container my-3"
-                    >
-                        <h5 class="card-title">{{ apartment.name }}</h5>
-                        <p class="card-text">
-                            {{ apartment.description }}
-                        </p>
-                        <div card-subtitle>{{ apartment.address }}</div>
-                        <a href="#" class="btn btn-primary">Go somewhere</a>
-                    </div>
-                </li>
-            </ul>
-        </section> -->
     </section>
 </template>
 
@@ -317,6 +310,7 @@ export default {
             filter: ",",
             numRooms: 0,
             maxPeople: 0,
+            selectedDistance: 20,
             filteredServices: [],
             query: "",
             apartmentsList: null,
@@ -333,20 +327,6 @@ export default {
         this.getApartments();
         this.getServices();
     },
-    // computed: {
-    //     inputSearch() {
-    //         if (this.newText.length > 0) {
-    //             return this.apartmentsList.filter((item) => {
-    //                 return this.newText
-    //                     .toLowerCase()
-    //                     .split(" ")
-    //                     .every((v) => item.address.toLowerCase().includes(v));
-    //             });
-    //         } else {
-    //             return this.apartmentsList;
-    //         }
-    //     },
-    // },
     methods: {
         getApartments() {
             axios
@@ -364,42 +344,12 @@ export default {
                 })
                 .catch((error) => console.log(error));
         },
-
-        //Funzione per calcolare la distanza in km tra due punti terrestri
-        distance(startLat, startLon, lat2, lon2) {
-            const p = 0.017453292519943295;
-            const c = Math.cos;
-            const a =
-                0.5 -
-                c((lat2 - startLat) * p) / 2 +
-                (c(startLat * p) *
-                    c(lat2 * p) *
-                    (1 - c((lon2 - startLon) * p))) /
-                    2;
-            const distance = 12742 * Math.asin(Math.sqrt(a));
-            this.d = distance.toFixed(3);
-            console.log(this.d);
-        },
-
         setValue(index) {
-            this.filteredAparments = [];
             let element = document.getElementById(index);
             this.query = element.innerHTML.trim();
             this.selectedLat = this.suggestionsArray[index].position.lat;
             this.selectedLon = this.suggestionsArray[index].position.lon;
             this.suggestionsArray = [];
-
-            this.apartmentsList.forEach((element) => {
-                this.distance(
-                    this.selectedLat,
-                    this.selectedLon,
-                    element.latitude,
-                    element.longitude
-                );
-                if (this.d < 20) {
-                    this.filteredAparments.push(element);
-                }
-            });
         },
         // getExcerpt(text, maxLength) {
         //     if (text.length > maxLength) {
@@ -407,20 +357,6 @@ export default {
         //     }
         //     return text;
         // },
-        filteredSearch() {
-            this.apartmentsList.filter((apartment) => {
-                apartment.services.forEach((service) => {
-                    if (this.filteredServices.includes(service.id)) {
-                        if (!this.newArray.includes(apartment)) {
-                            return this.newArray.push(apartment);
-                        }
-                        // else if (this.newArray.includes(apartment)) {
-                        //     return this.newArray.shift(apartment)
-                        // }
-                    }
-                });
-            });
-        },
         getAddress() {
             delete axios.defaults.headers.common["X-Requested-With"];
             axios
@@ -431,29 +367,17 @@ export default {
                     this.suggestionsArray = res.data.results;
                 });
         },
-        // apiFilter(filter = ',') {
-        //     if (filter === ',') {
-        //         this.getApartments;
-        //     } else {
-        //         axios.get(`http://127.0.0.1:8000/api/apartments/filteredApartments/${filter}`)
-        //         .then((result => {
-        //             this.apartmentsList = result.data.data;
-        //         }))
-        //     }
-        // },
-        // updateFilter() {
-        //     this.apiFilter = filter;
-        // }
         postFilteredAparments() {
             axios.post(`http://127.0.0.1:8000/api/apartments/`, {
                 selectedLat: this.selectedLat,
                 selectedLon: this.selectedLon,
+                selectedDistance: this.selectedDistance,
                 filteredServices: this.filteredServices,
                 maxPeople: this.maxPeople,
                 maxRoom: this.numRooms,
             })
             .then((result => {
-                console.log(result)
+                this.filteredAparments = result.data;
             }))
             .catch((error => {
                 console.log(error)
