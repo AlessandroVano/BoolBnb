@@ -382,8 +382,8 @@ export default {
                 });
         },
         postFilteredAparments() {
-            axios
-                .post(`http://127.0.0.1:8000/api/apartments/`, {
+            if(this.query.length > 1) {
+                axios.post(`http://127.0.0.1:8000/api/apartments/`, {
                     selectedLat: this.selectedLat,
                     selectedLon: this.selectedLon,
                     selectedDistance: this.selectedDistance,
@@ -391,12 +391,13 @@ export default {
                     maxPeople: this.maxPeople,
                     maxRoom: this.numRooms,
                 })
-                .then((result) => {
+                .then((result => {
                     this.filteredAparments = result.data;
-                })
-                .catch((error) => {
-                    console.log(error);
-                });
+                }))
+                .catch((error => {
+                    console.log(error)
+                }));
+            }
         },
     },
 };

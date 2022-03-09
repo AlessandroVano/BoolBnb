@@ -94,10 +94,7 @@
                         <a href="{{ route('admin.sponsorships') }}">Sponsorship</a>
                     </li>
 
-                    {{-- <li class="list-group-item">
-                        <a href="{{ route('admin.messages', $apartment->id) }}">Messages</a>
-                    </li> --}}
-
+                    {{-- Messages --}}
                     <li class="list-group-item">
                         <p>
                             <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">

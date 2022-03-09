@@ -79,15 +79,16 @@
                 @enderror
             </div>
 
+            {{-- Address --}}
             <div id="searchbar" class="mb-3">
                 <label for="address" class="form-label">Address</label>
                 <input type="text" id="address" name="address" class="form-control">
+                {{-- Suggestions --}}
                 <ul id="list" class="list-unstyled bg-white text-dark">
-                
                 </ul>
             </div>
             
-
+            {{-- Latitude --}}
             <label for="latitude" class="form-label" hidden>Latitude</label>
             <input
                 type="text"
@@ -96,8 +97,8 @@
                 id="latitude"
                 hidden
             />
-        <!-- LON -->
-        <label for="longitude" class="form-label" hidden>Longitude</label>
+            <!-- Longitude -->
+            <label for="longitude" class="form-label" hidden>Longitude</label>
             <input
                 type="text"
                 class="form-control"
