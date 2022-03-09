@@ -14,7 +14,7 @@ class ApartmentController extends Controller
         $apartments = Apartment::with(['services'])
                                 ->select(['id', 'user_id', 'name', 'slug', 'price', 'description', 'rooms', 'max_people', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude', 'image', 'visibility'])
                                 ->get();
-                             
+
         foreach ($apartments as $apartment ) {
             if ($apartment->image) {
                 $apartment->image = url('storage/' . $apartment->image);
@@ -23,29 +23,8 @@ class ApartmentController extends Controller
         foreach ($apartment->services as $service ) {
             $service->icon = url('storage/' . $service->icon);
         }
-        
-        
 
         return response()->json($apartments); 
-
-        
-    }  
-
-    public function filteredApartments($services) {
-        $apartmentId = DB::table('apartment_service')->whereIn('service_id', explode(',', $services))->select('apartment_id')->distinct()->get();
-        $apartmentsIdArray = [];
-        foreach ($apartmentId as $apartment) {
-            $apartmentsIdArray[] = $apartment->apartment_id;
-        }
-        $apartments = Apartment::with(['services:name'])
-                    ->whereIn('id', $apartmentsIdArray)
-                    ->select(['id', 'user_id', 'name', 'slug', 'price', 'description', 'rooms', 'max_people', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude', 'image', 'visibility'])->get();
-        foreach($apartments as $apartment) {
-            if(!preg_match('/http/', $apartment->image)) {
-                $apartment->image = url('storage/{$apartment->image}');
-            }
-        }
-        return response()->json($apartments);
     }
 
     public function filter(Request $request) {
@@ -64,7 +43,6 @@ class ApartmentController extends Controller
                                         ->distinct()
                                         ->get();
 
-            //
             $apartmentsIdFilteredByServices = [];
             foreach ($apartmentsFilteredByServices as $apartment) {
                 $apartmentsIdFilteredByServices[] = $apartment->apartment_id;
@@ -103,11 +81,18 @@ class ApartmentController extends Controller
                 (1 - cos(($apartment->longitude - $request->selectedLon) * $p))) /
                 2;
                 $distance = 12742 * asin(sqrt($a));
+
+                $apartment['distance'] = $distance;
                 if ($distance < $request->selectedDistance) {
                     $filteredApartments[] = $apartment;
                 }
             }
+
+            $distance_column = array_column($filteredApartments, 'distance');
+            
+            array_multisort($distance_column, SORT_ASC, $filteredApartments);
         }
+
         return response()->json($filteredApartments);
     }
 
