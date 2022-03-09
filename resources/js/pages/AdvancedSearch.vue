@@ -1,6 +1,6 @@
 <template>
     <section class="container">
-        <h1 class="my-4">
+        <h1 class="my-5 text-center">
             <i class="fa-solid fa-map"></i> Search your next place
         </h1>
         <div class="my-2 my-lg-0">
@@ -9,20 +9,15 @@
                     <label for="address" class="form-label"></label>
                     <input
                         type="text"
-                        class="mr-3 fs-10 border-custom fw-light form-control"
-                        placeholder="Search"
+                        class="fs-10 border-custom fw-light form-control"
+                        placeholder="Select your place"
                         aria-label="Search"
                         aria-describedby="addon-wrapping"
                         v-model="query"
                         @keyup="getAddress()"
                     />
-                    <button
-                        class="btn btn-success"
-                        @click="postFilteredAparments"
-                    >
-                        send
-                    </button>
                 </div>
+                
                 <ul class="list-unstyled cursor-pointer bg-white text-dark">
                     <li
                         :id="`${index}`"
@@ -34,41 +29,41 @@
                         {{ element.address.freeformAddress }}
                     </li>
                 </ul>
-                <div class="bg-white text-dark"></div>
+
             </div>
-            <section>
+            <section class="my-4">
                 <section class="row">
-                    <div class="filter-section p-3 col-sm-12 col-md-6 col-lg-4">
+                    <div class="filter-section p-3 col-12">
                         <div class="filter-container">
-                            <h1>Select filters</h1>
-                            <h3>Services</h3>
-                            <ul>
-                                <li
-                                    v-for="service in servicesList"
-                                    :key="`service-${service.id}`"
-                                    class="custom-control custom-switch"
-                                >
-                                    <input
-                                        type="checkbox"
-                                        class="custom-control-input"
-                                        :id="`customSwitch-${service.id}`"
-                                        :value="service.id"
-                                        v-model="filteredServices"
-                                    />
-                                    <label
-                                        class="custom-control-label"
-                                        :for="`customSwitch-${service.id}`"
-                                        >{{ service.name }}
-                                    </label>
-                                </li>
-                            </ul>
-                            <h1>Additional filters</h1>
-                            <ul>
-                                <li>
+                            <h3 class="text-center">Choose your filters</h3>
+                            <h5>Services</h5>
+                                <ul class="row d-flex">
+                                    <li
+                                        v-for="service in servicesList"
+                                        :key="`service-${service.id}`"
+                                        class="custom-control custom-switch col-6 col-sm-4 col-md-3 col-lg-2 d-inline-block"
+                                    >
+                                        <input
+                                            type="checkbox"
+                                            class="custom-control-input"
+                                            :id="`customSwitch-${service.id}`"
+                                            :value="service.id"
+                                            v-model="filteredServices"
+                                        />
+                                        <label
+                                            class="custom-control-label"
+                                            :for="`customSwitch-${service.id}`"
+                                            >{{ service.name }}
+                                        </label>
+                                    </li>
+                                </ul>
+                            <h3 class="text-center">Additional filters</h3>
+                            <ul class=" row p-0 d-flex justify-content-md-around">
+                                <li class="col-12 col-md-4">
                                     <div
                                         class="input-group mb-3 d-flex flex-column"
                                     >
-                                        <h3>How many guests?</h3>
+                                        <h5>How many guests?</h5>
                                         <div class="input-group-prepend">
                                             <label
                                                 class="input-group-text"
@@ -105,11 +100,11 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li>
+                                <li class="col-12 col-md-4" >
                                     <div
                                         class="input-group mb-3 d-flex flex-column"
                                     >
-                                        <h3>How many rooms?</h3>
+                                        <h5>How many rooms?</h5>
                                         <div class="input-group-prepend">
                                             <label
                                                 class="input-group-text"
@@ -136,11 +131,11 @@
                                         </div>
                                     </div>
                                 </li>
-                                <li>
+                                <li class="col-12 col-md-4">
                                     <div
                                         class="input-group mb-3 d-flex flex-column"
                                     >
-                                        <h3>Searchs range</h3>
+                                        <h5>Selecet Distance</h5>
                                         <div class="input-group-prepend">
                                             <label
                                                 class="input-group-text"
@@ -162,15 +157,24 @@
                             </ul>
                         </div>
                     </div>
+
+                     <button
+                        class=" my-3 mx-auto btn btn-transparent"
+                        @click="postFilteredAparments"
+                    >
+                        Start you Research
+                    </button>
+                    
+                        <!-- Card Appartamenti -->
+
                     <div
                         v-if="!filteredAparments || query == ''"
-                        class="d-flex flex-column col-sm-12 col-md-6 col-lg-8"
+                        class="d-flex flex-wrap my-3 justify-content-center"
                     >
                         <div
                             v-for="(apartment, index) in apartmentsList"
                             :key="`apartment-${index}`"
-                            class="card mb-3"
-                            style="max-width: 540px"
+                            class="card mb-3 col-12 col-md-5 mx-3 "
                         >
                             <div class="row no-gutters">
                                 <div class="col-md-4">
@@ -224,7 +228,7 @@
                                         <!-- <div card-subtitle>{{ apartment.services.name }}</div> -->
                                         <div class="text-right">
                                             <router-link
-                                                class="link-custom mb-2"
+                                                class="link-custom mb-2 p-1"
                                                 :to="{
                                                     name: 'apartment-details',
                                                     params: {
@@ -242,13 +246,12 @@
 
                     <div
                         v-else
-                        class="d-flex flex-column col-sm-12 col-md-6 col-lg-8"
+                        class="d-flex flex-wrap my-3"
                     >
                         <div
                             v-for="(apartment, index) in filteredAparments"
                             :key="`apartment-${index}`"
-                            class="card mb-3"
-                            style="max-width: 540px"
+                            class="card mb-3 col-12 col-md-5 mx-3 justify-content-center"
                         >
                             <div class="row no-gutters">
                                 <div class="col-md-4">
@@ -393,6 +396,7 @@ export default {
                 })
                 .then((result => {
                     this.filteredAparments = result.data;
+                    console.log(result.data)
                 }))
                 .catch((error => {
                     console.log(error)
@@ -404,6 +408,14 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+// .form-control:focus ~ {
+//     color: red ;
+//     background-color: #fff;
+//     border-color: red;
+//     outline: 0;
+//     box-shadow: red;
+// }
 .img-custom {
     object-fit: cover;
     padding: 0.5rem;
@@ -423,10 +435,9 @@ export default {
     ul {
         list-style: none;
     }
-    h1 {
+    h3 {
         color: #ff385c;
     }
-    // .filter-container {
-    // }
+
 }
 </style>
