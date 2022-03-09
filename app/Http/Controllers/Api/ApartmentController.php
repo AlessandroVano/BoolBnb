@@ -18,7 +18,9 @@ class ApartmentController extends Controller
         foreach ($apartments as $apartment ) {
             if ($apartment->image) {
                 $apartment->image = url('storage/' . $apartment->image);
-            }       
+            } else {
+                $apartment->image = url('storage/img-apartments/Not-found.png');
+            }  
         }
         foreach ($apartment->services as $service ) {
             $service->icon = url('storage/' . $service->icon);
