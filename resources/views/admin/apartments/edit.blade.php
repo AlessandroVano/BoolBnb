@@ -105,9 +105,9 @@
                     hidden
                 />
 
-                   {{-- IMMAGINE --}}
-               <div class="mb-4">
-                   <h4>Image apartment</h4>
+                {{-- IMMAGINE --}}
+                <div class="mb-4">
+                    <h4>Image apartment</h4>
                     <figure class="py-2">
                         @if (! $apartment->image)
                             <img width="200" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{$apartment->name}}" class="rounded">
@@ -122,7 +122,7 @@
                     @error('image')
                         <div class="text-danger">{{$message}}</div>
                     @enderror
-               </div>
+                </div>
 
                {{-- VISIBILITY --}}
                <div class="mb-3 custom-control custom-switch">
