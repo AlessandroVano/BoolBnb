@@ -63,12 +63,7 @@ class ApartmentController extends Controller
                                     ->get();
         }
 
-        //Se non viene selezionata un luogo NON FILTRA PER DISTANZA
-        if( !$request->selectedLat || !$request->selectedLon) {
-            foreach( $apartments as $apartment ) {
-                $filteredApartments[] = $apartment;
-            }
-        } else {
+
             //Calcolo della distanza di ogni appartamento preso dal DB rispetto al punto selezionato
             $p = 0.017453292519943295;
             $filteredApartments = [];
@@ -91,7 +86,6 @@ class ApartmentController extends Controller
             $distance_column = array_column($filteredApartments, 'distance');
             
             array_multisort($distance_column, SORT_ASC, $filteredApartments);
-        }
 
         return response()->json($filteredApartments);
     }

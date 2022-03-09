@@ -368,20 +368,22 @@ export default {
                 });
         },
         postFilteredAparments() {
-            axios.post(`http://127.0.0.1:8000/api/apartments/`, {
-                selectedLat: this.selectedLat,
-                selectedLon: this.selectedLon,
-                selectedDistance: this.selectedDistance,
-                filteredServices: this.filteredServices,
-                maxPeople: this.maxPeople,
-                maxRoom: this.numRooms,
-            })
-            .then((result => {
-                this.filteredAparments = result.data;
-            }))
-            .catch((error => {
-                console.log(error)
-            }));
+            if(this.query.length > 1) {
+                axios.post(`http://127.0.0.1:8000/api/apartments/`, {
+                    selectedLat: this.selectedLat,
+                    selectedLon: this.selectedLon,
+                    selectedDistance: this.selectedDistance,
+                    filteredServices: this.filteredServices,
+                    maxPeople: this.maxPeople,
+                    maxRoom: this.numRooms,
+                })
+                .then((result => {
+                    this.filteredAparments = result.data;
+                }))
+                .catch((error => {
+                    console.log(error)
+                }));
+            }
         },
     },
 };
