@@ -103,11 +103,18 @@ class ApartmentController extends Controller
                 (1 - cos(($apartment->longitude - $request->selectedLon) * $p))) /
                 2;
                 $distance = 12742 * asin(sqrt($a));
+
+                $apartment['distance'] = $distance;
                 if ($distance < $request->selectedDistance) {
                     $filteredApartments[] = $apartment;
                 }
             }
         }
+
+        $distance_column = array_column($filteredApartments, 'distance');
+
+        array_multisort($distance_column, SORT_ASC, $filteredApartments);
+
         return response()->json($filteredApartments);
     }
 
