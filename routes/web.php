@@ -32,11 +32,13 @@ Auth::routes();
              
              // Apartments resource routes
              Route::resource('/apartments', 'ApartmentController');
-            //  Route::get('/apartments/client/ip', [HomeController::class, 'getIp']);
+             //  Route::get('/apartments/client/ip', [HomeController::class, 'getIp']);
              
              Route::get('/sponsorships', 'SponsorshipController@index')->name('sponsorships');
-
-             Route::get('/messages', 'MessageController@index')->name('messages');
+             
+             //  Route::get('/messages', 'MessageController@index')->name('messages');
+             //  Route::delete('/messages/{message}/delete', 'MessageController@destroy');
+             Route::resource('/messages', 'MessageController');
          });
 
 // Home front 
