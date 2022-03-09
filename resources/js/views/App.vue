@@ -1,7 +1,7 @@
 <template>
-  <div>
+  <div class="d-flex flex-column">
       <Header />
-      <main>
+      <main class="flex-grow-1">
           <router-view></router-view>
       </main>
       <Footer />
@@ -23,6 +23,6 @@ export default {
 }
 </script>
 
-<style>
+<style scoped lang="scss">
 
 </style>

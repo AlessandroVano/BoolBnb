@@ -48,6 +48,7 @@ class ApartmentController extends Controller
             $apartmentsIdFilteredByServices = [];
             foreach ($apartmentsFilteredByServices as $apartment) {
                 $apartmentsIdFilteredByServices[] = $apartment->apartment_id;
+                
             }
 
             //Interrogazione del DB con i criteri passati
@@ -57,12 +58,23 @@ class ApartmentController extends Controller
                                     ->whereIn('id', $apartmentsIdFilteredByServices)
                                     ->get();
 
+                foreach($apartments as $apartment){
+                    if ($apartment->image) {
+                        $apartment->image = url('storage/' . $apartment->image);
+                    }
+                }
+                
         } else {
             //Interrogazione del DB con i criteri passati
             $apartments = Apartment::where('max_people', '>=', $request->maxPeople)
                                     ->where('rooms', '>=', $request->maxRoom)
                                     ->where('visibility', 1)
                                     ->get();
+                foreach($apartments as $apartment){
+                    if ($apartment->image) {
+                        $apartment->image = url('storage/' . $apartment->image);
+                    }
+                }
         }
 
 
