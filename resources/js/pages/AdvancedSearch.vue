@@ -1,23 +1,28 @@
 <template>
     <section class="container">
-        <button class="btn" @click="postFilteredAparments">
-            OOOOOOOHHHHHHHHHHH
-        </button>
         <h1 class="my-4">
             <i class="fa-solid fa-map"></i> Search your next place
         </h1>
         <div class="my-2 my-lg-0">
             <div class="mb-3">
-                <label for="address" class="form-label"></label>
-                <input
-                    type="text"
-                    class="mr-3 fs-10 border-custom fw-light form-control"
-                    placeholder="Search"
-                    aria-label="Search"
-                    aria-describedby="addon-wrapping"
-                    v-model="query"
-                    @keyup="getAddress()"
-                />
+                <div class="d-flex">
+                    <label for="address" class="form-label"></label>
+                    <input
+                        type="text"
+                        class="mr-3 fs-10 border-custom fw-light form-control"
+                        placeholder="Search"
+                        aria-label="Search"
+                        aria-describedby="addon-wrapping"
+                        v-model="query"
+                        @keyup="getAddress()"
+                    />
+                    <button
+                        class="btn btn-success"
+                        @click="postFilteredAparments"
+                    >
+                        send
+                    </button>
+                </div>
                 <ul class="list-unstyled cursor-pointer bg-white text-dark">
                     <li
                         :id="`${index}`"
@@ -183,17 +188,26 @@
                                             ></i>
                                             {{ apartment.name }}
                                         </h5>
-                                        <p class="card-text">
+                                        <p
+                                            v-if="apartment.description != null"
+                                            class="card-text"
+                                        >
                                             <i
                                                 class="fa-solid fa-rectangle-list mr-2"
                                             ></i>
-                                            <!-- {{
+                                            {{
                                                 getExcerpt(
                                                     apartment.description,
                                                     120
                                                 )
-                                            }} -->
-                                             {{ apartment.description }}
+                                            }}
+
+                                        </p>
+                                        <p v-else class="card-text">
+                                            <i
+                                                class="fa-solid fa-rectangle-list mr-2"
+                                            ></i>
+                                          Description not available
                                         </p>
                                         <div class="card-subtitle mb-2">
                                             <i
@@ -351,12 +365,12 @@ export default {
             this.selectedLon = this.suggestionsArray[index].position.lon;
             this.suggestionsArray = [];
         },
-        // getExcerpt(text, maxLength) {
-        //     if (text.length > maxLength) {
-        //         return text.substr(0, maxLength) + "...";
-        //     }
-        //     return text;
-        // },
+        getExcerpt(text, maxLength) {
+            if (text.length > maxLength) {
+                return text.substr(0, maxLength) + "...";
+            }
+            return text;
+        },
         getAddress() {
             delete axios.defaults.headers.common["X-Requested-With"];
             axios
@@ -368,20 +382,21 @@ export default {
                 });
         },
         postFilteredAparments() {
-            axios.post(`http://127.0.0.1:8000/api/apartments/`, {
-                selectedLat: this.selectedLat,
-                selectedLon: this.selectedLon,
-                selectedDistance: this.selectedDistance,
-                filteredServices: this.filteredServices,
-                maxPeople: this.maxPeople,
-                maxRoom: this.numRooms,
-            })
-            .then((result => {
-                this.filteredAparments = result.data;
-            }))
-            .catch((error => {
-                console.log(error)
-            }));
+            axios
+                .post(`http://127.0.0.1:8000/api/apartments/`, {
+                    selectedLat: this.selectedLat,
+                    selectedLon: this.selectedLon,
+                    selectedDistance: this.selectedDistance,
+                    filteredServices: this.filteredServices,
+                    maxPeople: this.maxPeople,
+                    maxRoom: this.numRooms,
+                })
+                .then((result) => {
+                    this.filteredAparments = result.data;
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
         },
     },
 };
