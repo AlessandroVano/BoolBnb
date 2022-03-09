@@ -24,7 +24,7 @@
                             </h5>
                             <p class="card-text">
                                 <i class="fa-solid fa-rectangle-list mr-2"></i>
-                               {{ getExcerpt(apartment.description, 120) }}
+                               {{ getExcerpt(apartment.description, 120) }} 
                             </p>
                             <div class="card-subtitle mb-2">
                                 <i class="fa-solid fa-location-dot mr-2"></i>
@@ -86,12 +86,12 @@ export default {
                 this.apartmentsList = res.data;
             });
         },
-        getExcerpt(text, maxLength) {
+         getExcerpt(text, maxLength) {
             if (text.length > maxLength) {
                 return text.substr(0, maxLength) + "...";
             }
             return text;
-        },
+        }, 
     },
 };
 </script>
