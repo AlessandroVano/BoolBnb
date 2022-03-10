@@ -1,6 +1,6 @@
 <template>
-    <section class="container  my-4">
-        <div class="card  p-4">
+    <section class="container my-4">
+        <div class="card p-4">
             <div v-if="apartment">
                 <!-- name -->
                 <div
@@ -19,9 +19,8 @@
                 </div>
 
                 <!-- service -->
-                <section class=" circle container service_icon  mb-5">
+                <section class="circle container service_icon mb-5">
                     <div
-                       
                         v-for="service in apartment.services"
                         :key="`service-${service.id}`"
                     >
@@ -34,37 +33,38 @@
                     </div>
                 </section>
                 <!-- Maps + Detail apartment -->
-                <section class="mt-5 container  description_maps  ">
+                <section class="mt-5 container description_maps">
                     <div class="row d-flex">
                         <div class="col-6">
                             <div class="card p-4">
-
-                            <div>
-                                <strong>Description:</strong>
-                                <p>{{ apartment.description }}</p>
-                            </div>
-                            <div class="d-flex mt-2">
-                                <strong>Number of rooms:</strong>
-                                <span class="mx-3">{{ apartment.rooms }}</span>
-                            </div>
-                            <div class="d-flex  mt-2">
-                                <strong>Price:</strong>
-                                <span class="mx-3"
-                                    >{{ apartment.price }} €</span
-                                >
-                            </div>
-                            <div class="d-flex  mt-2">
-                                <strong>Address:</strong>
-                                <span class="mx-3">{{
-                                    apartment.address
-                                }}</span>
-                            </div>
-                            <div class="d-flex  mt-2">
-                                <strong>Square meters:</strong>
-                                <span class="mx-3">
-                                    {{ apartment.square_meters }} m2
-                                </span>
-                            </div>
+                                <div>
+                                    <strong>Description:</strong>
+                                    <p>{{ apartment.description }}</p>
+                                </div>
+                                <div class="d-flex mt-2">
+                                    <strong>Number of rooms:</strong>
+                                    <span class="mx-3">{{
+                                        apartment.rooms
+                                    }}</span>
+                                </div>
+                                <div class="d-flex mt-2">
+                                    <strong>Price:</strong>
+                                    <span class="mx-3"
+                                        >{{ apartment.price }} €</span
+                                    >
+                                </div>
+                                <div class="d-flex mt-2">
+                                    <strong>Address:</strong>
+                                    <span class="mx-3">{{
+                                        apartment.address
+                                    }}</span>
+                                </div>
+                                <div class="d-flex mt-2">
+                                    <strong>Square meters:</strong>
+                                    <span class="mx-3">
+                                        {{ apartment.square_meters }} m2
+                                    </span>
+                                </div>
                             </div>
                         </div>
 
@@ -149,17 +149,15 @@ strong {
     object-fit: contain;
     height: 350px;
 }
-.service_icon{ 
+.service_icon {
     margin-left: 38px;
     display: flex;
     text-align: center;
     flex-wrap: wrap;
-   
 }
-.service_name{
+.service_name {
     padding: 20px 20px;
     margin-top: -19px;
-    
 }
 
 .service {
@@ -174,7 +172,6 @@ strong {
 
 .service-img {
     width: 30px;
-    
 }
 .description_maps {
     margin-left: 22px;
@@ -187,7 +184,7 @@ strong {
     background-position: center;
     background-repeat: no-repeat;
     object-fit: contain;
-    border-radius: 10px ;
+    border-radius: 10px;
 }
 
 .marker {

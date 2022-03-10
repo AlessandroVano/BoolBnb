@@ -7,13 +7,21 @@
 @if (!$apartments->count() == 0)
 <div class="container bg-dark text-white">
     @if (session('deleted'))
-            <div class="alert alert-success">
-                <strong>
-                    {{ session('deleted') }}
-                </strong>
-                    Deleted Successfully!
-            </div>
-        @endif
+        <div class="alert alert-success">
+            <strong>
+                {{ session('deleted') }}
+            </strong>
+                Deleted Successfully!
+        </div>
+    @endif
+    @if (session('deleted-message'))
+        <div class="alert alert-success">
+            <strong>
+                {{ session('deleted-message') }}'s
+            </strong>
+            message has been deleted successfully!
+        </div>
+    @endif
     <div class="row">
         @foreach ( $apartments as $apartment )
 
@@ -47,7 +55,7 @@
                         
                         <button type="button" class="btn btn-danger" data-toggle="modal"
                         data-target="#exampleModal{{$apartment->id}}">
-                            Delete Apartment
+                            Delete Apartment <i class="fa-solid fa-trash-can"></i>
                         </button>
                         <form action="{{route('admin.apartments.destroy', $apartment->id)}}" method="POST">
                             @csrf
@@ -62,8 +70,8 @@
                                 <div class="modal-dialog modal-dialog-centered">
                                     <div class="modal-content">
                                         <div class="modal-header">
-                                            <h5 class="modal-title"                     id="exampleModalLabel">
-                                                Warning
+                                            <h5 class="modal-title" id="exampleModalLabel">
+                                                Warning <i class="fa-solid fa-siren-on"></i>
                                             </h5>
                                             <button
                                                 type="button"
@@ -77,7 +85,7 @@
                                         <div class="modal-body">are you sure  that you want to permanently delete this apartment?</div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-danger">
-                                                Delete message
+                                                Delete message <i class="fa-solid fa-trash-can"></i> 
                                             </button>
                                         </div>
                                     </div>

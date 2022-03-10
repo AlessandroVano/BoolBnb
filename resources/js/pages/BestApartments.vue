@@ -94,12 +94,12 @@ export default {
                 this.apartmentsList = res.data;
             });
         },
-         getExcerpt(text, maxLength) {
+        getExcerpt(text, maxLength) {
             if (text.length > maxLength) {
                 return text.substr(0, maxLength) + "...";
             }
             return text;
-        }, 
+        },
     },
 };
 </script>
