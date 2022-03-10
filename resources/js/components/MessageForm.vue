@@ -2,7 +2,9 @@
     <!-- FORM MESSAGE -->
     <div class="row mt-5 d-flex justify-content-center">
         <div class="col-sm-4 col-md-8 col-lg-10 card c-custom p-3">
-            <h3>Need more informations?</h3>
+            <h3>
+                Need more informations? <i class="fa-solid fa-circle-info"></i>
+            </h3>
             <!-- Name -->
             <form @submit.prevent="apartmentForm">
                 <div>
@@ -62,7 +64,7 @@
                     data-target="#exampleModal"
                     type="submit"
                 >
-                    Send
+                    Send <i class="fa-solid fa-paper-plane"></i>
                 </button>
             </form>
             <div
@@ -76,8 +78,12 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
+                            <h5
+                                class="modal-title text-danger"
+                                id="exampleModalLabel"
+                            >
                                 Warning
+                                <i class="fa-solid fa-circle-exclamation"></i>
                             </h5>
                             <button
                                 type="button"
@@ -112,8 +118,11 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Perfect!
+                            <h5
+                                class="modal-title text-success"
+                                id="exampleModalLabel"
+                            >
+                                Perfect! <i class="fa-solid fa-check"></i>
                             </h5>
                             <button
                                 type="button"
@@ -124,7 +133,10 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body">Message sent successfully</div>
+                        <div class="modal-body text-success">
+                            Message sent successfully
+                            <i class="fa-solid fa-paper-plane-top"></i>
+                        </div>
                         <div class="modal-footer">
                             <button
                                 type="button"

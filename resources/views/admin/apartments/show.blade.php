@@ -98,26 +98,38 @@
             <div class="col-12 mt-4">
                 <div class="m-3 text-center">
                     <a class="btn btn-pink position-relative w-25" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                      Messages @if (count($messages) != 0)
+                      Messages <i class="fa-solid fa-comments"></i> @if (count($messages) != 0)
                       <span class="badge badge-light text_danger badge-pill position-absolute badge-position fs-1">{{ count($messages) }}</span>    
                       @endif
                     </a>
                 </div>
                 @if (count($messages) != 0)
                     <div class="collapse bg-light p-3 border rounded" id="collapseExample">
-                        <div>
-                            @foreach ($messages as $message)
-                                    <div class="text_danger border rounded p-3 mb-3 shadow">     
-                                        <div class="text-dark mb-2"><strong class="text_danger">From:</strong> {{ $message->name }}</div>
-                                        <div class="text-dark mb-2"><strong class="text_danger">Email:</strong> {{ $message->email }}</div>
-                                        <div class="text-dark mb-2"><strong class="text_danger">Message:</strong> {{ $message->message }}</div>
-                                        <div class="text-dark mb-2"><strong class="text_danger">Sended:</strong> {{ $message->created_at }}</div>
-                                        <div class="text-right">
-                                            <button type="button" class="btn btn-danger" data-toggle="modal"
-                                                data-target="#exampleModal{{$message->id}}">
-                                                    Delete Message
-                                            </button>
-                                            <form action="{{ route('admin.messages.destroy', [$message->id, $apartment->slug])}}" method="POST">
+                        @foreach ($messages as $message)
+                            <div class="text_danger border rounded p-3 mb-3 shadow"> 
+                                    <div class="text-dark mb-2">
+                                        <strong class="text_danger"><i class="fa-solid fa-user"></i> From:</strong> <span class="ml-2">{{ $message->name }}</span>
+                                    </div>
+
+                                    <div class="text-dark mb-2">
+                                        <strong class="text_danger"><i class="fa-solid fa-envelope"></i> Email:</strong> <span class="ml-2">{{ $message->email }}</span> 
+                                    </div>
+
+                                    <div class="d-flex mb-2">
+                                        <span class="flex-shrink-0 mr-2"><strong class="text_danger"><i class="fa-solid fa-comment-dots"></i> Message:</strong></span>
+                                        <span class="text-dark">{{ $message->message }}</span>
+                                    </div>
+
+                                    <div class="text-dark mb-2">
+                                        <strong class="text_danger"><i class="fa-solid fa-paper-plane"></i> Sended:</strong> <span class="ml-2">{{ $message->created_at }}</span>
+                                    </div>
+
+                                    <div class="text-right">
+                                        <button type="button" class="btn btn-danger" data-toggle="modal"
+                                            data-target="#exampleModal{{$message->id}}">
+                                                Delete Message <i class="fa-solid fa-trash-can"></i>
+                                        </button>
+                                        <form action="{{ route('admin.messages.destroy', [$message->id, $apartment->slug])}}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <div
@@ -126,35 +138,35 @@
                                                     tabindex="-1"
                                                     aria-labelledby="exampleModalLabel"
                                                     aria-hidden="true">
-                                                    <div class="modal-dialog modal-dialog-centered">
-                                                        <div class="modal-content">
-                                                            <div class="modal-header">
-                                                                <h5 class="modal-title" id="exampleModalLabel">
-                                                                    Warning
-                                                                </h5>
-                                                                <button
-                                                                    type="button"
-                                                                    class="close"
-                                                                    data-dismiss="modal"
-                                                                    aria-label="Close"
-                                                                >
-                                                                    <span aria-hidden="true">&times;</span>
-                                                                </button>
-                                                            </div>
-                                                            <div class="modal-body">Are you sure  that you want to permanently delete this message?</div>
-                                                            <div class="modal-footer">
-                                                                <button type="submit" class="btn btn-danger">
-                                                                    Delete message
-                                                                </button>
-                                                            </div>
-                                                        </div>
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                         <h5 class="modal-title" id="exampleModalLabel">
+                                                            Warning <i class="fa-solid fa-circle-exclamation"></i>
+                                                        </h5>
+                                                        <button
+                                                            type="button"
+                                                            class="close"
+                                                            data-dismiss="modal"
+                                                            aria-label="Close"
+                                                        >
+                                                            <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                    </div>
+                                                    <div class="modal-body text-center">Are you sure  that you want to permanently delete this message?     
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-danger">
+                                                            Delete message <i class="fa-solid fa-trash-can"></i>
+                                                        </button>
                                                     </div>
                                                 </div>
-                                            </form>
+                                            </div>
                                         </div>
-                                    </div>
-                            @endforeach
-                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 @else
                     <div class="collapse bg-light p-3 border rounded text-center" id="collapseExample">
