@@ -6,7 +6,6 @@
         <div class="my-2 my-lg-0">
             <div class="mb-3">
                 <div class="d-flex">
-                    <label for="address" class="form-label"></label>
                     <input
                         type="text"
                         class="fs-10 border-custom fw-light form-control"
@@ -17,8 +16,8 @@
                         @keyup="getAddress()"
                     />
                 </div>
-                
-                <ul class="list-unstyled cursor-pointer bg-white text-dark">
+
+                <ul class="list-unstyled cursor-pointer bg-white text-dark rounded">
                     <li
                         :id="`${index}`"
                         @click="setValue(index)"
@@ -333,7 +332,6 @@ export default {
     components: {},
     data() {
         return {
-            filter: ",",
             numRooms: 0,
             maxPeople: 0,
             selectedDistance: 20,
@@ -406,7 +404,6 @@ export default {
                 .then((result => {
                     /* console.log(result.data); */
                     this.filteredAparments = result.data;
-                    console.log(result.data)
                 }))
                 .catch((error => {
                     console.log(error)
@@ -419,13 +416,6 @@ export default {
 
 <style lang="scss" scoped>
 
-// .form-control:focus ~ {
-//     color: red ;
-//     background-color: #fff;
-//     border-color: red;
-//     outline: 0;
-//     box-shadow: red;
-// }
 .img-custom {
     object-fit: cover;
     padding: 0.5rem;

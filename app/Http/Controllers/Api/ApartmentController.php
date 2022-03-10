@@ -63,38 +63,38 @@ class ApartmentController extends Controller
                                             ['max_people', '>=', $request->maxPeople],
                                         ])
                                     ->get();
+        }
+
+        //Calcolo della distanza di ogni appartamento preso dal DB rispetto al punto selezionato
+        $p = 0.017453292519943295;
+        $filteredApartments = [];
+        foreach ( $apartments as $apartment ) {
+            $a =
+            0.5 -
+            cos(($apartment->latitude - $request->selectedLat) * $p) / 2 +
+            (cos($request->selectedLat * $p) *
+            cos($apartment->latitude * $p) *
+            (1 - cos(($apartment->longitude - $request->selectedLon) * $p))) /
+            2;
+            $distance = 12742 * asin(sqrt($a));
+
+            $apartment['distance'] = $distance;
+            if ($distance < $request->selectedDistance) {
+                $filteredApartments[] = $apartment;
             }
+        }
 
-            //Calcolo della distanza di ogni appartamento preso dal DB rispetto al punto selezionato
-            $p = 0.017453292519943295;
-            $filteredApartments = [];
-            foreach ( $apartments as $apartment ) {
-                $a =
-                0.5 -
-                cos(($apartment->latitude - $request->selectedLat) * $p) / 2 +
-                (cos($request->selectedLat * $p) *
-                cos($apartment->latitude * $p) *
-                (1 - cos(($apartment->longitude - $request->selectedLon) * $p))) /
-                2;
-                $distance = 12742 * asin(sqrt($a));
+        $distance_column = array_column($filteredApartments, 'distance');
+        
+        array_multisort($distance_column, SORT_ASC, $filteredApartments);
 
-                $apartment['distance'] = $distance;
-                if ($distance < $request->selectedDistance) {
-                    $filteredApartments[] = $apartment;
-                }
+        foreach ($filteredApartments as $apartment ) {
+            if ($apartment->image) {
+                $apartment->image = url('storage/' . $apartment->image);
+            } else {
+                $apartment->image = url('storage/img-apartments/Not-found.png');
             }
-
-            $distance_column = array_column($filteredApartments, 'distance');
-            
-            array_multisort($distance_column, SORT_ASC, $filteredApartments);
-
-            foreach ($filteredApartments as $apartment ) {
-                if ($apartment->image) {
-                    $apartment->image = url('storage/' . $apartment->image);
-                } else {
-                    $apartment->image = url('storage/img-apartments/Not-found.png');
-                }
-            }
+        }
         return response()->json($filteredApartments);
     }
 

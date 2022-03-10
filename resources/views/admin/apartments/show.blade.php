@@ -91,7 +91,7 @@
                     </li>
 
                     <li class="list-group-item">
-                        <a href="{{ route('admin.sponsorships') }}">Sponsorship</a>
+                        <a href="https://www.youtube.com/watch?v=G1IbRujko-A&ab_channel=10Hours{{-- {{ route('admin.sponsorships') }} --}}">Sponsorship</a>
                     </li>
                 </ul>
             </div>
