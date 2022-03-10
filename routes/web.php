@@ -54,31 +54,27 @@ Auth::routes();
 
         $apartmentsFilteredByServices = DB::table('apartment_service')
             ->whereIn('service_id', $filtersArray)
-            /* ->select('apartment_id') */
-            /* ->groupBy('apartment_id') */
-            /* ->having('service_id', 1) */
-            /* ->distinct() */
+            ->select('apartment_id', DB::raw('count(id)') )
+            ->groupBy('apartment_id')
+            ->having('count(id)' , count($filtersArray))
             ->get();
 
         $idApartmentArray = [];
         foreach ($apartmentsFilteredByServices as $apartment) {
             $idApartmentArray[] = $apartment->apartment_id;
         }
-        $countIdApartment = array_count_values($idApartmentArray);
+        // $countIdApartment = array_count_values($idApartmentArray);
 
-        $apartmentSelected = [];
-        foreach ($countIdApartment as $key => $value) {
+        // $apartmentSelected = [];
+        // foreach ($countIdApartment as $key => $value) {
 
-            if ($value == count($filtersArray) ) {
-                $apartmentSelected[] = $key;
-            }
-        }
+        //     if ($value == count($filtersArray) ) {
+        //         $apartmentSelected[] = $key;
+        //     }
+        // }
 
         $apartments = Apartment::with('services')
-                                ->whereIn('id', $apartmentSelected)->get();
-
-
-        dd($apartments);
+                    ->whereIn('id', $idApartmentArray)->get();
     });
 
 // Home front 

@@ -31,107 +31,39 @@ class ApartmentController extends Controller
 
     public function filter(Request $request) {
         //Se sono stati inseriti servizi
+
         $filtersArray = $request->filteredServices;
-        $filtersWheres = [];
-        foreach($filtersArray as $whereClause){
-            $filtersWheres[] = ['service_id' , $whereClause ];
-        }
+        if(count($filtersArray) > 0){
 
-        $apartments = DB::table('apartment_service')->join('apartments' , 'apartments.id' , '=' , 'apartment_service.apartment_id')
-                                            ->groupBy('apartment_id')
-                                            ->get();
-
-
-        // $apartments = Apartment::with(['services'])
-        //                         ->select('id')->get();
-
-                                // $filtersApartment = [];
-
-                                // for( $i = 0 ; $i <= count($apartments); $i++){
-
-                                //     if(!array_diff($apartments[$i]->service[$id] , $filtersArray)){
-                                //         $filtersApartment[] = $apartments[$i]->id;
-                                //     }
-                                // };
-
-        return response()->json($apartments);
-
-        if( count($request->filteredServices) > 0 ) {
-
-        //Creazione di un array di array con NOME COLONNA e ID
-        $filtersArray = [];
-        foreach($request->filteredServices as $filterId) {
-            $filtersArray[] = ['service_id', $filterId];
-        }
-        
-        if(count($filtersArray) > 1) {
-            //Creazione di un array di ID dei filtri selezionati e dei relativi APPARTAMENTI
             $apartmentsFilteredByServices = DB::table('apartment_service')
-                                            ->whereIn('service_id',$filtersArray)
-                                            ->select('apartment_id')
-                                            ->distinct()
-                                            ->get();
-
-                // PUSHI NELL ARRAY DEGLI APPARTMANENTI FILTRATI.
-
-
-                //Controllare se all'interno dell'array $apartmentsFilteredByServices l'ID di ogni appartamento compare un numero di volte uguale al count di $filtersArray
-                /*$idApartmentArray = [];
-                foreach ($apartmentsFilteredByServices as $apartment) {
-                    $idApartmentArray[] = $apartment->apartment_id;
-                }
-
-                $countIdApartment = array_count_values($idApartmentArray);
-
-                $apartmentSelected = [];
-                foreach ($countIdApartment as $key => $value) {
-
-                    if($value == 2) {
-                        $apartmentSelected[] = $key;
+                                        ->whereIn('service_id', $filtersArray)
+                                        ->select('apartment_id', DB::raw('count(id)') )
+                                        ->groupBy('apartment_id')
+                                        ->having('count(id)' , count($filtersArray))
+                                        ->get();
+    
+                 $idApartmentArray = [];
+                    foreach ($apartmentsFilteredByServices as $apartment) {
+                        $idApartmentArray[] = $apartment->apartment_id;
                     }
-                }
-                return response()->json($apartmentSelected); */
-            } else {
-                $apartmentsFilteredByServices = DB::table('apartment_service')
-                                                ->where($filtersArray)
-                                                ->select('apartment_id')
-                                                ->distinct()
-                                                ->get();
-            }
-
-            //return response()->json($apartmentsFilteredByServices);
-            $apartmentsIdFilteredByServices = [];
-            foreach ($apartmentsFilteredByServices as $apartment) {
-                $apartmentsIdFilteredByServices[] = $apartment->apartment_id;
-                
-            }
-
-            //Interrogazione del DB con i criteri passati
-            $apartments = Apartment::where('max_people', '>=', $request->maxPeople)
-                                    ->where('rooms', '>=', $request->maxRoom)
-                                    ->where('visibility', 1)
-                                    ->whereIn('id', $apartmentsIdFilteredByServices)
+                    
+            $apartments = Apartment::with('services')
+                                ->whereIn('id', $idApartmentArray)
+                                ->where([
+                                        ['visibility' , 1],
+                                        ['rooms', '>=', $request->maxRoom],
+                                        ['max_people', '>=', $request->maxPeople],
+                                    ])
                                     ->get();
-
-                foreach($apartments as $apartment){
-                    if ($apartment->image) {
-                        $apartment->image = url('storage/' . $apartment->image);
-                    }
-                }
-                
         } else {
-            //Interrogazione del DB con i criteri passati
-            $apartments = Apartment::where('max_people', '>=', $request->maxPeople)
-                                    ->where('rooms', '>=', $request->maxRoom)
-                                    ->where('visibility', 1)
+            $apartments = Apartment::with('services')
+                                    ->where([
+                                            ['visibility' , 1],
+                                            ['rooms', '>=', $request->maxRoom],
+                                            ['max_people', '>=', $request->maxPeople],
+                                        ])
                                     ->get();
-                foreach($apartments as $apartment){
-                    if ($apartment->image) {
-                        $apartment->image = url('storage/' . $apartment->image);
-                    }
-                }
-        }
-
+            }
 
             //Calcolo della distanza di ogni appartamento preso dal DB rispetto al punto selezionato
             $p = 0.017453292519943295;
@@ -156,6 +88,13 @@ class ApartmentController extends Controller
             
             array_multisort($distance_column, SORT_ASC, $filteredApartments);
 
+            foreach ($filteredApartments as $apartment ) {
+                if ($apartment->image) {
+                    $apartment->image = url('storage/' . $apartment->image);
+                } else {
+                    $apartment->image = url('storage/img-apartments/Not-found.png');
+                }
+            }
         return response()->json($filteredApartments);
     }
 
