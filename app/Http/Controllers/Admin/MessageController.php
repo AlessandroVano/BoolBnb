@@ -87,6 +87,6 @@ class MessageController extends Controller
     {
         $message->delete();
 
-        return redirect()->route('admin.apartments.index')->with('deleted', $message->name);
+        return redirect()->route('admin.apartments.index')->with('deleted-message', $message->name);
     }
 }
