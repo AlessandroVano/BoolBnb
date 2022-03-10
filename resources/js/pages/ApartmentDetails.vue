@@ -1,12 +1,12 @@
 <template>
-    <section class="container my-4">
-        <div class="card p-4">
+    <section class="container  my-4">
+        <div class="card  p-4">
             <div v-if="apartment">
                 <!-- name -->
                 <div
                     class="col-12 justify-content-center align-items-center text-center"
                 >
-                    <h1 class="d-inline mt-3">{{ apartment.name }}</h1>
+                    <h1 class="d-inline title mt-3">{{ apartment.name }}</h1>
                 </div>
 
                 <!-- image -->
@@ -19,9 +19,9 @@
                 </div>
 
                 <!-- service -->
-                <section class="w-100 justify-content-around d-flex mb-5">
+                <section class=" circle container service_icon  mb-5">
                     <div
-                        class="text-center"
+                       
                         v-for="service in apartment.services"
                         :key="`service-${service.id}`"
                     >
@@ -30,38 +30,41 @@
                             :src="service.icon"
                             alt="service.name"
                         />
-                        <div class="mt-1">{{ service.name }}</div>
+                        <div class="service_name">{{ service.name }}</div>
                     </div>
                 </section>
                 <!-- Maps + Detail apartment -->
-                <section class="mt-5 container">
+                <section class="mt-5 container  description_maps  ">
                     <div class="row d-flex">
                         <div class="col-6">
+                            <div class="card p-4">
+
                             <div>
                                 <strong>Description:</strong>
                                 <p>{{ apartment.description }}</p>
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex mt-2">
                                 <strong>Number of rooms:</strong>
                                 <span class="mx-3">{{ apartment.rooms }}</span>
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex  mt-2">
                                 <strong>Price:</strong>
                                 <span class="mx-3"
                                     >{{ apartment.price }} €</span
                                 >
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex  mt-2">
                                 <strong>Address:</strong>
                                 <span class="mx-3">{{
                                     apartment.address
                                 }}</span>
                             </div>
-                            <div class="d-flex">
+                            <div class="d-flex  mt-2">
                                 <strong>Square meters:</strong>
                                 <span class="mx-3">
                                     {{ apartment.square_meters }} m2
                                 </span>
+                            </div>
                             </div>
                         </div>
 
@@ -135,28 +138,56 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.title {
+    color: #ff385c;
+}
+strong {
+    color: #ff385c;
+}
 .img-1 {
     width: 100%;
     object-fit: contain;
     height: 350px;
 }
+.service_icon{ 
+    margin-left: 38px;
+    display: flex;
+    text-align: center;
+    flex-wrap: wrap;
+   
+}
+.service_name{
+    padding: 20px 20px;
+    margin-top: -19px;
+    
+}
+
 .service {
     display: flex;
     flex-direction: row;
 }
+/* .circle{
+    width: 20px;
+    height: 20px;
+    background-color: #ff385c;
+} */
+
 .service-img {
     width: 30px;
+    
+}
+.description_maps {
+    margin-left: 22px;
 }
 
 #cartina {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 400px;
-    height: 400px;
     background-position: center;
     background-repeat: no-repeat;
     object-fit: contain;
+    border-radius: 10px ;
 }
 
 .marker {
