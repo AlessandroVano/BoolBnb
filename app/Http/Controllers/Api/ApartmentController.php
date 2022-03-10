@@ -30,13 +30,37 @@ class ApartmentController extends Controller
     }
 
     public function filter(Request $request) {
-        //Se sono stati inseriti servizi
-        if( count($request->filteredServices) > 0 ) {
+        //Se sono stati inseriti servizi+
+        $filtersArray = $request->filteredServices;
+        $filtersWheres = [];
+        foreach($filtersArray as $whereClause){
+            $filtersWheres[] = ['service_id' , $whereClause ];
+        }
+
+        $apartments = DB::table('apartments')->join('apartment_service' , 'apartments.id' , '=' , 'apartment_service.apartment_id')
+                                            ->get();
+
+
+        // $apartments = Apartment::with(['services'])
+        //                         ->select('id')->get();
+
+                                // $filtersApartment = [];
+
+                                // for( $i = 0 ; $i <= count($apartments); $i++){
+
+                                //     if(!array_diff($apartments[$i]->service[$id] , $filtersArray)){
+                                //         $filtersApartment[] = $apartments[$i]->id;
+                                //     }
+                                // };
+
+            return response()->json($apartments);
+
+            if( count($request->filteredServices) > 0 ) {
 
             //Creazione di un array di array con NOME COLONNA e ID
             $filtersArray = [];
             foreach($request->filteredServices as $filterId) {
-                $filtersArray[] = ['service_id', strval($filterId)];
+                $filtersArray[] = $filterId;
             }
             
             if(count($filtersArray) > 1) {
@@ -46,6 +70,16 @@ class ApartmentController extends Controller
                                                 ->select('apartment_id')
                                                 ->distinct()
                                                 ->get();
+
+                // ARRAY DI ID DEGLI APPARTAMENTI 
+
+                // ARRAY DI ID DEI SERVIZI PER OGNI APPARTAMENTO 
+                // IF filtersArray === 
+                // APP 1 --> 1 4 6 
+                // APP 2 --> 369
+
+                // PUSHI NELL ARRAY DEGLI APPARTMANENTI FILTRATI.
+
 
                 //Controllare se all'interno dell'array $apartmentsFilteredByServices l'ID di ogni appartamento compare un numero di volte uguale al count di $filtersArray
                 /*$idApartmentArray = [];
@@ -128,7 +162,7 @@ class ApartmentController extends Controller
             
             array_multisort($distance_column, SORT_ASC, $filteredApartments);
 
-        //return response()->json($filteredApartments);
+        return response()->json($filteredApartments);
     }
 
     /* PAGINA DI DETTAGLIO DEGLI APARTMENT */
