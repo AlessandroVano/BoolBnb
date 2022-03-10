@@ -30,14 +30,15 @@ class ApartmentController extends Controller
     }
 
     public function filter(Request $request) {
-        //Se sono stati inseriti servizi+
+        //Se sono stati inseriti servizi
         $filtersArray = $request->filteredServices;
         $filtersWheres = [];
         foreach($filtersArray as $whereClause){
             $filtersWheres[] = ['service_id' , $whereClause ];
         }
 
-        $apartments = DB::table('apartments')->join('apartment_service' , 'apartments.id' , '=' , 'apartment_service.apartment_id')
+        $apartments = DB::table('apartment_service')->join('apartments' , 'apartments.id' , '=' , 'apartment_service.apartment_id')
+                                            ->groupBy('apartment_id')
                                             ->get();
 
 
@@ -53,30 +54,23 @@ class ApartmentController extends Controller
                                 //     }
                                 // };
 
-            return response()->json($apartments);
+        return response()->json($apartments);
 
-            if( count($request->filteredServices) > 0 ) {
+        if( count($request->filteredServices) > 0 ) {
 
-            //Creazione di un array di array con NOME COLONNA e ID
-            $filtersArray = [];
-            foreach($request->filteredServices as $filterId) {
-                $filtersArray[] = $filterId;
-            }
-            
-            if(count($filtersArray) > 1) {
-                //Creazione di un array di ID dei filtri selezionati e dei relativi APPARTAMENTI
-                $apartmentsFilteredByServices = DB::table('apartment_service')
-                                                ->whereIn('service_id',$filtersArray)
-                                                ->select('apartment_id')
-                                                ->distinct()
-                                                ->get();
-
-                // ARRAY DI ID DEGLI APPARTAMENTI 
-
-                // ARRAY DI ID DEI SERVIZI PER OGNI APPARTAMENTO 
-                // IF filtersArray === 
-                // APP 1 --> 1 4 6 
-                // APP 2 --> 369
+        //Creazione di un array di array con NOME COLONNA e ID
+        $filtersArray = [];
+        foreach($request->filteredServices as $filterId) {
+            $filtersArray[] = ['service_id', $filterId];
+        }
+        
+        if(count($filtersArray) > 1) {
+            //Creazione di un array di ID dei filtri selezionati e dei relativi APPARTAMENTI
+            $apartmentsFilteredByServices = DB::table('apartment_service')
+                                            ->whereIn('service_id',$filtersArray)
+                                            ->select('apartment_id')
+                                            ->distinct()
+                                            ->get();
 
                 // PUSHI NELL ARRAY DEGLI APPARTMANENTI FILTRATI.
 

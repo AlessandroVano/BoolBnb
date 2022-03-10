@@ -396,7 +396,7 @@ export default {
                 })
                 .then((result => {
                     /* console.log(result.data); */
-                    // this.filteredAparments = result.data;
+                    this.filteredAparments = result.data;
                     console.log(result.data)
                 }))
                 .catch((error => {
