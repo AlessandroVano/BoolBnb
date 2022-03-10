@@ -44,38 +44,38 @@ Auth::routes();
              Route::resource('/messages', 'MessageController');
          });
 
-    Route::get('/test', function(){
-    /*         $apartments = DB::table('apartment_service')->join('apartments', 'apartments.id', '=', 'apartment_service.apartment_id')
-        ->groupBy('apartment_id')
-        ->get(); */
-    /* $apartments = Apartment::with('services')->get(); */
+    // Route::get('/test', function(){
+    // /*         $apartments = DB::table('apartment_service')->join('apartments', 'apartments.id', '=', 'apartment_service.apartment_id')
+    //     ->groupBy('apartment_id')
+    //     ->get(); */
+    // /* $apartments = Apartment::with('services')->get(); */
 
-        $filtersArray = [1, 2, 3];
+    //     $filtersArray = [1, 2, 3];
 
-        $apartmentsFilteredByServices = DB::table('apartment_service')
-            ->whereIn('service_id', $filtersArray)
-            ->select('apartment_id', DB::raw('count(id)') )
-            ->groupBy('apartment_id')
-            ->having('count(id)' , count($filtersArray))
-            ->get();
+    //     $apartmentsFilteredByServices = DB::table('apartment_service')
+    //         ->whereIn('service_id', $filtersArray)
+    //         ->select('apartment_id', DB::raw('count(id)') )
+    //         ->groupBy('apartment_id')
+    //         ->having('count(id)' , count($filtersArray))
+    //         ->get();
 
-        $idApartmentArray = [];
-        foreach ($apartmentsFilteredByServices as $apartment) {
-            $idApartmentArray[] = $apartment->apartment_id;
-        }
-        // $countIdApartment = array_count_values($idApartmentArray);
+    //     $idApartmentArray = [];
+    //     foreach ($apartmentsFilteredByServices as $apartment) {
+    //         $idApartmentArray[] = $apartment->apartment_id;
+    //     }
+    //     // $countIdApartment = array_count_values($idApartmentArray);
 
-        // $apartmentSelected = [];
-        // foreach ($countIdApartment as $key => $value) {
+    //     // $apartmentSelected = [];
+    //     // foreach ($countIdApartment as $key => $value) {
 
-        //     if ($value == count($filtersArray) ) {
-        //         $apartmentSelected[] = $key;
-        //     }
-        // }
+    //     //     if ($value == count($filtersArray) ) {
+    //     //         $apartmentSelected[] = $key;
+    //     //     }
+    //     // }
 
-        $apartments = Apartment::with('services')
-                    ->whereIn('id', $idApartmentArray)->get();
-    });
+    //     $apartments = Apartment::with('services')
+    //                 ->whereIn('id', $idApartmentArray)->get();
+    // });
 
 // Home front 
    Route::get('{any?}', function () {

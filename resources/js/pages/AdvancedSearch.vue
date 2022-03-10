@@ -269,17 +269,26 @@
                                             ></i>
                                             {{ apartment.name }}
                                         </h5>
-                                        <p class="card-text">
+                                        <p
+                                            v-if="apartment.description != null"
+                                            class="card-text"
+                                        >
                                             <i
                                                 class="fa-solid fa-rectangle-list mr-2"
                                             ></i>
-                                            <!-- {{
+                                            {{
                                                 getExcerpt(
                                                     apartment.description,
                                                     120
                                                 )
-                                            }} -->
-                                            {{ apartment.description }}
+                                            }}
+
+                                        </p>
+                                        <p v-else class="card-text">
+                                            <i
+                                                class="fa-solid fa-rectangle-list mr-2"
+                                            ></i>
+                                          Description not available
                                         </p>
                                         <div class="card-subtitle mb-2">
                                             <i
