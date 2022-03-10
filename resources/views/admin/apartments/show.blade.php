@@ -93,30 +93,74 @@
                     <li class="list-group-item">
                         <a href="{{ route('admin.sponsorships') }}">Sponsorship</a>
                     </li>
-
-                    {{-- Messages --}}
-                    <li class="list-group-item">
-                        <p>
-                            <a class="btn btn-primary" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
-                              Messages
-                            </a>
-                          </p>
-                          <div class="collapse" id="collapseExample">
-                            <div class="card card-body">
-                                <ul>
-                                    @foreach ($messages as $message)
-                                    <li>
-                                        <div>{{ $message->name }}</div>
-                                        <div>{{ $message->email }}</div>
-                                        <div>{{ $message->message }}</div>
-                                    </li>
-                                    @endforeach
-                                </ul>
-                            </div>
-                          </div>
-                
-                    </li>
                 </ul>
+            </div>
+            <div class="col-12 mt-4">
+                <div class="m-3 text-center">
+                    <a class="btn btn-pink position-relative w-25" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                      Messages @if (count($messages) != 0)
+                      <span class="badge badge-light text_danger badge-pill position-absolute badge-position fs-1">{{ count($messages) }}</span>    
+                      @endif
+                    </a>
+                </div>
+                @if (count($messages) != 0)
+                    <div class="collapse bg-light p-3 border rounded" id="collapseExample">
+                        <div>
+                            @foreach ($messages as $message)
+                                    <div class="text_danger border rounded p-3 mb-3 shadow">     
+                                        <div class="text-dark mb-2"><strong class="text_danger">From:</strong> {{ $message->name }}</div>
+                                        <div class="text-dark mb-2"><strong class="text_danger">Email:</strong> {{ $message->email }}</div>
+                                        <div class="text-dark mb-2"><strong class="text_danger">Message:</strong> {{ $message->message }}</div>
+                                        <div class="text-dark mb-2"><strong class="text_danger">Sended:</strong> {{ $message->created_at }}</div>
+                                        <div class="text-right">
+                                            <button type="button" class="btn btn-danger" data-toggle="modal"
+                                                data-target="#exampleModal{{$message->id}}">
+                                                    Delete Message
+                                            </button>
+                                            <form action="{{ route('admin.messages.destroy', [$message->id, $apartment->slug])}}" method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <div
+                                                    class="modal fade text-danger"
+                                                    id="exampleModal{{ $message->id }}"
+                                                    tabindex="-1"
+                                                    aria-labelledby="exampleModalLabel"
+                                                    aria-hidden="true">
+                                                    <div class="modal-dialog modal-dialog-centered">
+                                                        <div class="modal-content">
+                                                            <div class="modal-header">
+                                                                <h5 class="modal-title" id="exampleModalLabel">
+                                                                    Warning
+                                                                </h5>
+                                                                <button
+                                                                    type="button"
+                                                                    class="close"
+                                                                    data-dismiss="modal"
+                                                                    aria-label="Close"
+                                                                >
+                                                                    <span aria-hidden="true">&times;</span>
+                                                                </button>
+                                                            </div>
+                                                            <div class="modal-body">Are you sure  that you want to permanently delete this message?</div>
+                                                            <div class="modal-footer">
+                                                                <button type="submit" class="btn btn-danger">
+                                                                    Delete message
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                            @endforeach
+                        </div>
+                    </div>
+                @else
+                    <div class="collapse bg-light p-3 border rounded text-center" id="collapseExample">
+                        <h1>The message's box is empty</h1>
+                    </div>
+                @endif
             </div>
         </div>
     </div>
