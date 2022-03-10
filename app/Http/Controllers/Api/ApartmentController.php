@@ -38,13 +38,40 @@ class ApartmentController extends Controller
             foreach($request->filteredServices as $filterId) {
                 $filtersArray[] = ['service_id', strval($filterId)];
             }
+            
+            if(count($filtersArray) > 1) {
+                //Creazione di un array di ID dei filtri selezionati e dei relativi APPARTAMENTI
+                $apartmentsFilteredByServices = DB::table('apartment_service')
+                                                ->whereIn('service_id',$filtersArray)
+                                                ->select('apartment_id')
+                                                ->distinct()
+                                                ->get();
 
-            //Creazione di un array di ID dei filtri selezionati e dei relativi APPARTAMENTI
-            $apartmentsFilteredByServices = DB::table('apartment_service')->where($filtersArray)
-                                        ->select('apartment_id')
-                                        ->distinct()
-                                        ->get();
+                //Controllare se all'interno dell'array $apartmentsFilteredByServices l'ID di ogni appartamento compare un numero di volte uguale al count di $filtersArray
+                /*$idApartmentArray = [];
+                foreach ($apartmentsFilteredByServices as $apartment) {
+                    $idApartmentArray[] = $apartment->apartment_id;
+                }
 
+                $countIdApartment = array_count_values($idApartmentArray);
+
+                $apartmentSelected = [];
+                foreach ($countIdApartment as $key => $value) {
+
+                    if($value == 2) {
+                        $apartmentSelected[] = $key;
+                    }
+                }
+                return response()->json($apartmentSelected); */
+            } else {
+                $apartmentsFilteredByServices = DB::table('apartment_service')
+                                                ->where($filtersArray)
+                                                ->select('apartment_id')
+                                                ->distinct()
+                                                ->get();
+            }
+
+            //return response()->json($apartmentsFilteredByServices);
             $apartmentsIdFilteredByServices = [];
             foreach ($apartmentsFilteredByServices as $apartment) {
                 $apartmentsIdFilteredByServices[] = $apartment->apartment_id;
@@ -101,7 +128,7 @@ class ApartmentController extends Controller
             
             array_multisort($distance_column, SORT_ASC, $filteredApartments);
 
-        return response()->json($filteredApartments);
+        //return response()->json($filteredApartments);
     }
 
     /* PAGINA DI DETTAGLIO DEGLI APARTMENT */

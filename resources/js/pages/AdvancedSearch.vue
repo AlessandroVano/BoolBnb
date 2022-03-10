@@ -395,6 +395,7 @@ export default {
                     maxRoom: this.numRooms,
                 })
                 .then((result => {
+                    /* console.log(result.data); */
                     this.filteredAparments = result.data;
                     console.log(result.data)
                 }))
