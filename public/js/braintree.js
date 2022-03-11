@@ -3,7 +3,7 @@ const button = document.querySelector('#submit-button')
 
 braintree.dropin.create({
     // Insert your tokenization key here
-    authorization: 'sandbox_jyz2rzfb_r2zzkr3mvj58wgd2',
+    authorization: 'sandbox_jy8f34ff_r2zzkr3mvj58wgd2',
     container: '#dropin-container'
   }, function (createErr, instance) {
     button.addEventListener('click', function () {

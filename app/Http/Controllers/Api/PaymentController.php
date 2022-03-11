@@ -9,8 +9,6 @@ use Braintree;
 class PaymentController extends Controller
 {
     public function payment(Request $request) {
-
-        return response()->json($request);
         
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -18,5 +16,23 @@ class PaymentController extends Controller
             'publicKey' => config('services.braintree.publicKey'),
             'privateKey' => config('services.braintree.privateKey'),
         ]);
+        
+        $nonce = $request->paymentMethodNonce;
+
+        $result = $gateway->transaction()->sale([
+            'amount' => '10',
+            'paymentMethodNonce' => $nonce,
+            'options' => [
+            'submitForSettlement' => True
+            ]
+          ]);
+            
+        if ($result->success){
+            $transaction = $result->transaction;
+            return response()->json('trimone' . $transaction->id);
+        } else {
+            return response()->json('trimone ti manda a cagare');
+        }
     }
+
 }
