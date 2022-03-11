@@ -17,11 +17,17 @@
                         </div>
                     </div>
                 </div>
+
+                <button class="btn btn-pink my-3 text-center justify-self-center">
+                    <a class="text-white" href="{{route('admin.checkout')}}">Compra il Pacchetto</a>
+                </button>
             </div>
             @endforeach
         </div>
         <button class="btn btn-pink mx-auto d-block my-5">
             <a href="{{ route('admin.apartments.index') }}" class="text-white text-decoration-none">Return to list</a>
         </button>
+
+        
     </section>
 @endsection
