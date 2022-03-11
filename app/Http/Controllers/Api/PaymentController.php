@@ -10,11 +10,9 @@ use App\Sponsorship;
 class PaymentController extends Controller
 {
     public function payment(Request $request) {
-        $sponsorship_id = $request->data->sponsor_id;
-        return response()->json($sponsorship_id);
-
-        $sponsorship = Sponsorship::where('id', 'sponsorship_id')->first();
+        $sponsorship_id = $request->sponsor_id;
         
+        $sponsorship = Sponsorship::where('id' , '=', $sponsorship_id)->first();
 
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
@@ -35,6 +33,9 @@ class PaymentController extends Controller
             
         if ($result->success){
             $transaction = $result->transaction;
+            
+            
+
             return response()->json('Done' . $transaction->id);
         } else {
             return response()->json('Error');
