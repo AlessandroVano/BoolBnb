@@ -91,7 +91,7 @@
                     </li>
 
                     <li class="list-group-item">
-                        <a href="{{ route('admin.sponsorships') }}">Sponsorship</a>
+                        <a class="btn btn-pink mx-2" href="{{ route('admin.sponsorships') }}">Sponsor Your Apartment</a>
                     </li>
                 </ul>
             </div>
