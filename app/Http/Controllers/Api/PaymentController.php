@@ -5,11 +5,20 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Braintree;
+use App\Sponsorship;
+use App\Apartment;
+use Carbon\Carbon;
 
 class PaymentController extends Controller
 {
     public function payment(Request $request) {
-        
+        $sponsorship_id = $request->sponsor_id;
+
+        $apartment = Apartment::find($request->apartment_id);
+
+
+        $sponsorship = Sponsorship::where('id' , '=', $sponsorship_id)->first();
+
         $gateway = new Braintree\Gateway([
             'environment' => config('services.braintree.environment'),
             'merchantId' => config('services.braintree.merchantId'),
@@ -20,7 +29,7 @@ class PaymentController extends Controller
         $nonce = $request->paymentMethodNonce;
 
         $result = $gateway->transaction()->sale([
-            'amount' => '10',
+            'amount' => $sponsorship->price,
             'paymentMethodNonce' => $nonce,
             'options' => [
             'submitForSettlement' => True
@@ -28,10 +37,19 @@ class PaymentController extends Controller
           ]);
             
         if ($result->success){
+
             $transaction = $result->transaction;
-            return response()->json('trimone' . $transaction->id);
+
+            $start_date = Carbon::now()->format('d-m-Y');
+            $end_date = Carbon::parse($start_date)->addHours($sponsorship->duration)->format('d-m-Y');
+            $apartment->sponsorships()->attach($sponsorship->id , [
+                'start_date' => $start_date,
+                'end_date' => $end_date
+            ]);
+
+            return response()->json('Done' . $transaction->id);
         } else {
-            return response()->json('trimone ti manda a cagare');
+            return response()->json('Error');
         }
     }
 

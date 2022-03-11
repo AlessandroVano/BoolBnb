@@ -1,6 +1,15 @@
 
 const button = document.querySelector('#submit-button')
 
+let sponsor = document.getElementById('sponsor').value
+
+let apartment = document.getElementById('apartment').value
+
+
+
+console.log(sponsor)
+console.log(apartment)
+
 braintree.dropin.create({
     // Insert your tokenization key here
     authorization: 'sandbox_jy8f34ff_r2zzkr3mvj58wgd2',
@@ -8,15 +17,18 @@ braintree.dropin.create({
   }, function (createErr, instance) {
     button.addEventListener('click', function () {
       instance.requestPaymentMethod(function (requestPaymentMethodErr, payload) {
-        // When the user clicks on the 'Submit payment' button this code will send the
-        // encrypted payment information in a variable called a payment method nonce
-        
+       
+        sponsor = this.sponsor.value
+        console.log(sponsor)
+        console.log(apartment)
         axios.post('http://127.0.0.1:8000/api/payment-request', {
 
             paymentMethodNonce : payload.nonce,
-            key : 'trimone',
+            key : 'Pagamento team6',
+            sponsor_id : sponsor,
+            apartment_id : apartment
         }).then( res => {
-            console.log(res)
+            console.log(res.data)
         }).catch(err =>{
             console.log(err)
         })
