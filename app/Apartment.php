@@ -47,11 +47,10 @@ class Apartment extends Model
         return $this->belongsToMany('App\Service');
     }
 
-      // RELAZIONE 
-     // apartment - sponsorships
+    // RELAZIONE pivot
+    // apartment - sponsorships
 
-
-    public function sponsorships() {
-        return $this->belongsToMany('App\Sponsorship');
+    public function ApartmentSponsorship() {
+        return $this->hasMany('App\ApartmentSponsorship');
     }
 }

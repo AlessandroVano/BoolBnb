@@ -15,22 +15,24 @@ class CreateApartmentSponsorshipTable extends Migration
     {
         Schema::create('apartment_sponsorship', function (Blueprint $table) {
             $table->id();
-                 // FOREIGN KEY APARTMENT
-                 $table->unsignedBigInteger('apartment_id');
-                 $table->foreign('apartment_id')
-                       ->references('id')
-                       ->on('apartments')
-                       ->onDelete('cascade');
-                 
-                  // FOREIGN KEY SERVICE
-                  $table->unsignedBigInteger('sponsorship_id');
-                  $table->foreign('sponsorship_id')
-                        ->references('id')
-                        ->on('sponsorships')
-                        ->onDelete('cascade');
-                  
-                  $table->date('start_date');
-                  $table->date('end_date');
+            // FOREIGN KEY APARTMENT
+            $table->unsignedBigInteger('apartment_id');
+            $table->foreign('apartment_id')
+                ->references('id')
+                ->on('apartments')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            // FOREIGN KEY SERVICE
+            $table->unsignedBigInteger('sponsorship_id');
+            $table->foreign('sponsorship_id')
+                ->references('id')
+                ->on('sponsorships')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
+
+            $table->date('start_date');
+            $table->date('end_date');
         });
     }
 
