@@ -38,5 +38,7 @@ Route::namespace('Api')->group(function() {
   // Route::get('/messages', 'MessageController@index');
 
   Route::post('/messages', 'MessageController@store');
+
+  Route::post('/payment-request' , 'PaymentController@payment' );
 });
 

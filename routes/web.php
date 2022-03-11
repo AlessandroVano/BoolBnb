@@ -42,7 +42,13 @@ Auth::routes();
              //  Route::get('/messages', 'MessageController@index')->name('messages');
              //  Route::delete('/messages/{message}/delete', 'MessageController@destroy');
              Route::resource('/messages', 'MessageController');
+             
+             Route::get('sponsorship/checkout' , function(){
+                 return view('admin.sponsorships.checkout');
+             })->name('checkout');
          });
+
+
 
     // Route::get('/test', function(){
     // /*         $apartments = DB::table('apartment_service')->join('apartments', 'apartments.id', '=', 'apartment_service.apartment_id')
