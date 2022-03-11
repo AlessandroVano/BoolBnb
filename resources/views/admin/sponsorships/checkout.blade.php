@@ -3,6 +3,7 @@
 
 @section('content')
     <h1>Compra il pacchetto</h1>
+    <h3>{{$sponsorship->name}}</h3>
     <div id="dropin-wrapper">
         <div id="checkout-message"></div>
         <div id="dropin-container"></div>
