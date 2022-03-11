@@ -158,16 +158,15 @@
                     </div>
 
                      <button
-                        class=" my-3 mx-auto btn btn-transparent"
+                        class=" my-3 btn mx-auto btn-transparent"
                         @click="postFilteredAparments"
                     >
                         Start you Research
                     </button>
                     
                         <!-- Card Appartamenti -->
-
                     <div
-                        v-if="!filteredAparments || query == ''"
+                        v-if="filteredAparments === null"
                         class="d-flex flex-wrap my-3 justify-content-center"
                     >
                         <div
@@ -244,7 +243,7 @@
                     </div>
 
                     <div
-                        v-else
+                        v-else-if="filteredAparments.length >= 1"
                         class="d-flex flex-wrap my-3"
                     >
                         <div
@@ -318,6 +317,8 @@
                             </div>
                         </div>
                     </div>
+
+                    <h2 v-else class="text-center my-5 col-12">No apartment Found</h2>
                 </section>
             </section>
         </div>
