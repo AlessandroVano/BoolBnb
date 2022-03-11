@@ -24,7 +24,7 @@ class SponsorshipController extends Controller
         //Salvo in una variabile tutti i dati ritornati
         //$data = $request->all();
 
-        dd($sponsorship);
+        // dd($sponsorship);
 
         //Salvo la data odierna
         $now = Carbon::now();
