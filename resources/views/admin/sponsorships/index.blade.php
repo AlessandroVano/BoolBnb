@@ -10,15 +10,25 @@
             <a href="{{route('admin.test', $sponsorship->id)}}" class="col-lg-4 col-sm-12 m-sm-2 m-lg-0">
                 <div class="card text-center card-hover">
                     <div class="card-body">
-                        <h2 class="card-title"> <strong>Type:</strong> {{ $sponsorship->name }}</h2>
-                        <h3 class="card-subtitle mb-2"><strong>Price:</strong> {{ $sponsorship->price}} €</h3>
-                        <h4 class="card-subtitle mb-2"><strong>Duration:</strong> {{$sponsorship->duration }} H</h4>
+                        <h2 class="card-title"> <strong>Sponsorship Type</strong></h2>
+                            <h2>{{ $sponsorship->name }}</h2>
+                        <div class="my-3">
+                            <h5 class="card-subtitle mb-2"><strong>Price:</strong> {{ $sponsorship->price}} €</h5>
+                            <h5 class="card-subtitle mb-2"><strong>Duration:</strong> {{$sponsorship->duration }} H</h5>
+                        </div>
                     </div>
                 </div>
-            </a>
+
+                <button class="btn btn-pink my-3 text-center justify-self-center">
+                    <a class="text-white" href="{{route('admin.checkout')}}">Compra il Pacchetto</a>
+                </button>
+            </div>
             @endforeach
         </div>
+        <button class="btn btn-pink mx-auto d-block my-5">
+            <a href="{{ route('admin.apartments.show', $apartment->slug) }}" class="btn btn-primary mx-2">Return to apartment</a>
+        </button>
 
-        <a href="{{ route('admin.apartments.show', $apartment->slug) }}" class="btn btn-primary mx-2">Return to apartment</a>
+        
     </section>
 @endsection

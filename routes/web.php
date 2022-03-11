@@ -26,27 +26,32 @@ Auth::routes();
 /* Route::get('/home', 'HomeController@index')->name('home'); */
 
 // Admin homepage
-Route::middleware('auth')
-        ->namespace('Admin')
-        ->name('admin.')
-        ->prefix('admin')
-        ->group(function(){
-            Route::get('/', 'HomeController@index')->name('home');
-            
-            // Apartments resource routes
-            Route::resource('/apartments', 'ApartmentController');
+  Route::middleware('auth')
+         ->namespace('Admin')
+         ->name('admin.')
+         ->prefix('admin')
+         ->group(function(){
+             Route::get('/', 'HomeController@index')->name('home');
+             
+             // Apartments resource routes
+             Route::resource('/apartments', 'ApartmentController');
             //  Route::get('/apartments/client/ip', [HomeController::class, 'getIp']);
-            
+
             Route::resource('/sponsorships', 'SponsorshipController');
             Route::get('/test', 'SponsorshipController@sponsorizza')->name('test');
-            
-            //  Route::get('/messages', 'MessageController@index')->name('messages');
-            //  Route::delete('/messages/{message}/delete', 'MessageController@destroy');
-            Route::resource('/messages', 'MessageController');
+             
+             //  Route::get('/messages', 'MessageController@index')->name('messages');
+             //  Route::delete('/messages/{message}/delete', 'MessageController@destroy');
+             Route::resource('/messages', 'MessageController');
+             
+             Route::get('sponsorship/checkout' , function(){
+                 return view('admin.sponsorships.checkout');
+             })->name('checkout');
+         });
 
-        });
 
-    //Route::get('/test', function(){
+
+    // Route::get('/test', function(){
     // /*         $apartments = DB::table('apartment_service')->join('apartments', 'apartments.id', '=', 'apartment_service.apartment_id')
     //     ->groupBy('apartment_id')
     //     ->get(); */
