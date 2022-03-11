@@ -35,9 +35,10 @@ Auth::routes();
              
              // Apartments resource routes
              Route::resource('/apartments', 'ApartmentController');
-             //  Route::get('/apartments/client/ip', [HomeController::class, 'getIp']);
-             
-             Route::get('/sponsorships', 'SponsorshipController@index')->name('sponsorships');
+            //  Route::get('/apartments/client/ip', [HomeController::class, 'getIp']);
+
+            Route::resource('/sponsorships', 'SponsorshipController');
+            Route::get('/test', 'SponsorshipController@sponsorizza')->name('test');
              
              //  Route::get('/messages', 'MessageController@index')->name('messages');
              //  Route::delete('/messages/{message}/delete', 'MessageController@destroy');
@@ -81,7 +82,7 @@ Auth::routes();
 
     //     $apartments = Apartment::with('services')
     //                 ->whereIn('id', $idApartmentArray)->get();
-    // });
+    //});
 
 // Home front 
    Route::get('{any?}', function () {

@@ -6,9 +6,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class Sponsorship extends Model
 {
-    public function apartments() {
-        return $this->belongsToMany('App\Apartment')
-                    ->withPivot('start_date', 'end_date')
-                    ->withTimestamps();
+    protected $fillable = [
+        'name', 'price', 'duration'
+    ];
+
+    public function ApartmentSponsorship()
+    {
+        return $this->hasMany('App\ApartmentSponsorship');
     }
 }

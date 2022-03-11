@@ -91,10 +91,12 @@
                     </li>
 
                     <li class="list-group-item">
-                        <a class="btn btn-pink mx-2" href="{{ route('admin.sponsorships') }}">Sponsor Your Apartment</a>
+                        <a class="btn btn-pink mx-2" href="{{ route('admin.sponsorships.show', $apartment->id) }}">Sponsor Your Apartment</a>
                     </li>
                 </ul>
             </div>
+
+            {{-- Messages --}}
             <div class="col-12 mt-4">
                 <div class="m-3 text-center">
                     <a class="btn btn-pink position-relative w-25" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
@@ -153,7 +155,7 @@
                                                             <span aria-hidden="true">&times;</span>
                                                         </button>
                                                     </div>
-                                                    <div class="modal-body text-center">Are you sure  that you want to permanently delete this message?     
+                                                    <div class="modal-body text-center">Are you sure  that you want to permanently delete this message?
                                                     </div>
                                                     <div class="modal-footer">
                                                         <button type="submit" class="btn btn-danger">
