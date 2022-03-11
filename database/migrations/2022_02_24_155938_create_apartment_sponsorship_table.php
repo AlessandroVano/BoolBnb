@@ -31,8 +31,8 @@ class CreateApartmentSponsorshipTable extends Migration
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
 
-            $table->date('start_date');
-            $table->date('end_date');
+            $table->string('start_date');
+            $table->string('end_date');
         });
     }
 

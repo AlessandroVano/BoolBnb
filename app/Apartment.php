@@ -50,7 +50,7 @@ class Apartment extends Model
     // RELAZIONE pivot
     // apartment - sponsorships
 
-    public function ApartmentSponsorship() {
-        return $this->hasMany('App\ApartmentSponsorship');
+    public function sponsorships() {
+        return $this->belongsToMany('App\Sponsorship', 'apartment_sponsorship')->withPivot('start_date', 'end_date');;
     }
 }

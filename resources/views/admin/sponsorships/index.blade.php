@@ -4,6 +4,7 @@
     <section class="container">
         <h1 class="text-white">Find your ideal sponsorship</h1>
         <h3 class="text-white">for: {{ $apartment->name }}</h3>
+        <input id="apartment" type="text" hidden value="{{$apartment->id}}">
 
         <div class="row mb-3 justify-content-around">
             @foreach ($sponsorships as $sponsorship)
@@ -23,16 +24,7 @@
             @endforeach
 
         </div>
-        {{-- <form action="">
-            <input type="text" value="{{$apartment->name}}">
-            <select name="sponsor" id="sponsor">
-                @foreach ($sponsorships as $sponsorship )
-                        <option value="{{$sponsorship->id}}">{{$sponsorship->name}}</option>
-                @endforeach
-            </select>
 
-
-        </form> --}}
 
         <div id="dropin-wrapper">
             <select name="sponsor" id="sponsor">

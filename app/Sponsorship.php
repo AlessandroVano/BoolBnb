@@ -10,8 +10,8 @@ class Sponsorship extends Model
         'name', 'price', 'duration'
     ];
 
-    public function ApartmentSponsorship()
+    public function apartments()
     {
-        return $this->hasMany('App\ApartmentSponsorship');
+        return $this->belongsToMany('App\Apartment', 'apartment_sponsorship')->withPivot('start_date', 'end_date');
     }
 }
