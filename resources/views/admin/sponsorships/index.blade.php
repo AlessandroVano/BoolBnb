@@ -18,15 +18,42 @@
                             <h5 class="card-subtitle mb-2"><strong>Duration:</strong> {{$sponsorship->duration }} H</h5>
                         </div>
                     </div>
-
-                    <button class="btn btn-transparent m-3 text-center justify-self-center ">
-                        <a class="text-dark" href="{{route('admin.checkout', $sponsorship->id, $apartment->id)}}">Compra il Pacchetto</a>
-                    </button>
                 </div>
 
-            {{-- </a> --}}
             @endforeach
+
         </div>
+        {{-- <form action="">
+            <input type="text" value="{{$apartment->name}}">
+            <select name="sponsor" id="sponsor">
+                @foreach ($sponsorships as $sponsorship )
+                        <option value="{{$sponsorship->id}}">{{$sponsorship->name}}</option>
+                @endforeach
+            </select>
+
+
+        </form> --}}
+
+        <div id="dropin-wrapper">
+            <select name="sponsor" id="sponsor">
+                @foreach ($sponsorships as $sponsorship )
+                        <option value="{{$sponsorship->id}}">{{$sponsorship->name}}</option>
+                @endforeach
+            </select>
+
+
+            <div id="checkout-message"></div>
+            <div id="dropin-container"></div>
+
+            <button type="submit" id="submit-button" class="button button--small button--green">Purchase</button>
+        </div>
+
+
+        @section('script')
+        <script src="https://js.braintreegateway.com/web/dropin/1.33.0/js/dropin.min.js"></script>
+        <script src="{{asset('js/braintree.js')}}" defer></script>
+        @endsection
+
         <button class="btn btn-pink mx-auto d-block my-5">
             <a href="{{ route('admin.apartments.show', $apartment->slug) }}" class="text-white">Return to apartment</a>
         </button>

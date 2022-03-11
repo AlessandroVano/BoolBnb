@@ -1,5 +1,9 @@
 
 const button = document.querySelector('#submit-button')
+let sponsor = document.getElementById('sponsor').value
+
+console.log(sponsor)
+
 
 braintree.dropin.create({
     // Insert your tokenization key here
@@ -14,7 +18,9 @@ braintree.dropin.create({
         axios.post('http://127.0.0.1:8000/api/payment-request', {
 
             paymentMethodNonce : payload.nonce,
-            key : 'trimone',
+            key : 'Pagamento team6',
+            sponsor_id : '1',
+            
         }).then( res => {
             console.log(res)
         }).catch(err =>{

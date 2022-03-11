@@ -61,4 +61,15 @@ class SponsorshipController extends Controller
 
         return redirect()->route('admin.apartments.show', $apartment['apartment_id']);
     }
+
+
+    public function checkout($id) {
+        $apartment = Apartment::find($id);
+
+        return view('admin.sponsorships.checkout', compact('apartment' ));
+    }
+
 }
+
+
+
