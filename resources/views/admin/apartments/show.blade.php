@@ -85,14 +85,15 @@
                         @endif
                     </li>
                     {{-- ACTIONS --}}
-                    <li class="list-group-item">
+                    <li class="list-group-item d-flex justify-content-center">
                         <a href="{{ route('admin.apartments.index') }}" class="btn btn-pink mx-2">Return to list</a>
                         <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="btn btn-transparent btn-edit mx-2">Edit details</a>
-                    </li>
-
-                    <li class="list-group-item">
                         <a class="btn btn-pink mx-2" href="{{ route('admin.sponsorships.show', $apartment->id) }}">Sponsor Your Apartment</a>
                     </li>
+
+                    {{-- <li class="list-group-item">
+                        <a class="btn btn-pink mx-2" href="{{ route('admin.sponsorships.show', $apartment->id) }}">Sponsor Your Apartment</a>
+                    </li> --}}
                 </ul>
             </div>
 
