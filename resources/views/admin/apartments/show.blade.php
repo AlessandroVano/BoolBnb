@@ -126,7 +126,7 @@
                                         <strong class="text_danger"><i class="fa-solid fa-paper-plane"></i> Sended:</strong> <span class="ml-2">{{ $message->created_at }}</span>
                                     </div>
 
-                                    <div class="text-right">
+                                    {{-- <div class="text-right">
                                         <button type="button" class="btn btn-danger" data-toggle="modal"
                                             data-target="#exampleModal{{$message->id}}">
                                                 Delete Message <i class="fa-solid fa-trash-can"></i>
@@ -164,8 +164,8 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-                                    </form>
+                                        </form>
+                                    </div> --}}
                                 </div>
                             </div>
                         @endforeach

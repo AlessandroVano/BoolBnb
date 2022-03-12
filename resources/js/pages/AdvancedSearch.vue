@@ -261,7 +261,8 @@
                                 </div>
                                 <div class="col-md-8">
                                     <div class="card-body">
-                                        <h5 class="card-title">
+                                        <h5 class="card-title"
+                                            :class="{pink: apartment.sponsorship == true}">
                                             <i
                                                 class="fa-solid fa-house mr-2"
                                             ></i>
@@ -403,7 +404,7 @@ export default {
                     maxRoom: this.numRooms,
                 })
                 .then((result => {
-                    /* console.log(result.data); */
+                    console.log(result.data);
                     this.filteredAparments = result.data;
                 }))
                 .catch((error => {
@@ -440,5 +441,9 @@ export default {
         color: #ff385c;
     }
 
+}
+
+.pink {
+    color: #ff385c;
 }
 </style>

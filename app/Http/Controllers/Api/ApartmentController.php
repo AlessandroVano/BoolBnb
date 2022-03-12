@@ -6,6 +6,7 @@ use App\Apartment;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class ApartmentController extends Controller
 {
@@ -83,10 +84,32 @@ class ApartmentController extends Controller
                 $filteredApartments[] = $apartment;
             }
         }
+        //Controllo sponsorship
+        foreach ($filteredApartments as $apartment) {
+            //Interrogo il DB per trovare un record nella pivot con l'ID dell'appartamento
+            $lastEndDate = Carbon::parse(DB::table('apartment_sponsorship')
+                ->where('apartment_id', $apartment->id)
+                ->pluck('end_date')
+                ->sortDesc()
+                ->first()
+            );
 
+            //Confronto se il dato ritornato è più avandio di ora
+            if($lastEndDate->greaterThan(Carbon::now())) {
+                $apartment['sponsorship'] = 1;
+            } else {
+                $apartment['sponsorship'] = 0;
+            };
+
+        }
+
+        //Order by DISTANCE
         $distance_column = array_column($filteredApartments, 'distance');
-        
         array_multisort($distance_column, SORT_ASC, $filteredApartments);
+        
+        //Order by SPONSORSHIP
+        $sponsorship_column = array_column($filteredApartments, 'sponsorship');
+        array_multisort($sponsorship_column, SORT_DESC, $filteredApartments);
 
         foreach ($filteredApartments as $apartment ) {
             if ($apartment->image) {
