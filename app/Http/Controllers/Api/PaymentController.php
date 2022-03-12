@@ -72,7 +72,7 @@ class PaymentController extends Controller
                     'end_date' => $end_date
                 ]);
             }
-
+            
             return response()->json('Done' . $transaction->id);
         } else {
             return response()->json('Error');
