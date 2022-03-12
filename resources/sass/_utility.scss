@@ -63,9 +63,10 @@ border-bottom: 1px solid grey;
 color: $primary-pink;
 }
 
-.c-custom {
+.c-custom-back{
     transition: all 0.3s;
     &:hover {
+        cursor:pointer;
         box-shadow: 0px 10px 31px -2px #ff385d86;
         -webkit-box-shadow: 0px 10px 31px -2px #ff385d86;
         -moz-box-shadow: 0px 10px 31px -2px #ff385d86;
