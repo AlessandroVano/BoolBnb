@@ -23,7 +23,7 @@
                     @if ($apartments->count() > 0)
                        <h2 class="text-pink">Actually you have {{ $apartments->count() }} <i class="fa-solid fa-house"></i></h2>
                     @else
-                        <h3>Do you want to become a host? <a href="{{ route('admin.apartments.create') }}">Create your first apartment</a></h3>
+                        <h3>Do you want to become a host? <a class="text-pink dash-hover ml-3" href="{{ route('admin.apartments.create') }}">Create your first apartment</a></h3>
                     @endif
                 </div>
             </div>
