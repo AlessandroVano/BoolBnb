@@ -452,7 +452,7 @@ export default {
       line-height: 1.5;
     background-color: transparent;
     border: 3px solid  #ff385c;
-    color: #ff002f;
+    color: #ff385c;
     padding: 10px 28px;
     display: inline-block;
     border-radius: 30px;
@@ -476,7 +476,7 @@ export default {
     top: 0;
     height: 100%;
     width: 0%;
-   background-color: #f07b91e3;
+   background-color: #f07b9065;
     z-index: 1;
     transition: width 0.6s ease;
     }
@@ -485,7 +485,7 @@ export default {
   
 }
   .link-custom:hover{
-   color: #ff0000;
+   color: #ff385c;
   
 }
 

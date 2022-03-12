@@ -2,19 +2,21 @@
     <!-- FORM MESSAGE -->
     <div class="row mt-5 d-flex justify-content-center">
         <div class="col-sm-4 col-md-8 col-lg-10 card c-custom p-3">
-            <h3>
-                Need more informations? <i class="fa-solid fa-circle-info"></i>
-            </h3>
+            <h3>Need more informations?</h3>
             <!-- Name -->
             <form @submit.prevent="apartmentForm">
-                <div>
-                    <label for="form-label" form="name">Name</label>
+                <div class="form form-distance">
                     <input
-                        class="form-control"
+                        placeholder=""
+                        class="form_input"
                         type="text"
                         id="name"
                         v-model="name"
                     />
+
+                    <label for="form-label" class="form_label" form="name"
+                        >Name</label
+                    >
                     <div
                         v-for="(error, index) in errors.name"
                         :key="`err-name-${index}`"
@@ -24,15 +26,20 @@
                     </div>
                 </div>
                 <!-- Email -->
-
-                <div class="my-3">
-                    <label for="form-label" form="email">Email</label>
+                <div class="my-3 form">
                     <input
-                        class="form-control"
+                        placeholder=""
+                        class="form_input"
                         type="text"
                         id="email"
                         v-model="email"
                     />
+                    <label
+                        for="form-label"
+                        class="form_label form-label"
+                        form="email"
+                        >Email</label
+                    >
                     <div
                         v-for="(error, index) in errors.email"
                         :key="`err-email-${index}`"
@@ -41,14 +48,18 @@
                         {{ error }}
                     </div>
                 </div>
-                <div class="mb-3">
-                    <label class="form-label" for="message">Message</label>
+                <!-- Textarea -->
+                <div class="form m">
                     <textarea
-                        class="form-control"
+                        class="form_input_text_area"
+                        rows="4"
                         id="message"
-                        rows="5"
                         v-model="message"
+                        placeholder=""
                     ></textarea>
+                    <label class="form_label form-label" for="message"
+                        >Message</label
+                    >
                     <div
                         v-for="(error, index) in errors.message"
                         :key="`err-message-${index}`"
@@ -59,12 +70,12 @@
                 </div>
 
                 <button
-                    class="btn btn-pink"
+                    class="btn btn-pink mt"
                     data-toggle="modal"
                     data-target="#exampleModal"
                     type="submit"
                 >
-                    Send <i class="fa-solid fa-paper-plane"></i>
+                    Send
                 </button>
             </form>
             <div
@@ -78,12 +89,8 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5
-                                class="modal-title text-danger"
-                                id="exampleModalLabel"
-                            >
+                            <h5 class="modal-title" id="exampleModalLabel">
                                 Warning
-                                <i class="fa-solid fa-circle-exclamation"></i>
                             </h5>
                             <button
                                 type="button"
@@ -118,11 +125,8 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5
-                                class="modal-title text-success"
-                                id="exampleModalLabel"
-                            >
-                                Perfect! <i class="fa-solid fa-check"></i>
+                            <h5 class="modal-title" id="exampleModalLabel">
+                                Perfect!
                             </h5>
                             <button
                                 type="button"
@@ -133,10 +137,7 @@
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
-                        <div class="modal-body text-success">
-                            Message sent successfully
-                            <i class="fa-solid fa-paper-plane-top"></i>
-                        </div>
+                        <div class="modal-body">Message sent successfully</div>
                         <div class="modal-footer">
                             <button
                                 type="button"
@@ -225,5 +226,84 @@ export default {
         -webkit-box-shadow: 0px 10px 31px -2px rgba(0, 0, 0, 0.75);
         -moz-box-shadow: 0px 10px 31px -2px rgba(0, 0, 0, 0.75);
     }
+}
+.form {
+    position: relative;
+    width: 100%;
+
+    height: 3;
+    .form_input {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 3px solid #ced4da;
+        border-radius: 10px;
+        outline: none;
+        padding: 1.25rem;
+        background: none;
+    }
+    .form_input_text_area {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        border: 3px solid #ced4da;
+        border-radius: 10px;
+        outline: none;
+        padding: 1.25rem;
+        background: none;
+    }
+    .form_input:hover,   .form_input_text_area:hover {
+        border-color: #ced4da;
+    }
+    .form_input:focus,   .form_input_text_area:focus {
+        border-color: #ff385c;
+    }
+    .form_label {
+        position: absolute;
+        left: 1rem;
+        top: 0.8rem;
+        padding: 0 0.5rem;
+        cursor: text;
+        transition: top 200ms ease-in, left 200ms ease-in,
+            font-size 200ms ease-in;
+       
+    }
+      .form_input_text_area:focus ~ .form_label,
+      .form_input_text_area:not(:placeholder-shown) .form_input_text_area:not(:focus) ~ .form_label {
+        top: -0.5rem;
+        font-size: 0.7rem;
+        left: 0.8rem;
+        background-color: white;
+        border-radius: 20px;
+        color: #ff385c;
+    }
+    .form_input:focus ~ .form_label,
+    .form_input:not(:placeholder-shown).form_input:not(:focus) ~ .form_label {
+        top: -0.5rem;
+        font-size: 0.7rem;
+        left: 0.8rem;
+        background-color: white;
+        border-radius: 20px;
+        color: #ff385c;
+    }
+}
+.text-danger {
+    transform: translateY(200%);
+}
+.form-distance {
+    margin-top: 20px;
+    margin-bottom: 79px;
+}
+.m {
+    margin-top: 140px;
+}
+.mt {
+    margin-top: 160px;
+}
+.mb1 {
+    margin-top: 142px;
 }
 </style>
