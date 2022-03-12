@@ -8,6 +8,7 @@ use Braintree;
 use App\Sponsorship;
 use App\Apartment;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class PaymentController extends Controller
 {
@@ -40,12 +41,37 @@ class PaymentController extends Controller
 
             $transaction = $result->transaction;
 
-            $start_date = Carbon::now()->format('d-m-Y');
-            $end_date = Carbon::parse($start_date)->addHours($sponsorship->duration)->format('d-m-Y');
-            $apartment->sponsorships()->attach($sponsorship->id , [
-                'start_date' => $start_date,
-                'end_date' => $end_date
-            ]);
+            $lastEndDate = Carbon::parse(DB::table('apartment_sponsorship')
+                            ->where('apartment_id', $request->apartment_id)
+                            ->pluck('end_date')
+                            ->sortDesc()
+                            ->first());
+                            
+            if($lastEndDate) {
+
+                //Controllo se la data di fine più "lontana" è già passata o non
+                if ($lastEndDate->greaterThan(Carbon::now()->format('d-m-Y'))) {
+                    //Se lo è setta la data di inizio come l'ultima data di fine
+                    $start_date = $lastEndDate->format('d-m-Y');
+                } else {
+                    $start_date = Carbon::now()->format('d-m-Y');
+                };
+
+                $end_date = Carbon::parse($start_date)->addHours($sponsorship->duration)->format('d-m-Y');
+
+                $apartment->sponsorships()->attach($sponsorship->id, [
+                    'start_date' => $start_date,
+                    'end_date' => $end_date
+                ]);
+            } else {
+                //Non trova un record e ne registra uno come nuovo
+                $start_date = Carbon::now()->format('d-m-Y');
+                $end_date = Carbon::parse($start_date)->addHours($sponsorship->duration)->format('d-m-Y');
+                $apartment->sponsorships()->attach($sponsorship->id, [
+                    'start_date' => $start_date,
+                    'end_date' => $end_date
+                ]);
+            }
 
             return response()->json('Done' . $transaction->id);
         } else {
