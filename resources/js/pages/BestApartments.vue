@@ -111,12 +111,51 @@ export default {
     border-radius: 15px;
 }
 .link-custom {
-    border-radius: 10px;
+/*     border-radius: 10px;
     padding: 0.1rem;
     border: 3px solid #ff385c;
     color: #ff385c;
+    text-decoration: none; */
+      line-height: 1.5;
+    background-color: transparent;
+    border: 3px solid  #ff385c;
+    color: #ff002f;
+    padding: 6px 15px;
+    display: inline-block;
+    border-radius: 30px;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    transition: color 0.3s ease;
     text-decoration: none;
+    
 }
+    .link-custom::before{
+      content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+   background-color: #f07b91e3;
+    z-index: 1;
+    transition: width 0.6s ease;
+    }
+      .link-custom:hover::before{
+  width: 100%;
+  
+}
+  .link-custom:hover{
+   color: #ff0000;
+  
+}
+
 .filter-section {
     border: 0.5px solid #000;
     border-radius: 20px;
