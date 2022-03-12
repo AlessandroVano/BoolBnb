@@ -72,3 +72,32 @@ color: $primary-pink;
         background-color: $primary-pink !important;
     }
 }
+
+// Dashboard
+.dash-hover {
+    transition: all 0.2s ease;
+    &:hover {
+        color: rgb(211, 113, 130) !important;
+        text-decoration: none;
+        display: inline-block;
+        transform: scale(1.05) !important;
+    }
+}
+
+// Footer
+footer {
+    ul {
+        list-style: none;
+        line-height: 2.3rem;
+    
+        .title-list {
+            font-weight: 600;
+        }
+    
+        li {
+            a {
+                color: #fff;
+            }
+        }
+    }
+}

@@ -168,8 +168,8 @@
                                         </form>
                                     </div> --}}
                                 </div>
-                            </div>
-                        @endforeach
+                            @endforeach
+                        </div>
                     </div>
                 @else
                     <div class="collapse bg-light p-3 border rounded text-center" id="collapseExample">
