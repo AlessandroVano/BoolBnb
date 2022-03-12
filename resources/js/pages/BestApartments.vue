@@ -143,7 +143,7 @@ export default {
     top: 0;
     height: 100%;
     width: 0%;
-   background-color: #f07b91e3;
+   background-color: #f07b9065;
     z-index: 1;
     transition: width 0.6s ease;
     }
