@@ -12,7 +12,16 @@ class ApartmentController extends Controller
 {
     /* APARTMENT ARCHIVE */
     public function index() {
+
+        $apartmentsId = DB::table('apartment_sponsorship')->select('apartment_id')->distinct()->get();
+
+        $apartmentsIdArray = [];
+        foreach ($apartmentsId as $apartment) {
+            $apartmentsIdArray[] = $apartment->apartment_id;
+        }
+
         $apartments = Apartment::with(['services'])
+                                ->whereIn('id', $apartmentsIdArray)
                                 ->select(['id', 'user_id', 'name', 'slug', 'price', 'description', 'rooms', 'max_people', 'bathrooms', 'square_meters', 'address', 'latitude', 'longitude', 'image', 'visibility'])
                                 ->get();
 
@@ -26,8 +35,25 @@ class ApartmentController extends Controller
         foreach ($apartment->services as $service ) {
             $service->icon = url('storage/' . $service->icon);
         }
+        $apartmentsSponsorshipActive = [];
+        //Controllo sponsorship
+        foreach ($apartments as $apartment) {
+            //Interrogo il DB per trovare un record nella pivot con l'ID dell'appartamento
+            $lastEndDate = Carbon::parse(DB::table('apartment_sponsorship')
+                    ->where('apartment_id', $apartment->id)
+                    ->pluck('end_date')
+                    ->sortDesc()
+                    ->first()
+            );
 
-        return response()->json($apartments); 
+            //Confronto se il dato ritornato è più avandio di ora
+            if ($lastEndDate->greaterThan(Carbon::now())) {
+                $apartment['sponsorship'] = 1;
+                $apartmentsSponsorshipActive[] = $apartment;
+            };
+        }
+
+        return response()->json($apartmentsSponsorshipActive);
     }
 
     public function filter(Request $request) {
