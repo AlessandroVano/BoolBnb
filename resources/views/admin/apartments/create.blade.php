@@ -107,6 +107,10 @@
                 hidden
             />
 
+            <div class="text-right mt-3">
+                <span class="fs-3">All fields marked with * are <strong>mandatory</strong></span>
+            </div>
+
             {{-- Image --}}
             <div class="mb-3">
                 <label for="image" class="form-label">Uploade an image</label>
@@ -145,12 +149,7 @@
                 @enderror
             </div>
 
-            <div class="text-right mt-3">
-                <span class="fs-3">All fields marked with * are <strong>mandatory</strong></span>
-            </div>
-
-
-            <button class="btn btn-transparent align-self-center w-25" type="submit">Add your new apartment</button>
+            <button class="btn btn-transparent align-self-center w-25 mt-4" type="submit">Add your new apartment</button>
 
         </form>
 

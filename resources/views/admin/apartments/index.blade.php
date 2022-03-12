@@ -50,12 +50,12 @@
 
                         <button class="btn btn-success">
                             <a class="text-decoration-none text-white"
-                            href="{{route('admin.apartments.show', $apartment->slug)}}">View Details</a>
+                            href="{{route('admin.apartments.show', $apartment->slug)}}">View Details <i class="fa-solid fa-door-open ml-2"></i></a>
                         </button>
                         
                         <button type="button" class="btn btn-danger" data-toggle="modal"
                         data-target="#exampleModal{{$apartment->id}}">
-                            Delete Apartment <i class="fa-solid fa-trash-can"></i>
+                            Delete <i class="fa-solid fa-trash-can ml-1"></i>
                         </button>
                         <form action="{{route('admin.apartments.destroy', $apartment->id)}}" method="POST">
                             @csrf
