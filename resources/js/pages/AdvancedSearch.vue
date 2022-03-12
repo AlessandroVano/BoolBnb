@@ -352,6 +352,22 @@ export default {
     mounted() {
         this.getApartments();
         this.getServices();
+        if (sessionStorage.query) {
+            this.query = sessionStorage.query;
+            this.selectedLat = sessionStorage.selectedLat;
+            this.selectedLon = sessionStorage.selectedLon;
+        }
+    },
+    watch: {
+        query(newQuery) {
+        sessionStorage.query = newQuery;
+        },
+        selectedLat(newSelectedLat) {
+        sessionStorage.selectedLat = newSelectedLat;
+        },
+        selectedLon(newSelectedLon) {
+        sessionStorage.selectedLon = newSelectedLon;
+        },
     },
     methods: {
         getApartments() {

@@ -7,10 +7,9 @@
                     <div
                         class="form-inline justify-content-center col-6 col-md-8 col-lg-8"
                     >
+                    <div
+                    class="d-flex justify-content-start flex-wrap w-100">
                             <!-- SEARCHBAR -->
-                        <div
-                            class="d-flex justify-content-start flex-wrap w-100"
-                        >
                             <input
                                 type="text"
                                 class="input-search fs-10 border-custom fw-light form-control mr-2 col-6 col-md-11 col-lg-11"
@@ -20,12 +19,12 @@
                                 v-model="query"
                                 @keyup="getAddress()"
                             />
-                            <button
+                            <router-link :to="{ name: 'advanced-search'}"
                                 class="btn btn-transparent"
-                                @click="postFilteredAparments"
+                                @click="persist"
                             >
                                 <i class="fa-solid fa-magnifying-glass"></i>
-                            </button>
+                            </router-link>
                             <ul
                                 class="list-unstyled cursor-pointer bg-white text-dark rounded col-10"
                             >
@@ -39,7 +38,7 @@
                                     {{ element.address.freeformAddress }}
                                 </li>
                             </ul>
-                        </div>
+                    </div>
                     </div>
                 </div>
                 <!-- ADVANCE SEARCH BTN -->
@@ -190,9 +189,30 @@ export default {
             bestApartments: [],
         };
     },
+    created() {
+        sessionStorage.query = "";
+        sessionStorage.selectedLat = null;
+        sessionStorage.selectedLon = null;
+    },
     mounted() {
         this.getServices();
-        this.getBestAparments()
+        this.getBestAparments();
+        if (sessionStorage.query) {
+            this.query = sessionStorage.query;
+            this.selectedLat = sessionStorage.selectedLat;
+            this.selectedLon = sessionStorage.selectedLon;
+        }
+    },
+    watch: {
+        query(newQuery) {
+        sessionStorage.query = newQuery;
+        },
+        selectedLat(newSelectedLat) {
+        sessionStorage.selectedLat = newSelectedLat;
+        },
+        selectedLon(newSelectedLon) {
+        sessionStorage.selectedLon = newSelectedLon;
+        },
     },
     methods: {
         getServices() {
@@ -252,6 +272,11 @@ export default {
                     this.bestApartments = res.data;
                 })
                 .catch((error) => console.log(error));
+        },
+        persist() {
+            sessionStorage.query = this.query;
+            sessionStorage.selectedLat = this.selectedLat;
+            sessionStorage.selectedLon = this.selectedLon;
         }
     },
 };
