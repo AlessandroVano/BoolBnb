@@ -46,9 +46,8 @@ class PaymentController extends Controller
                             ->pluck('end_date')
                             ->sortDesc()
                             ->first());
-                            
-            if($lastEndDate) {
 
+            if($lastEndDate) {
                 //Controllo se la data di fine più "lontana" è già passata o non
                 if ($lastEndDate->greaterThan(Carbon::now()->format('d-m-Y'))) {
                     //Se lo è setta la data di inizio come l'ultima data di fine
