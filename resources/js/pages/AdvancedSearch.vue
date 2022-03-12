@@ -244,7 +244,7 @@
 
                     <div
                         v-else-if="filteredAparments.length >= 1"
-                        class="d-flex flex-wrap my-3"
+                        class="d-flex flex-wrap my-3 justify-content-center"
                     >
                         <div
                             v-for="(apartment, index) in filteredAparments"
@@ -318,7 +318,6 @@
                             </div>
                         </div>
                     </div>
-
                     <h2 v-else class="text-center my-5 col-12">No apartment Found</h2>
                 </section>
             </section>
@@ -347,6 +346,7 @@ export default {
             selectedLat: "",
             selectedLon: "",
             d: 0,
+            pagination: null,
         };
     },
     mounted() {
@@ -393,9 +393,9 @@ export default {
                     this.suggestionsArray = res.data.results;
                 });
         },
-        postFilteredAparments() {
+        postFilteredAparments(page = 1) {
             if(this.query.length > 1) {
-                axios.post(`http://127.0.0.1:8000/api/apartments/`, {
+                axios.post(`http://127.0.0.1:8000/api/apartments/?page=${page}`, {
                     selectedLat: this.selectedLat,
                     selectedLon: this.selectedLon,
                     selectedDistance: this.selectedDistance,
@@ -406,6 +406,10 @@ export default {
                 .then((result => {
                     console.log(result.data);
                     this.filteredAparments = result.data;
+                    this.pagination = {
+                        current: res.data.current_page,
+                        last: res.data.last_page
+                    }
                 }))
                 .catch((error => {
                     console.log(error)
