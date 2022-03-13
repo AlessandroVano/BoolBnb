@@ -182,17 +182,17 @@
                             <a
                                 href="https://www.facebook.com/AirbnbItalia"
                                 class="ml-1"
-                                >Facebook</a
+                                ><i class="fa-brands fa-facebook-f mr-1"></i>Facebook</a
                             >
                         </li>
                         <li class="mr-2">
                             <a href="https://twitter.com/airbnb_it" class="ml-1"
-                                >Twitter</a
+                                ><i class="fa-brands fa-twitter mr-1"></i>Twitter</a
                             >
                         </li>
                         <li class="mr-2">
                             <a href="https://instagram.com/airbnb" class="ml-1"
-                                >Instagram</a
+                                ><i class="fa-brands fa-instagram mr-1"></i>Instagram</a
                             >
                         </li>
                     </ul>
