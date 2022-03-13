@@ -142,13 +142,21 @@
             <div class="col-12 mt-3">
                 <ul class="d-flex m-0 p-0 justify-content-end font-weight-bold">
                     <li class="mr-2">
-                        <a href="https://www.facebook.com/AirbnbItalia" class="ml-1">Facebook</a>
+                        <a
+                            href="https://www.facebook.com/AirbnbItalia"
+                            class="ml-1"
+                            ><i class="fa-brands fa-facebook-f mr-1"></i>Facebook</a
+                        >
                     </li>
                     <li class="mr-2">
-                        <a href="https://twitter.com/airbnb_it" class="ml-1">Twitter</a>
+                        <a href="https://twitter.com/airbnb_it" class="ml-1"
+                            ><i class="fa-brands fa-twitter mr-1"></i>Twitter</a
+                        >
                     </li>
                     <li class="mr-2">
-                        <a href="https://instagram.com/airbnb" class="ml-1">Instagram</a>
+                        <a href="https://instagram.com/airbnb" class="ml-1"
+                            ><i class="fa-brands fa-instagram mr-1"></i>Instagram</a
+                        >
                     </li>
                 </ul>
             </div>

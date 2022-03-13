@@ -108,46 +108,48 @@
                     <h2 class="text-center text-white">
                         Explore and Discover our best apartments
                     </h2>
-                    <div v-if="bestApartments && !filteredAparments">
-                        <h4 class="text-center pink">
-                            <i class="fa-solid fa-star"></i> Our best apartments
-                        </h4>
-                        <div
-                            class="d-flex flex-wrap my-3 justify-content-center"
-                        >
+                    <div class="overflow-auto">
+                        <div v-if="bestApartments && !filteredAparments">
+                            <h4 class="text-center pink">
+                                <i class="fa-solid fa-star"></i> Our best apartments
+                            </h4>
                             <div
-                                v-for="(apartment, index) in bestApartments"
-                                :key="`apartment-${index}`"
-                                class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom"
+                                class="d-flex flex-wrap my-3 justify-content-center"
                             >
-                                <div class="row no-gutters">
-                                    <div class="col-12">
-                                        <h5
-                                            class="card-title pink text-center mt-2 mb-1"
-                                        >
-                                            <i
-                                                class="fa-solid fa-house mr-2"
-                                            ></i>
-                                            {{ apartment.name }}
-                                        </h5>
-                                        <img
-                                            class="img-apartment img-custom"
-                                            :src="apartment.image"
-                                            :alt="apartment.name"
-                                        />
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="text-center">
-                                            <router-link
-                                                class="btn-transparent btn mb-2 p-1"
-                                                :to="{
-                                                    name: 'apartment-details',
-                                                    params: {
-                                                        slug: apartment.slug,
-                                                    },
-                                                }"
-                                                >Show More
-                                            </router-link>
+                                <div
+                                    v-for="(apartment, index) in bestApartments"
+                                    :key="`apartment-${index}`"
+                                    class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom"
+                                >
+                                    <div class="row no-gutters">
+                                        <div class="col-12">
+                                            <h5
+                                                class="card-title pink text-center mt-2 mb-1"
+                                            >
+                                                <i
+                                                    class="fa-solid fa-house mr-2"
+                                                ></i>
+                                                {{ apartment.name }}
+                                            </h5>
+                                            <img
+                                                class="img-apartment img-custom"
+                                                :src="apartment.image"
+                                                :alt="apartment.name"
+                                            />
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="text-center">
+                                                <router-link
+                                                    class="btn-transparent btn mb-2 p-1"
+                                                    :to="{
+                                                        name: 'apartment-details',
+                                                        params: {
+                                                            slug: apartment.slug,
+                                                        },
+                                                    }"
+                                                    >Show More
+                                                </router-link>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -321,6 +323,7 @@ h2 {
     background-color: #ff385c;
     border-radius: 1rem;
     padding: 2rem 1rem;
+    height: 505px;
 }
 
 .ricerca {
