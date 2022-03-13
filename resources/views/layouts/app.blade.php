@@ -20,13 +20,11 @@
 </head>
 
 <body class="bg-dark">
-    <div id="app" class="d-flex flex-column vh-100">
+    <div id="app" class="d-flex flex-column">
         @include('layouts.partials.header')
-     
         <main class="py-4 flex-grow-1">
             @yield('content')
         </main>
- 
         @include('layouts.partials.footer')
     </div>
     
