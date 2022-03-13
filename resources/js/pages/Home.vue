@@ -7,8 +7,9 @@
                     <div
                         class="form-inline justify-content-center col-6 col-md-8 col-lg-8"
                     >
-                    <div
-                    class="d-flex justify-content-start flex-wrap w-100">
+                        <div
+                            class="d-flex justify-content-start flex-wrap w-100"
+                        >
                             <!-- SEARCHBAR -->
                             <input
                                 type="text"
@@ -19,7 +20,8 @@
                                 v-model="query"
                                 @keyup="getAddress()"
                             />
-                            <router-link :to="{ name: 'advanced-search'}"
+                            <router-link
+                                :to="{ name: 'advanced-search' }"
                                 class="btn btn-transparent"
                                 @click="persist"
                             >
@@ -38,13 +40,14 @@
                                     {{ element.address.freeformAddress }}
                                 </li>
                             </ul>
-                    </div>
+                        </div>
                     </div>
                 </div>
                 <!-- ADVANCE SEARCH BTN -->
-                <div 
-                v-if="filteredAparments"
-                class="d-flex justify-content-center mb-2">
+                <div
+                    v-if="filteredAparments"
+                    class="d-flex justify-content-center mb-2"
+                >
                     <router-link
                         class="btn btn-pink mb-2 p-1 text-center"
                         :to="{ name: 'advanced-search' }"
@@ -52,7 +55,7 @@
                         search
                     </router-link>
                 </div>
-                    <!-- APARTMENT SEARCH RESAULT -->
+                <!-- APARTMENT SEARCH RESAULT -->
                 <div
                     v-if="filteredAparments || query != ''"
                     class="d-flex flex-wrap my-3 justify-content-center"
@@ -64,8 +67,12 @@
                     >
                         <div class="row no-gutters">
                             <div class="col-12">
-                                <h5 class="card-title text-center mt-2 mb-1"
-                                :class="{pink: apartment.sponsorship == true}">
+                                <h5
+                                    class="card-title text-center mt-2 mb-1"
+                                    :class="{
+                                        pink: apartment.sponsorship == true,
+                                    }"
+                                >
                                     <i class="fa-solid fa-house mr-2"></i>
                                     {{ apartment.name }}
                                 </h5>
@@ -94,52 +101,59 @@
                 </div>
 
                 <!-- SPONSORERD APARTMENTS -->
-                <div
-                    v-if="bestApartments && !filteredAparments"
-                >
-                    <h4 class="text-center pink"><i class="fa-solid fa-star"></i> Our best apartments</h4>
-                    <div class="d-flex flex-wrap my-3 justify-content-center">
-                        <div
-                            v-for="(apartment, index) in bestApartments"
-                            :key="`apartment-${index}`"
-                            class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom"
-                        >
-                            <div class="row no-gutters">
-                                <div class="col-12">
-                                    <h5 class="card-title pink text-center mt-2 mb-1">
-                                        <i class="fa-solid fa-house mr-2"></i>
-                                        {{ apartment.name }}
-                                    </h5>
-                                    <img
-                                        class="img-apartment img-custom"
-                                        :src="apartment.image"
-                                        :alt="apartment.name"
-                                    />
-                                </div>
-                                <div class="col-12">
-                                    <div class="text-center">
-                                        <router-link
-                                            class="btn-transparent btn mb-2 p-1"
-                                            :to="{
-                                                name: 'apartment-details',
-                                                params: {
-                                                    slug: apartment.slug,
-                                                },
-                                            }"
-                                            >Show More
-                                        </router-link>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
                 <div
                     class="votati d-flex flex-column justify-content-center align-content-center mb-5"
                 >
                     <h2 class="text-center text-white">
                         Explore and Discover our best apartments
                     </h2>
+                    <div v-if="bestApartments && !filteredAparments">
+                        <h4 class="text-center pink">
+                            <i class="fa-solid fa-star"></i> Our best apartments
+                        </h4>
+                        <div
+                            class="d-flex flex-wrap my-3 justify-content-center"
+                        >
+                            <div
+                                v-for="(apartment, index) in bestApartments"
+                                :key="`apartment-${index}`"
+                                class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom"
+                            >
+                                <div class="row no-gutters">
+                                    <div class="col-12">
+                                        <h5
+                                            class="card-title pink text-center mt-2 mb-1"
+                                        >
+                                            <i
+                                                class="fa-solid fa-house mr-2"
+                                            ></i>
+                                            {{ apartment.name }}
+                                        </h5>
+                                        <img
+                                            class="img-apartment img-custom"
+                                            :src="apartment.image"
+                                            :alt="apartment.name"
+                                        />
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="text-center">
+                                            <router-link
+                                                class="btn-transparent btn mb-2 p-1"
+                                                :to="{
+                                                    name: 'apartment-details',
+                                                    params: {
+                                                        slug: apartment.slug,
+                                                    },
+                                                }"
+                                                >Show More
+                                            </router-link>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button class="btn btn-link text-white">
                         <router-link
                             class="link-custom"
@@ -205,13 +219,13 @@ export default {
     },
     watch: {
         query(newQuery) {
-        sessionStorage.query = newQuery;
+            sessionStorage.query = newQuery;
         },
         selectedLat(newSelectedLat) {
-        sessionStorage.selectedLat = newSelectedLat;
+            sessionStorage.selectedLat = newSelectedLat;
         },
         selectedLon(newSelectedLon) {
-        sessionStorage.selectedLon = newSelectedLon;
+            sessionStorage.selectedLon = newSelectedLon;
         },
     },
     methods: {
@@ -266,9 +280,10 @@ export default {
             }
         },
         getBestAparments() {
-            axios.get("http://127.0.0.1:8000/api/apartments")
+            axios
+                .get("http://127.0.0.1:8000/api/apartments")
                 .then((res) => {
-                    console.log(res.data)
+                    console.log(res.data);
                     this.bestApartments = res.data;
                 })
                 .catch((error) => console.log(error));
@@ -277,13 +292,13 @@ export default {
             sessionStorage.query = this.query;
             sessionStorage.selectedLat = this.selectedLat;
             sessionStorage.selectedLon = this.selectedLon;
-        }
+        },
     },
 };
 </script>
 
 <style scoped lang="scss">
-.input-search  {
+.input-search {
     flex-grow: 1;
     &:focus {
         box-shadow: #ff385d7c 0px 0px 0px 3px;
@@ -304,8 +319,8 @@ h2 {
 }
 .votati {
     background-color: #ff385c;
-    height: 500px;
     border-radius: 1rem;
+    padding: 2rem 1rem;
 }
 
 .ricerca {
