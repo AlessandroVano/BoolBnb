@@ -84,16 +84,26 @@
                         </div>
                         @endif
                     </li>
+                    {{-- SPONSORSHIP --}}
+                    <li class="list-group-item">
+                        @if ($apartment->expiration)
+                            <p>Your sponsorship will expire:
+                            <strong>{{ $apartment->end_date }}</strong></p>
+                            <p>You still have {{ $apartment->expiration }} days of sponsorship</p> 
+                            <p class="pink d-flex align-items-center">Sponsor again!
+                            <a class="btn btn-pink ml-4" href="{{ route('admin.sponsorships.show', $apartment->id) }}">Sponsor Your Apartment</a> </p>
+                        @else
+                            <p>You do not have active sponsorship in this apartment!</p>
+                            <p class="pink d-flex align-items-center">Highlight it!
+                            <a class="btn btn-pink ml-4" href="{{ route('admin.sponsorships.show', $apartment->id) }}">Sponsor Your Apartment</a> </p>
+                        @endif
+                        
+                    </li>
                     {{-- ACTIONS --}}
                     <li class="list-group-item d-flex justify-content-center">
-                        <a href="{{ route('admin.apartments.index') }}" class="btn btn-pink mx-2">Return to list</a>
-                        <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="btn btn-transparent btn-edit mx-2">Edit details</a>
-                        <a class="btn btn-pink mx-2" href="{{ route('admin.sponsorships.show', $apartment->id) }}">Sponsor Your Apartment</a>
+                        <a href="{{ route('admin.apartments.index') }}" class="btn btn-pink mx-3">Return to list</a>
+                        <a href="{{ route('admin.apartments.edit', $apartment->id) }}" class="btn btn-transparent btn-edit mx-3">Edit details</a>
                     </li>
-
-                    {{-- <li class="list-group-item">
-                        <a class="btn btn-pink mx-2" href="{{ route('admin.sponsorships.show', $apartment->id) }}">Sponsor Your Apartment</a>
-                    </li> --}}
                 </ul>
             </div>
 
@@ -131,7 +141,7 @@
                     </div>
                 @else
                     <div class="collapse bg-light p-3 border rounded text-center" id="collapseExample">
-                        <h1>The message's box is empty</h1>
+                        <h3>The message's box is empty</h3>
                     </div>
                 @endif
             </div>

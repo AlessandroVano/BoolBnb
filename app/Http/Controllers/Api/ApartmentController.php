@@ -69,10 +69,10 @@ class ApartmentController extends Controller
                                         ->having('count(id)' , count($filtersArray))
                                         ->get();
     
-                 $idApartmentArray = [];
-                    foreach ($apartmentsFilteredByServices as $apartment) {
-                        $idApartmentArray[] = $apartment->apartment_id;
-                    }
+            $idApartmentArray = [];
+            foreach ($apartmentsFilteredByServices as $apartment) {
+                $idApartmentArray[] = $apartment->apartment_id;
+            }
                     
             $apartments = Apartment::with('services')
                                 ->whereIn('id', $idApartmentArray)

@@ -7,6 +7,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 use App\Apartment;
 use App\Message;
@@ -109,9 +111,30 @@ class ApartmentController extends Controller
             $new_view->apartment_id = $apartment['id'];
             $new_view->ip_address = $ipAddress;
 
+            //Check in back delle visite
             if (!View::where('ip_address', '=', $ipAddress)->exists() || !View::where('apartment_id', '=',$new_view->apartment_id)->exists()) {
                 $new_view->save();
             }
+
+        //Interrogo il DB per trovare un record nella pivot con l'ID dell'appartamento
+        $lastEndDate = Carbon::parse(
+            DB::table('apartment_sponsorship')
+            ->where('apartment_id', $apartment->id)
+            ->pluck('end_date')
+                ->sortDesc()
+                ->first()
+        );
+
+        //Confronto se il dato ritornato è più avandio di ora
+        if ($lastEndDate->greaterThan(Carbon::now())) {
+            $endDate = $lastEndDate->format('l jS \\of F Y');
+
+            $expiration = $lastEndDate->diffInDays(Carbon::now());
+            $apartment['end_date'] = $endDate;
+            $apartment['expiration'] = $expiration;
+        } else {
+            $apartment['expiration'] = null;
+        };
 
         return view('admin.apartments.show', compact('apartment', 'messages'));
     }
