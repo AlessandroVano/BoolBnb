@@ -89,7 +89,7 @@
                         @if ($apartment->expiration)
                             <p>Your sponsorship will expire:
                             <strong>{{ $apartment->end_date }}</strong></p>
-                            <p>You still have {{ $apartment->expiration }} days of sponsorship</p> 
+                            <p>You still have {{ $apartment->daysLeft }} days of sponsorship</p> 
                             <p class="pink d-flex align-items-center">Sponsor again!
                             <a class="btn btn-pink ml-4" href="{{ route('admin.sponsorships.show', $apartment->id) }}">Sponsor Your Apartment</a> </p>
                         @else

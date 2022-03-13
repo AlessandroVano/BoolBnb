@@ -129,9 +129,13 @@ class ApartmentController extends Controller
         if ($lastEndDate->greaterThan(Carbon::now())) {
             $endDate = $lastEndDate->format('l jS \\of F Y');
 
-            $expiration = $lastEndDate->diffInDays(Carbon::now());
+            $expiration = $lastEndDate->diffInHours(Carbon::now());
+
+            $daysLeft = $lastEndDate->diffInDays(Carbon::now());
+       
             $apartment['end_date'] = $endDate;
             $apartment['expiration'] = $expiration;
+            $apartment['daysLeft'] = $daysLeft;
         } else {
             $apartment['expiration'] = null;
         };
