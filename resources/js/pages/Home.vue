@@ -1,46 +1,42 @@
 <template>
     <main>
         <section class="bg-dark pt-5">
+            <h1 class="mb-4 text-center text-white">Welcome to BoolBnb</h1>
             <div class="container">
-                <h1 class="mb-4 text-center text-white">Welcome to BoolBnb</h1>
-                <div class="mb-1 d-flex justify-content-center">
+                <div class="mb-1 row justify-content-center">
                     <div
-                        class="form-inline justify-content-center col-6 col-md-8 col-lg-8"
+                        class="d-flex col-12 flex-wrap"
                     >
-                        <div
-                            class="d-flex justify-content-start flex-wrap w-100"
+                        <!-- SEARCHBAR -->
+                        <input
+                            type="text"
+                            class="input-search fs-10 border-custom fw-light form-control col-9 offset-1"
+                            placeholder="Select your place"
+                            aria-label="Search"
+                            aria-describedby="addon-wrapping"
+                            v-model="query"
+                            @keyup="getAddress()"
+                        />
+                        <router-link
+                            :to="{ name: 'advanced-search' }"
+                            class="btn btn-transparent col-1 mx-2 px-1"
+                            @click="persist"
                         >
-                            <!-- SEARCHBAR -->
-                            <input
-                                type="text"
-                                class="input-search fs-10 border-custom fw-light form-control mr-2 col-6 col-md-11 col-lg-11"
-                                placeholder="Select your place"
-                                aria-label="Search"
-                                aria-describedby="addon-wrapping"
-                                v-model="query"
-                                @keyup="getAddress()"
-                            />
-                            <router-link
-                                :to="{ name: 'advanced-search' }"
-                                class="btn btn-transparent"
-                                @click="persist"
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                        </router-link>
+                        <ul
+                            class="list-unstyled cursor-pointer text-dark rounded justify-self-start offset-1 p-0 col-9"
+                        >
+                            <li
+                                :id="`${index}`"
+                                @click="setValue(index)"
+                                class="list-unstyled p-1 bg-white"
+                                v-for="(element, index) in suggestionsArray"
+                                :key="`suggestion${index}`"
                             >
-                                <i class="fa-solid fa-magnifying-glass"></i>
-                            </router-link>
-                            <ul
-                                class="list-unstyled cursor-pointer bg-white text-dark rounded col-10"
-                            >
-                                <li
-                                    :id="`${index}`"
-                                    @click="setValue(index)"
-                                    class="list-unstyled p-1"
-                                    v-for="(element, index) in suggestionsArray"
-                                    :key="`suggestion${index}`"
-                                >
-                                    {{ element.address.freeformAddress }}
-                                </li>
-                            </ul>
-                        </div>
+                                {{ element.address.freeformAddress }}
+                            </li>
+                        </ul>
                     </div>
                 </div>
                 <!-- ADVANCE SEARCH BTN -->
@@ -48,12 +44,12 @@
                     v-if="filteredAparments"
                     class="d-flex justify-content-center mb-2"
                 >
-                    <router-link
+                    <!-- <router-link
                         class="btn btn-pink mb-2 p-1 text-center"
                         :to="{ name: 'advanced-search' }"
                         ><i class="fa-solid fa-align-justify"></i> Improve your
                         search
-                    </router-link>
+                    </router-link> -->
                 </div>
                 <!-- APARTMENT SEARCH RESAULT -->
                 <div
