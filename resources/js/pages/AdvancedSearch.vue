@@ -8,7 +8,7 @@
                 <div class="d-flex">
                     <input
                         type="text"
-                        class="fs-10 border-custom fw-light form-control"
+                        class="fs-10 border-custom fw-light form-control input-search"
                         placeholder="Select your place"
                         aria-label="Search"
                         aria-describedby="addon-wrapping"
@@ -35,7 +35,7 @@
                     <div class="filter-section p-3 col-12">
                         <div class="filter-container">
                             <h3 class="text-center">Choose your filters</h3>
-                            <h5>Services</h5>
+                            <h5 class="mb-2 color-h5">Services</h5>
                                 <ul class="row d-flex">
                                     <li
                                         v-for="service in servicesList"
@@ -62,15 +62,15 @@
                                     <div
                                         class="input-group mb-3 d-flex flex-column"
                                     >
-                                        <h5>How many guests?</h5>
+                                        <h5 class="mb-2 color-h5">How many guests?</h5>
                                         <div class="input-group-prepend">
                                             <label
-                                                class="input-group-text"
+                                                class="input-group-text "
                                                 for="inputGroupSelect01"
                                                 >Guest/s</label
                                             >
                                             <select
-                                                class="custom-select"
+                                                class="custom-select input-search-1"
                                                 id="inputGroupSelect01"
                                                 v-model="maxPeople"
                                             >
@@ -103,7 +103,7 @@
                                     <div
                                         class="input-group mb-3 d-flex flex-column"
                                     >
-                                        <h5>How many rooms?</h5>
+                                        <h5 class="mb- color-h5">How many rooms?</h5>
                                         <div class="input-group-prepend">
                                             <label
                                                 class="input-group-text"
@@ -111,7 +111,7 @@
                                                 >Rooms</label
                                             >
                                             <select
-                                                class="custom-select"
+                                                class="custom-select input-search-1"
                                                 id="inputGroupSelect01"
                                                 v-model="numRooms"
                                             >
@@ -142,7 +142,7 @@
                                                 >Km</label
                                             >
                                             <select
-                                                class="custom-select"
+                                                class="custom-select input-search-1"
                                                 id="inputGroupSelect01"
                                                 v-model="selectedDistance"
                                             >
@@ -158,7 +158,7 @@
                     </div>
 
                      <button
-                        class=" my-3 btn mx-auto btn-transparent"
+                        class=" mt-4  btn mx-auto btn-transparent"
                         @click="postFilteredAparments"
                     >
                         Start you Research
@@ -172,7 +172,7 @@
                         <div
                             v-for="(apartment, index) in apartmentsList"
                             :key="`apartment-${index}`"
-                            class="card mb-3 col-12 col-md-5 mx-3 "
+                            class="card mt-2 mb-3 col-12 col-md-5 mx-3 hover-card "
                         >
                             <div class="row no-gutters">
                                 <div class="col-md-4">
@@ -444,26 +444,99 @@ export default {
     border-radius: 15px;
 }
 .link-custom {
-    border-radius: 10px;
+/*     border-radius: 10px;
     padding: 0.1rem;
     border: 3px solid #ff385c;
     color: #ff385c;
+    text-decoration: none; */
+      line-height: 1.5;
+    background-color: transparent;
+    border: 3px solid  #ff385c;
+    color: #ff385c;
+    padding: 10px 28px;
+    display: inline-block;
+    border-radius: 30px;
+    font-weight: 500;
+    text-transform: capitalize;
+    font-family: inherit;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    transition: color 0.3s ease;
     text-decoration: none;
+    
 }
+    .link-custom::before{
+      content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+   background-color: #f07b9065;
+    z-index: 1;
+    transition: width 0.6s ease;
+    }
+      .link-custom:hover::before{
+  width: 100%;
+  
+}
+  .link-custom:hover{
+   color: #ff385c;
+  
+}
+
 .filter-section {
-    border: 0.5px solid #000;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
+
     border-radius: 20px;
     width: 30%;
+      &:hover{
+        transition: 0.4s ease-in-out;
+         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+     }
     ul {
         list-style: none;
     }
     h3 {
         color: #ff385c;
     }
+  
 
 }
 
 .pink {
     color: #ff385c;
 }
+.input-search  {
+    flex-grow: 1;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
+    &:focus {
+        box-shadow: #ff385dc9 0px 0px 0px 3px ;
+        border: none;
+    }
+}
+.input-search:hover{
+      /*  transition: 0.4s ease-in-out; */
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+         box-shadow: #ff385dc9 0px 0px 0px 3px ;
+        border: none;
+}
+ .input-search-1{
+       flex-grow: 1;
+    &:focus {
+        box-shadow: #ff385dc9 0px 0px 0px 1.9px;
+        border: none;
+    }
+ }
+ .hover-card{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
+     &:hover{
+        transition: 0.4s ease-in-out;
+         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+     }
+ }
 </style>

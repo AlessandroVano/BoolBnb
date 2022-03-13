@@ -283,9 +283,14 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.input-search {
+.input-search  {
     flex-grow: 1;
+    &:focus {
+        box-shadow: #ff385d7c 0px 0px 0px 3px;
+        border: none;
+    }
 }
+
 h2 {
     font-size: 2.5rem;
 }

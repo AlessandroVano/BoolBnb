@@ -20,10 +20,10 @@
 </head>
 
 <body class="bg-dark">
-    <div id="app">
+    <div id="app" class="d-flex flex-column vh-100">
         @include('layouts.partials.header')
      
-        <main class="py-4 h-50">
+        <main class="py-4 flex-grow-1">
             @yield('content')
         </main>
  
