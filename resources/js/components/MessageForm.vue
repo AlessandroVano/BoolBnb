@@ -2,7 +2,7 @@
     <!-- FORM MESSAGE -->
     <div class="row mt-5 d-flex justify-content-center">
         <div class="col-sm-4 col-md-8 col-lg-10 card c-custom p-3">
-            <h3>Need more informations?</h3>
+            <h3>Need more informations? <i class="fa-solid fa-circle-question ml-2"></i></h3>
             <!-- Name -->
             <form @submit.prevent="apartmentForm">
                 <div class="form form-distance">
@@ -20,7 +20,7 @@
                     <div
                         v-for="(error, index) in errors.name"
                         :key="`err-name-${index}`"
-                        class="text-danger"
+                        class="t-danger text-danger"
                     >
                         {{ error }}
                     </div>
@@ -43,7 +43,7 @@
                     <div
                         v-for="(error, index) in errors.email"
                         :key="`err-email-${index}`"
-                        class="text-danger"
+                        class="t-danger text-danger"
                     >
                         {{ error }}
                     </div>
@@ -63,7 +63,7 @@
                     <div
                         v-for="(error, index) in errors.message"
                         :key="`err-message-${index}`"
-                        class="text-danger"
+                        class="text-danger t-600"
                     >
                         {{ error }}
                     </div>
@@ -75,7 +75,7 @@
                     data-target="#exampleModal"
                     type="submit"
                 >
-                    Send
+                    Send <i class="fa-solid fa-paper-plane ml-2"></i>
                 </button>
             </form>
             <div
@@ -89,8 +89,8 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Warning
+                            <h5 class="modal-title text-danger" id="exampleModalLabel">
+                                Warning <i class="fa-solid fa-triangle-exclamation ml-2"></i>
                             </h5>
                             <button
                                 type="button"
@@ -105,7 +105,7 @@
                         <div class="modal-footer">
                             <button
                                 type="button"
-                                class="btn btn-secondary"
+                                class="btn btn-danger"
                                 data-dismiss="modal"
                             >
                                 Close
@@ -125,8 +125,8 @@
                 <div class="modal-dialog modal-dialog-centered">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">
-                                Perfect!
+                            <h5 class="modal-title text-success" id="exampleModalLabel">
+                                Perfect! <i class="fa-solid fa-circle-check ml-2"></i>
                             </h5>
                             <button
                                 type="button"
@@ -141,7 +141,7 @@
                         <div class="modal-footer">
                             <button
                                 type="button"
-                                class="btn btn-secondary"
+                                class="btn btn-pink"
                                 data-dismiss="modal"
                             >
                                 Close
@@ -255,10 +255,12 @@ export default {
         padding: 1.25rem;
         background: none;
     }
-    .form_input:hover,   .form_input_text_area:hover {
+    .form_input:hover,
+    .form_input_text_area:hover {
         border-color: #ced4da;
     }
-    .form_input:focus,   .form_input_text_area:focus {
+    .form_input:focus,
+    .form_input_text_area:focus {
         border-color: #ff385c;
     }
     .form_label {
@@ -269,10 +271,11 @@ export default {
         cursor: text;
         transition: top 200ms ease-in, left 200ms ease-in,
             font-size 200ms ease-in;
-       
     }
-      .form_input_text_area:focus ~ .form_label,
-      .form_input_text_area:not(:placeholder-shown) .form_input_text_area:not(:focus) ~ .form_label {
+    .form_input_text_area:focus ~ .form_label,
+    .form_input_text_area:not(:placeholder-shown)
+        .form_input_text_area:not(:focus)
+        ~ .form_label {
         top: -0.5rem;
         font-size: 0.7rem;
         left: 0.8rem;
@@ -290,7 +293,7 @@ export default {
         color: #ff385c;
     }
 }
-.text-danger {
+.t-danger {
     transform: translateY(200%);
 }
 .form-distance {
@@ -305,5 +308,9 @@ export default {
 }
 .mb1 {
     margin-top: 142px;
+}
+
+.t-600 {
+  transform: translateY(600%);
 }
 </style>

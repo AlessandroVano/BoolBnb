@@ -1,8 +1,8 @@
 <footer class="text-white container">
-    <div class="mt-5 mb-3 pt-5 border-top">
+    <div class="mb-3">
         <div class="row mb-3">
             <!-- Support -->
-            <ul class="col-3">
+            <ul class="col-lg-3 col-md-6 col-12 border-top pt-4">
                 <li class="title-list">Support</li>
                 <li>
                     <a href="https://www.airbnb.it/help/home?from=footer">
@@ -36,7 +36,7 @@
                 </li>
             </ul>
             <!-- Comunity -->
-            <ul class="col-3">
+            <ul class="col-lg-3 col-md-6 col-12 border-top pt-4">
                 <li class="title-list">Comunity</li>
                 <li>
                     <a href="https://www.airbnb.org/?locale=it&_ga=2.21193336.2107814870.1646233770-2061375270.1646233770">
@@ -55,7 +55,7 @@
                 </li>
             </ul>
             <!-- To host -->
-            <ul class="col-3">
+            <ul class="col-lg-3 col-md-6 col-12 border-top pt-4">
                 <li class="title-list">To host</li>
                 <li>
                     <a href="https://www.airbnb.it/host/homes?from_footer=1">
@@ -84,7 +84,7 @@
                 </li>
             </ul>
             <!-- Information -->
-            <ul class="col-3">
+            <ul class="col-lg-3 col-md-6 col-12 border-top pt-4">
                 <li class="title-list">Information</li>
                 <li>
                     <a href="https://www.airbnb.it/press/news">
@@ -119,27 +119,27 @@
             </ul>
         </div>
         <hr>
-        <div class="row">
-            <div class="col-7">
-                <ul class="d-flex m-0 p-0">
-                    <li class="mr-2">
+        <div class="row border-top pt-3">
+            <div class="col-12">
+                <ul class="d-flex m-0 p-0 row">
+                    <li class="mr-2 col-12 col-lg-3">
                         © 2022 BoolBnb, Inc.
                     </li>
-                    <li class="mr-2">
+                    <li class="mr-2 col-12 col-lg-2">
                         · <a href="https://www.airbnb.it/terms/privacy_policy" class="ml-1">Privacy</a>
                     </li>
-                    <li class="mr-2">
+                    <li class="mr-2 col-12 col-lg-2">
                         · <a href="https://www.airbnb.it/terms" class="ml-1">Terms</a>
                     </li>
-                    <li class="mr-2">
+                    <li class="mr-2 col-12 col-lg-2">
                         · <a href="https://www.airbnb.it/sitemaps/v2" class="ml-1">Map of the site</a>
                     </li>
-                    <li class="mr-2">
+                    <li class="mr-2 col-12 col-lg-2">
                         · <a href="https://www.airbnb.it/about/company-details" class="ml-1">Company details</a>
                     </li>
                 </ul>
             </div>
-            <div class="col-5">
+            <div class="col-12 mt-3">
                 <ul class="d-flex m-0 p-0 justify-content-end font-weight-bold">
                     <li class="mr-2">
                         <a href="https://www.facebook.com/AirbnbItalia" class="ml-1">Facebook</a>
