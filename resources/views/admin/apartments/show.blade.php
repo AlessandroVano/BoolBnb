@@ -117,28 +117,27 @@
                     </a>
                 </div>
                 @if (count($messages) != 0)
-                    <div class="collapse bg-light p-3 border rounded" id="collapseExample">
+                    <div class="collapse bg-light p-3 border rounded scrollable-menu" id="collapseExample">
                         @foreach ($messages as $message)
                             <div class="text_danger border rounded p-3 mb-3 shadow"> 
-                                    <div class="text-dark mb-2">
+                                <div class="text-dark mb-2">
                                         <strong class="text_danger"><i class="fa-solid fa-user"></i> From:</strong> <span class="ml-2">{{ $message->name }}</span>
-                                    </div>
-
-                                    <div class="text-dark mb-2">
+                                </div>
+                            
+                                <div class="text-dark mb-2">
                                         <strong class="text_danger"><i class="fa-solid fa-envelope"></i> Email:</strong> <span class="ml-2">{{ $message->email }}</span> 
-                                    </div>
-
-                                    <div class="d-flex mb-2">
+                                </div>
+                            
+                                <div class="d-flex mb-2">
                                         <span class="flex-shrink-0 mr-2"><strong class="text_danger"><i class="fa-solid fa-comment-dots"></i> Message:</strong></span>
                                         <span class="text-dark">{{ $message->message }}</span>
-                                    </div>
-
-                                    <div class="text-dark mb-2">
-                                        <strong class="text_danger"><i class="fa-solid fa-paper-plane"></i> Sended:</strong> <span class="ml-2">{{ $message->created_at }}</span>
-                                    </div>
                                 </div>
-                            @endforeach
-                        </div>
+                            
+                                <div class="text-dark mb-2">
+                                        <strong class="text_danger"><i class="fa-solid fa-paper-plane"></i> Sended:</strong> <span class="ml-2">{{ $message->created_at }}</span>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 @else
                     <div class="collapse bg-light p-3 border rounded text-center" id="collapseExample">
@@ -146,6 +145,7 @@
                     </div>
                 @endif
             </div>
+          </div>
         </div>
     </div>
 @endsection
