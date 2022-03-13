@@ -62,14 +62,14 @@
                                 <div class="d-flex mt-2">
                                     <strong>Square meters:</strong>
                                     <span class="mx-3">
-                                        {{ apartment.square_meters }} m2
+                                        {{ apartment.square_meters }} m²
                                     </span>
                                 </div>
                             </div>
                         </div>
 
                         <div class="col-6" id="cartina">
-                            <div class="marker"></div>
+                            <div class="marker"><i class="fa-solid fa-location-dot"></i></div>
                         </div>
                     </div>
                 </section>
@@ -188,9 +188,7 @@ strong {
 }
 
 .marker {
-    width: 34px;
-    height: 34px;
-    background-color: #ff385c;
-    border-radius: 17px;
+    color: #ff385c;
+    font-size: 2.5rem;
 }
 </style>

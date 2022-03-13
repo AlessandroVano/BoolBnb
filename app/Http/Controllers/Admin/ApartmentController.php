@@ -127,9 +127,10 @@ class ApartmentController extends Controller
 
         //Confronto se il dato ritornato è più avandio di ora
         if ($lastEndDate->greaterThan(Carbon::now())) {
-            $now = Carbon::now();
-            $now = Carbon\Carbon::parse($now);
-            $expiration = $apartment->diffForHumans($now);
+            $endDate = $lastEndDate->format('l jS \\of F Y');
+
+            $expiration = $lastEndDate->diffInDays(Carbon::now());
+            $apartment['end_date'] = $endDate;
             $apartment['expiration'] = $expiration;
         } else {
             $apartment['expiration'] = null;

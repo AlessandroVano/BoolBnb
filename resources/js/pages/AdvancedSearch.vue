@@ -169,6 +169,7 @@
                         v-if="filteredAparments === null"
                         class="d-flex flex-wrap my-3 justify-content-center"
                     >
+                    <h3 class="col-12 text-center">Some of our best apartments</h3>
                         <div
                             v-for="(apartment, index) in apartmentsList"
                             :key="`apartment-${index}`"
@@ -226,14 +227,14 @@
                                         <!-- <div card-subtitle>{{ apartment.services.name }}</div> -->
                                         <div class="text-right">
                                             <router-link
-                                                class="link-custom mb-2 p-1"
+                                                class="link-custom mb-2 btn"
                                                 :to="{
                                                     name: 'apartment-details',
                                                     params: {
                                                         slug: apartment.slug,
                                                     },
                                                 }"
-                                                >Find More
+                                                >Details
                                             </router-link>
                                         </div>
                                     </div>
@@ -301,18 +302,18 @@
                                             ></i>
                                             {{ apartment.price }} € / notte
                                         </div>
-                                        <div class="text-right">
-                                            <router-link
-                                                class="link-custom mb-2"
-                                                :to="{
-                                                    name: 'apartment-details',
-                                                    params: {
-                                                        slug: apartment.slug,
-                                                    },
-                                                }"
-                                                >Find More
-                                            </router-link>
-                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <router-link
+                                            class="link-custom mb-2 btn"
+                                            :to="{
+                                                name: 'apartment-details',
+                                                params: {
+                                                    slug: apartment.slug,
+                                                },
+                                            }"
+                                            >Details
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -346,7 +347,6 @@ export default {
             selectedLat: "",
             selectedLon: "",
             d: 0,
-            pagination: null,
         };
     },
     mounted() {
@@ -444,49 +444,38 @@ export default {
     border-radius: 15px;
 }
 .link-custom {
-/*     border-radius: 10px;
-    padding: 0.1rem;
-    border: 3px solid #ff385c;
-    color: #ff385c;
-    text-decoration: none; */
-      line-height: 1.5;
     background-color: transparent;
     border: 3px solid  #ff385c;
     color: #ff385c;
-    padding: 10px 28px;
     display: inline-block;
-    border-radius: 30px;
-    font-weight: 500;
-    text-transform: capitalize;
-    font-family: inherit;
-    font-size: 16px;
-    cursor: pointer;
     user-select: none;
     position: relative;
     overflow: hidden;
     vertical-align: middle;
     transition: color 0.3s ease;
     text-decoration: none;
-    
+    //text-decoration: none;
+    //line-height: 1.5;
+    //padding: 10px 28px;
+    //border-radius: 30px;
+    //font-weight: 600;
+    //text-transform: capitalize;
+    //font-family: inherit;
+    //font-size: 16px;
 }
-    .link-custom::before{
-      content: '';
+.link-custom::after{
+    content: '';
     position: absolute;
     left: 0;
     top: 0;
     height: 100%;
     width: 0%;
-   background-color: #f07b9065;
+    background-color: #f07b9052;
     z-index: 1;
     transition: width 0.6s ease;
-    }
-      .link-custom:hover::before{
-  width: 100%;
-  
 }
-  .link-custom:hover{
-   color: #ff385c;
-  
+.link-custom:hover::after{
+width: 100%;
 }
 
 .filter-section {
@@ -504,8 +493,6 @@ export default {
     h3 {
         color: #ff385c;
     }
-  
-
 }
 
 .pink {
@@ -525,18 +512,18 @@ export default {
          box-shadow: #ff385dc9 0px 0px 0px 3px ;
         border: none;
 }
- .input-search-1{
-       flex-grow: 1;
-    &:focus {
-        box-shadow: #ff385dc9 0px 0px 0px 1.9px;
-        border: none;
+.input-search-1{
+    flex-grow: 1;
+&:focus {
+    box-shadow: #ff385dc9 0px 0px 0px 1.9px;
+    border: none;
+}
+}
+.hover-card{
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
+    transition: 0.25s all;
+    &:hover{
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
     }
- }
- .hover-card{
-        box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
-     &:hover{
-        transition: 0.4s ease-in-out;
-         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-     }
- }
+}
 </style>
