@@ -110,7 +110,7 @@
                                 <i class="fa-solid fa-star"></i> Our best apartments
                             </h4>
                             <div
-                                class="d-flex flex-wrap my-3 justify-content-center"
+                                class="d-flex my-3"
                             >
                                 <div
                                     v-for="(apartment, index) in bestApartments"
@@ -118,7 +118,7 @@
                                     class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom"
                                 >
                                     <div class="row no-gutters grow">
-                                        <div class="col-12 ">
+                                        <div class="col-12">
                                             <h5
                                                 class="card-title pink text-center mt-2 mb-1"
                                             >
@@ -150,6 +150,7 @@
                                     </div>
                                 </div>
                             </div>
+                            
                         </div>
                     </div>
                     <button class="btn btn-link text-white">
@@ -344,7 +345,7 @@ width: 100%;
     background-color: #ff385c;
     border-radius: 1rem;
     padding: 2rem 1rem;
-    height: 565px;
+    height: 600px;
 }
 
 .ricerca {

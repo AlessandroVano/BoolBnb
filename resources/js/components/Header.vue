@@ -102,7 +102,7 @@
                         <!-- MENU -->
                         <button
                             type="button"
-                            class="btn dropdown-toggle d-none d-md-block d-lg-block d-xl-block text-white"
+                            class="btn  bt dropdown-toggle d-none d-md-block d-lg-block d-xl-block text-white"
                             data-toggle="dropdown"
                             aria-expanded="false"
                         >
@@ -196,6 +196,9 @@ export default {
 
 .Boolbnb.active{
         color:white !important;
+}
+.bt{
+    box-shadow: none !important;
 
 }
 
