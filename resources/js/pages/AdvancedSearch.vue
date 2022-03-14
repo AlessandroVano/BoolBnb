@@ -350,13 +350,14 @@ export default {
         };
     },
     mounted() {
-        this.getApartments();
         this.getServices();
         if (sessionStorage.query) {
             this.query = sessionStorage.query;
             this.selectedLat = sessionStorage.selectedLat;
             this.selectedLon = sessionStorage.selectedLon;
+            this.postFilteredAparments();
         }
+            this.getApartments();
     },
     watch: {
         query(newQuery) {
