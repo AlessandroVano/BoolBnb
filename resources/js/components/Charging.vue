@@ -1,11 +1,13 @@
 <template>
-    <div class="sk-chase">
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
-        <div class="sk-chase-dot"></div>
+    <div class="center">
+        <div class="sk-chase">
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+            <div class="sk-chase-dot"></div>
+        </div>
     </div>
 </template>
 
@@ -17,6 +19,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 2rem 0;
+
+}
 .sk-chase {
   width: 40px;
   height: 40px;
@@ -38,7 +47,7 @@ export default {
   display: block;
   width: 25%;
   height: 25%;
-  background-color: #ff385c;
+  background-color: #fff;
   border-radius: 100%;
   animation: sk-chase-dot-before 2.0s infinite ease-in-out both; 
 }
