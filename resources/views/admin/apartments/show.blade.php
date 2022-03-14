@@ -58,21 +58,21 @@
                     {{-- Description --}}
                     @if ( $apartment->description )
                         <li class="list-group-item">
-                            <strong>Something about: </strong> <br> {{ $apartment->description }}
+                            <strong class="text-pink">Something about: </strong> <br> {{ $apartment->description }}
                         </li>
                     @endif
                     {{-- Geography position --}}
                     <li class="list-group-item">
                         <img class="icon" src="{{ asset('storage/icon/Geography.png') }}" alt="Geography's icon">
                         @if ( $apartment->address )
-                            <strong>Address: </strong> {{ $apartment->address }}
+                            <strong class="text-pink">Address: </strong> {{ $apartment->address }}
                         @else
                             <strong>Address not specified </strong>
                         @endif
                     </li>
                     {{-- Services --}}
                     <li class="list-group-item">
-                        <strong>Services: </strong> 
+                        <strong class="text-pink">Services: </strong> 
                         @if ( $apartment->services->isEmpty())
                         Sorry no service available has been specified.
                         @else
