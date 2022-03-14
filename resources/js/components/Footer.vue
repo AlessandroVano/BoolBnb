@@ -24,7 +24,7 @@
                     </li>
                     <li>
                         <a href="https://www.airbnb.it/d/covidsafety">
-                            Our response to the COVID-19 emergency
+                            Our response to the COVID-19
                         </a>
                     </li>
                     <li>
@@ -224,7 +224,7 @@ ul {
 
 footer{
     a{
-        transition: all 0.4s;
+        transition: all 0.2s;
         &:hover{
             cursor:pointer;
             text-decoration: none;
