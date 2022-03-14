@@ -50,7 +50,7 @@
     
                             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('admin.apartments.index') }}">
-                                    <i class="fa-solid fa-house-user mr-2"></i> Views your apartments 
+                                    <i class="fa-solid fa-house-user mr-2"></i> View your apartments 
                                </a>
                                <a class="dropdown-item" href="{{ route('admin.apartments.create') }}">
                                 <i class="fa-solid fa-plus mr-2"></i> Add new apartment 

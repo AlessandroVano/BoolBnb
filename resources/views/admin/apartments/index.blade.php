@@ -73,7 +73,7 @@
                                     <div class="modal-content">
                                         <div class="modal-header">
                                             <h5 class="modal-title" id="exampleModalLabel">
-                                                Warning <i class="fa-solid fa-siren-on"></i>
+                                                Warning<i class="fa-solid fa-triangle-exclamation ml-2"></i>
                                             </h5>
                                             <button
                                                 type="button"
@@ -84,7 +84,7 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">are you sure that you want to delete this apartment?</div>
+                                        <div class="modal-body">Are you sure that you want to delete this apartment?</div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-danger">
                                                 Delete <i class="fa-solid fa-trash-can"></i> 
