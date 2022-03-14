@@ -62,8 +62,12 @@
                                         ></i>
                                         Description:</strong
                                     ></h6>
-                                    <p class="d-inline m-0">
+                                    <p  
+                                        v-if="apartment.description != null" class="d-inline m-0">
                                         {{apartment.description}}
+                                    </p>
+                                    <p v-else class="d-inline m-0">
+                                       Description not available
                                     </p>
                                 </div>
                                 <div class="mb-3">
