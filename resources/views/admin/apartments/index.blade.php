@@ -102,7 +102,7 @@
     </div>
 </div>
 @else
-<h3 class="text-center text-white">There's no apartment, start from here to <a href="{{ route('admin.apartments.create') }}">add one</a></h3>
+<h3 class="text-center text-white my-10">There's no apartment, start from here to <a class="text-pink add-one"href="{{ route('admin.apartments.create') }}">add one</a></h3>
 @endif
 
 @endsection

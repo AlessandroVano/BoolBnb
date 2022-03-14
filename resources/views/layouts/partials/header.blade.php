@@ -1,8 +1,8 @@
 <header>
     <nav class="navbar navbar-expand-md navbar-dark text-white shadow-sm">
         <div class="container">
-            <a class="navbar-brand" href="{{ url('/') }}">
-                <i class="fab fa-airbnb text-pink h2 icon"></i>
+            <a class="navbar-brand m-0" href="{{ url('/') }}">
+                <i class="fab fa-airbnb text-pink h2 icon m-0"></i>
 
                 <a href="{{ url('/') }}" class=" nav-link Boolbnb text-white text-decoration-none vertical-align-center fs-c pl-0 d-none d-sm-block d-dm-block d-lg-block d-xl-block">{{ config('app.name') }}</a>
             </a>
