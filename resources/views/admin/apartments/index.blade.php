@@ -2,7 +2,7 @@
 
 @section('content')
 
-<h1 class="text-center text-white my-5">Your Apartments</h1>
+<h1 class="text-center text-white my-5">Your Apartments <i class="fa-solid fa-city ml-2"></i></h1>
 
 @if (!$apartments->count() == 0)
 <div class="container bg-dark text-white">

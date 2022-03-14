@@ -72,7 +72,7 @@
                                     class="dropdown-item"
                                     href="http://127.0.0.1:8000/register"
                                 >
-                                    <i class="fa-solid fa-registered mr-2"></i>
+                                    <i class="fa-solid fa-user-pen mr-2"></i>
                                     Register
                                 </a>
                                 <a
