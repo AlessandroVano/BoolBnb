@@ -1,12 +1,10 @@
 <template>
     <main>
-        <section class="bg-dark pt-5">
+        <section class="bg-dark py-4">
             <h1 class="mb-4 text-center text-white">Welcome to BoolBnb</h1>
             <div class="container">
                 <div class="mb-1 row justify-content-center">
-                    <div
-                        class="d-flex col-12 flex-wrap"
-                    >
+                    <div class="d-flex col-12 flex-wrap">
                         <!-- SEARCHBAR -->
                         <input
                             type="text"
@@ -107,15 +105,14 @@
                     <div class="overflow-auto">
                         <div v-if="bestApartments && !filteredAparments">
                             <h4 class="text-center pink">
-                                <i class="fa-solid fa-star"></i> Our best apartments
+                                <i class="fa-solid fa-star"></i> Our best
+                                apartments
                             </h4>
-                            <div
-                                class="d-flex my-3"
-                            >
+                            <div class="d-flex my-3">
                                 <div
                                     v-for="(apartment, index) in bestApartments"
                                     :key="`apartment-${index}`"
-                                    class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom"
+                                    class="card mb-3 col-10 col-md-6 col-lg-4 mx-3 c-custom"
                                 >
                                     <div class="row no-gutters grow">
                                         <div class="col-12">
@@ -150,7 +147,6 @@
                                     </div>
                                 </div>
                             </div>
-                            
                         </div>
                     </div>
                     <button class="btn btn-link text-white">
@@ -163,19 +159,25 @@
                 </div>
             </div>
 
-            <div
-                class="ricerca d-flex flex-column justify-content-center align-content-centermb-5"
-            >
-                <h2 class="text-center text-white">
-                    Find the best solution for your Holiday!
-                </h2>
-                <button class="btn btn-link text-white">
-                    <router-link
-                        class="link-custom"
-                        :to="{ name: 'advanced-search' }"
-                        >Find More
-                    </router-link>
-                </button>
+            <div class="container-fluid">
+                <div class="row justify-content-center">
+                    <div
+                        class="ricerca col-md-10 col-12 d-flex flex-column justify-content-center align-items-center my-5 pb-5"
+                    >
+                        <div class="h-100 d-flex flex-column justify-content-end">
+                            <h2 class="text-white text-center">
+                                Find the best solution for your Holiday!
+                            </h2>
+                            <button class="btn btn-link text-white">
+                                <router-link
+                                    class="link-custom"
+                                    :to="{ name: 'advanced-search' }"
+                                    >Find More
+                                </router-link>
+                            </button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     </main>
@@ -308,26 +310,25 @@ export default {
 h2 {
     font-size: 2.5rem;
 }
-     .btn-link{
-         text-decoration: none;
-     }
- .link-custom {
+.btn-link {
+    text-decoration: none;
+}
+.link-custom {
     border-radius: 10px;
     padding: 0.5rem;
     border: 3px solid white;
     font-size: 1.5rem;
     color: #ffff;
     text-decoration: none !important;
-     display: inline-block;
+    display: inline-block;
     user-select: none;
     position: relative;
     overflow: hidden;
     vertical-align: middle;
     transition: color 0.3s ease;
-   
-} 
-.link-custom::after{
-    content: '';
+}
+.link-custom::after {
+    content: "";
     position: absolute;
     left: 0;
     top: 0;
@@ -337,22 +338,22 @@ h2 {
     z-index: 1;
     transition: width 0.6s ease;
 }
-.link-custom:hover::after{
-width: 100%;
+.link-custom:hover::after {
+    width: 100%;
 }
 
 .votati {
     background-color: #ff385c;
     border-radius: 1rem;
     padding: 2rem 1rem;
-    height: 600px;
 }
 
 .ricerca {
     color: white;
-    background-image: url("https://www.mensjournal.com/wp-content/uploads/2022/01/Zionheader.jpg?quality=55&strip=all");
+    background-image: url("https://media.equityapartments.com/images/c_crop,x_0,y_0,w_1920,h_1080/c_fill,w_1920,h_1080/q_80/4039-14/beatrice-apartments-penthouse.jpg");
     background-position: center;
-    height: 800px;
+    height: 700px;
+    border-radius: 1rem;
 }
 
 .img-custom {
