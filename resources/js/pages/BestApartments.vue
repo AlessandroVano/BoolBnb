@@ -62,17 +62,25 @@
                 </div>
             </div>
         </div>
+        <!-- Loader -->
+        <div class="my-5">
+            <Loader class="mx-auto" v-if="apartmentsList === null"/>
+        </div>
     </div>
 </template>
 
 <script>
 import axios from "axios";
+import Loader from "../components/Loader";
+
 export default {
     name: "BestApartments",
-
+    components: {
+        Loader,
+    },
     data() {
         return {
-            apartmentsList: [],
+            apartmentsList: null,
         };
     },
 

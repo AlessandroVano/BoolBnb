@@ -99,9 +99,11 @@
                 <div
                     class="votati d-flex flex-column justify-content-center align-content-center mb-5"
                 >
+                    <!-- Charging loader -->
                     <h2 class="text-center text-white">
                         Explore and Discover our best apartments
                     </h2>
+                    <Charging v-if="bestApartments == null" />
                     <div class="overflow-auto">
                         <div v-if="bestApartments">
                             <h4 class="text-center pink">
@@ -187,9 +189,12 @@
 </template>
 
 <script>
+import Charging from "../components/Charging";
 export default {
     name: "Home",
-    components: {},
+    components: {
+        Charging,
+    },
     data() {
         return {
             numRooms: 0,
@@ -204,7 +209,7 @@ export default {
             selectedLat: "",
             selectedLon: "",
             d: 0,
-            bestApartments: [],
+            bestApartments: null,
         };
     },
     created() {
