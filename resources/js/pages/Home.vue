@@ -57,15 +57,15 @@
                     <div
                         v-for="(apartment, index) in filteredAparments"
                         :key="`apartment-${index}`"
-                        class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom"
+                        class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom description"
                     >
                         <div class="row no-gutters">
                             <div class="col-12">
+                                <div class="card-subtitle mb-2">
+                                    <i class="fa-solid fa-medal pink icon"></i>
+                                </div>
                                 <h5
-                                    class="card-title text-center mt-2 mb-1"
-                                    :class="{
-                                        pink: apartment.sponsorship == true,
-                                    }"
+                                    class="card-title text-center mt-2 mb-1 pink"
                                 >
                                     <i class="fa-solid fa-house mr-2"></i>
                                     {{ apartment.name }}
@@ -103,7 +103,7 @@
                         Explore and Discover our best apartments
                     </h2>
                     <div class="overflow-auto">
-                        <div v-if="bestApartments && !filteredAparments">
+                        <div v-if="bestApartments">
                             <h4 class="text-center pink">
                                 <i class="fa-solid fa-star"></i> Our best
                                 apartments
@@ -112,9 +112,12 @@
                                 <div
                                     v-for="(apartment, index) in bestApartments"
                                     :key="`apartment-${index}`"
-                                    class="card mb-3 col-10 col-md-6 col-lg-4 mx-3 c-custom"
+                                    class="card mb-3 col-10 col-md-6 col-lg-4 mx-3 c-custom description"
                                 >
                                     <div class="row no-gutters grow">
+                                        <div class="card-subtitle mb-2">
+                                            <i class="fa-solid fa-medal pink icon"></i>
+                                        </div>
                                         <div class="col-12">
                                             <h5
                                                 class="card-title pink text-center mt-2 mb-1"
@@ -399,5 +402,15 @@ h2 {
 
 .btn-link {
     margin: 0 auto;
+}
+
+.description {
+
+    .icon {
+        font-size: 1.6rem;
+        position: absolute;
+        top: -1%;
+        left: 87%;
+    }
 }
 </style>
