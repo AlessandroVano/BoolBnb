@@ -13,14 +13,16 @@
                 @endif
             </div>
             {{-- Image --}}
-            <div class="col-sm-12 col-md-6 my-4 align-self-start text-center">
+            <div class="col-sm-12 col-md-8 offset-md-2 my-4 text-center justify-content-center">
                 @if (! $apartment->image)
                     <img class="img-fluid rounded" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{ $apartment->name }}">
                 @else
                     <img class="img-fluid rounded" src="{{ asset('storage/' . $apartment->image) }}" alt="{{ $apartment->name }}">
                 @endif
             </div>
-            <div class="col-sm-12 col-md-6">
+
+            {{-- Servizi e dettgli --}}
+            <div class="col-sm-12 col-md-12">
                 <ul class="list-group list-group-flush rounded">
                     {{-- Price for night --}}
                     <li class="list-group-item">
@@ -76,7 +78,7 @@
                         @else
                         <div class="row">
                             @foreach ($apartment->services as $service)
-                            <div class="col-2 col-md-4 col-lg-6 py-1">
+                            <div class="col-3 col-md-2 my-2">
                                 <img class="icon" src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}'s icon">
                                 <span class="ms-1 d-none d-lg-inline-block">{{ $service->name }}</span>
                             </div>
@@ -110,7 +112,7 @@
             {{-- Messages --}}
             <div class="col-12 mt-4">
                 <div class="m-3 text-center">
-                    <a class="btn btn-pink position-relative w-25" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
+                    <a class="btn btn-pink position-relative" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                       Messages <i class="fa-solid fa-comments"></i> @if (count($messages) != 0)
                       <span class="badge badge-light text_danger badge-pill position-absolute badge-position fs-1">{{ count($messages) }}</span>    
                       @endif

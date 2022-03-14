@@ -13,9 +13,9 @@
     <div class="row mb-3 justify-content-around">
 
         @foreach ($sponsorships as $sponsorship)
-        <div class="card text-center col-10 my-3 col-md-3 c-custom-back">
+        <div class="card text-center col-9 my-3 col-md-3 c-custom-back">
             <div class="card-body">
-                <h2 class="card-title text-uppercase"><strong>{{ $sponsorship->name}}</strong></h2>
+                <h3 class="card-title text-uppercase"><strong>{{ $sponsorship->name}}</strong></h3>
                 <div class="my-3">
                     <h5 class="card-subtitle mb-2"><strong>Price:</strong> {{ $sponsorship->price}} €</h5>
                     <h5 class="card-subtitle mb-2"><strong>Duration:</strong> {{$sponsorship->duration }} H</h5>

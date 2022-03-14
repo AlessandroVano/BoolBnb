@@ -22,10 +22,10 @@
             message has been deleted successfully!
         </div>
     @endif
-    <div class="row">
+    <div class="row justify-content-center justify-content-md-start">
         @foreach ( $apartments as $apartment )
 
-        <div class=" col-12 col-md-6 col-lg-4 my-3">
+        <div class=" col-11 col-md-6 col-lg-4 my-3">
             <div class="card-container rounded border p-2 mx-2">
                 <h3 class="text-center">{{$apartment->name}}</h3>
 
@@ -84,10 +84,10 @@
                                                 <span aria-hidden="true">&times;</span>
                                             </button>
                                         </div>
-                                        <div class="modal-body">are you sure  that you want to permanently delete this apartment?</div>
+                                        <div class="modal-body">are you sure that you want to delete this apartment?</div>
                                         <div class="modal-footer">
                                             <button type="submit" class="btn btn-danger">
-                                                Delete message <i class="fa-solid fa-trash-can"></i> 
+                                                Delete <i class="fa-solid fa-trash-can"></i> 
                                             </button>
                                         </div>
                                     </div>

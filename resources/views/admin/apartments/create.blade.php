@@ -149,7 +149,7 @@
                 @enderror
             </div>
 
-            <button class="btn btn-transparent align-self-center w-25 mt-4" type="submit">Add your new apartment</button>
+            <button class="btn btn-transparent align-self-center mt-4" type="submit">Add your new apartment</button>
 
         </form>
 

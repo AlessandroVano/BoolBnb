@@ -1,7 +1,7 @@
 <template>
     <!-- FORM MESSAGE -->
     <div class="row mt-5 d-flex justify-content-center">
-        <div class="col-sm-4 col-md-8 col-lg-10 card c-custom p-3">
+        <div class="col-10 card c-custom p-3">
             <h3>Need more informations? <i class="fa-solid fa-circle-question ml-2"></i></h3>
             <!-- Name -->
             <form @submit.prevent="apartmentForm">
