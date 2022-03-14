@@ -1,6 +1,6 @@
 <template>
     <div class="container py-5">
-        <h1><i class="fa-solid fa-star"></i> Best Apartments</h1>
+        <h1 class="text-center mb-3"><i class="fa-solid fa-star"></i> Best Apartments</h1>
         <div class="row justify-content-center">
             <div
                 class="card card-custom m-3 col-lg-5 col-10"
