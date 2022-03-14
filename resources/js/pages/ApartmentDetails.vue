@@ -96,7 +96,7 @@
                                 <div class="mb-3">
                                     <strong class="mr-1"
                                         ><i
-                                            class="fa-solid fa-border-top-left mr-2"
+                                            class="fa-solid fa-border-top-left mr-1"
                                         ></i>
                                         Square meters:</strong
                                     >
