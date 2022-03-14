@@ -117,8 +117,8 @@
                                     :key="`apartment-${index}`"
                                     class="card mb-3 col-12 col-md-5 col-lg-3 mx-3 c-custom"
                                 >
-                                    <div class="row no-gutters">
-                                        <div class="col-12">
+                                    <div class="row no-gutters grow">
+                                        <div class="col-12 ">
                                             <h5
                                                 class="card-title pink text-center mt-2 mb-1"
                                             >
@@ -133,7 +133,7 @@
                                                 :alt="apartment.name"
                                             />
                                         </div>
-                                        <div class="col-12">
+                                        <div class="col-12 align-self-end">
                                             <div class="text-center">
                                                 <router-link
                                                     class="btn-transparent btn mb-2 p-1"
@@ -314,12 +314,16 @@ h2 {
     font-size: 1.5rem;
     color: #ffff;
     text-decoration: none;
+
+    &:hover {
+        text-decoration: none;
+    }
 }
 .votati {
     background-color: #ff385c;
     border-radius: 1rem;
     padding: 2rem 1rem;
-    height: 505px;
+    height: 565px;
 }
 
 .ricerca {
@@ -356,13 +360,21 @@ h2 {
 .c-custom {
     transition: all 0.3s;
     &:hover {
-        box-shadow: 0px 10px 31px -2px #ff385d86;
-        -webkit-box-shadow: 0px 10px 31px -2px #ff385d86;
-        -moz-box-shadow: 0px 10px 31px -2px #ff385d86;
+        box-shadow: 0px 10px 31px -2px #ffffff5e;
+        //-webkit-box-shadow: 0px 10px 31px -2px #ffffff5a;
+        -moz-box-shadow: 0px 10px 31px -2px #ffffff5a;
     }
 }
 
 .pink {
     color: #ff385c;
+}
+
+.grow {
+    flex-grow: 1;
+}
+
+.btn-link {
+    margin: 0 auto;
 }
 </style>
