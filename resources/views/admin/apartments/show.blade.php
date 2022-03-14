@@ -60,6 +60,11 @@
                         <li class="list-group-item">
                             <strong class="text-pink">Something about: </strong> <br> {{ $apartment->description }}
                         </li>
+                    @else
+                        <li class="list-group-item">
+                            <strong class="text-pink">Something about: </strong> <br>
+                            Description not available
+                        </li>
                     @endif
                     {{-- Geography position --}}
                     <li class="list-group-item">
