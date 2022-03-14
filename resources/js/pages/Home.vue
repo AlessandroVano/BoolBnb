@@ -307,14 +307,39 @@ export default {
 h2 {
     font-size: 2.5rem;
 }
-.link-custom {
+     .btn-link{
+         text-decoration: none;
+     }
+ .link-custom {
     border-radius: 10px;
     padding: 0.5rem;
     border: 3px solid white;
     font-size: 1.5rem;
     color: #ffff;
-    text-decoration: none;
+    text-decoration: none !important;
+     display: inline-block;
+    user-select: none;
+    position: relative;
+    overflow: hidden;
+    vertical-align: middle;
+    transition: color 0.3s ease;
+   
+} 
+.link-custom::after{
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 0%;
+    background-color: #ffb6c32c;
+    z-index: 1;
+    transition: width 0.6s ease;
 }
+.link-custom:hover::after{
+width: 100%;
+}
+
 .votati {
     background-color: #ff385c;
     border-radius: 1rem;
