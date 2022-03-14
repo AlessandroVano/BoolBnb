@@ -164,12 +164,15 @@
                         Start you Research
                     </button>
                     
+
+
                         <!-- Card Appartamenti -->
                     <div
                         v-if="filteredAparments === null"
                         class="d-flex flex-wrap my-3 justify-content-center"
                     >
-                    <h3 class="col-12 text-center">Some of our best apartments</h3>
+                    <h3 class="col-12 text-center" v-if="apartmentsList !== null"
+                    >Some of our best apartments</h3>
                         <div
                             v-for="(apartment, index) in apartmentsList"
                             :key="`apartment-${index}`"
@@ -321,6 +324,10 @@
                     </div>
                     <h2 v-else class="text-center my-5 col-12">No apartment Found</h2>
                 </section>
+                <!-- Loader -->
+                    <div class="my-5">
+                        <Loader class="mx-auto" v-if="apartmentsList === null || filteredAparments === null"/>
+                    </div>
             </section>
         </div>
     </section>
@@ -328,10 +335,13 @@
 
 <script>
 import axios from "axios";
+import Loader from "../components/Loader";
 
 export default {
     name: "AdvancedSearch",
-    components: {},
+    components: {
+        Loader,
+    },
     data() {
         return {
             numRooms: 0,
@@ -356,8 +366,8 @@ export default {
             this.selectedLat = sessionStorage.selectedLat;
             this.selectedLon = sessionStorage.selectedLon;
             this.postFilteredAparments();
-        }
-            this.getApartments();
+        };
+        this.getApartments();
     },
     watch: {
         query(newQuery) {
