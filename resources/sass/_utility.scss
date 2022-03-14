@@ -169,3 +169,8 @@ footer{
 .my-10 {
     margin: 10rem 0 20rem !important;
 }
+
+.form-control:focus{
+    border-color: $primary-pink !important;
+    box-shadow: none !important;
+}
