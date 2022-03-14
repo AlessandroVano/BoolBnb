@@ -478,6 +478,9 @@ export default {
 .link-custom:hover::after{
 width: 100%;
 }
+.link-custom:focus {
+    box-shadow: none !important;
+}
 
 .filter-section {
     box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px;
