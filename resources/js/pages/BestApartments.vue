@@ -122,7 +122,6 @@ export default {
     color: #ff002f;
     padding: 6px 15px;
     display: inline-block;
-    border-radius: 30px;
     font-weight: 500;
     text-transform: capitalize;
     font-family: inherit;

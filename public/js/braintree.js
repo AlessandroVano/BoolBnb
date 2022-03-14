@@ -35,7 +35,7 @@ braintree.dropin.create({
           });
 
           if (result) {
-            $('#checkout-message').html('<div class="card text-center p-3"><h1 class="text-success">Success <i class="fa-solid fa-check-to-slot"></i></h1><p class="">Transaction Done Succesfully</p><a class="btn btn-pink w-25 mx-auto" href="http://127.0.0.1:8000/admin/apartments">Click here to finish the process</a></div>');
+            $('#checkout-message').html('<div class="card text-center p-3"><h1 class="text-success">Success <i class="fa-solid fa-check-to-slot"></i></h1><p class="">Transaction Done Succesfully</p><a class="btn btn-pink mx-auto" href="http://127.0.0.1:8000/admin/apartments">Click here to finish the process</a></div>');
           } else {
             console.log(result);
             $('#checkout-message').html('<h1>Error</h1><p><a class="btn btn-pink" href="http://127.0.0.1:8000/admin/apartments">Refresh this page</a></p>');
