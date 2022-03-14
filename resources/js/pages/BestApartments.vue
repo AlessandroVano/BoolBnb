@@ -1,9 +1,9 @@
 <template>
     <div class="container py-5">
-        <h1 class="text-center mb-3"><i class="fa-solid fa-star"></i> Best Apartments</h1>
+        <h1 class="text-center pink mb-3"><i class="fa-solid fa-medal"></i> Best Apartments</h1>
         <div class="row justify-content-center">
             <div
-                class="card card-custom m-3 col-lg-5 col-10"
+                class="card card-custom m-3 col-lg-5 col-10 description"
                 v-for="apartment in apartmentsList"
                 :key="`apartment-${apartment.id}`"
                 style="max-width: 540px"
@@ -42,29 +42,21 @@
                                 <i class="fa-solid fa-money-bill-wave mr-2"></i>
                                 {{ apartment.price }} € / notte
                             </div>
-                            <!-- <div class="card-subtitle mb-2">
-                                <span>Services <i class="fa-solid fa-angle-down"></i></span>
-                                <ul class="px-3">
-                                    <li
-                                        v-for="service in apartment.services"
-                                        :key="`service-${service.id}`"
-                                    >
-                                        {{ service.name }}
-                                    </li>
-                                </ul>
-                            </div> -->
-                            <div class="text-right">
-                                <router-link
-                                    class="link-custom mb-2 btn"
-                                    :to="{
-                                        name: 'apartment-details',
-                                        params: {
-                                            slug: apartment.slug,
-                                        },
-                                    }"
-                                    >Details
-                                </router-link>
+                            <div class="card-subtitle mb-2">
+                                <i class="fa-solid fa-medal pink icon"></i>
                             </div>
+                        </div>
+                        <div class="text-right">
+                            <router-link
+                                class="link-custom mb-2 btn"
+                                :to="{
+                                    name: 'apartment-details',
+                                    params: {
+                                        slug: apartment.slug,
+                                    },
+                                }"
+                                >Details
+                            </router-link>
                         </div>
                     </div>
                 </div>
@@ -159,8 +151,6 @@ export default {
     h1 {
         color: #ff385c;
     }
-    // .filter-container {
-    // }
 }
 .box {
     border: 1px solid black;
@@ -172,5 +162,15 @@ export default {
 
 ul {
     list-style: none;
+}
+
+.description {
+
+    .icon {
+        font-size: 1.6rem;
+        position: absolute;
+        top: 1%;
+        left: 90%;
+    }
 }
 </style>

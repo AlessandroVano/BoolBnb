@@ -187,7 +187,10 @@
                                     />
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="card-body">
+                                    <div class="card-body description">
+                                        <div v-if="apartment.sponsorship == true" class="card-subtitle mb-2">
+                                            <i class="fa-solid fa-medal pink icon"></i>
+                                        </div>
                                         <h5 class="card-title">
                                             <i
                                                 class="fa-solid fa-house mr-2"
@@ -227,19 +230,18 @@
                                             ></i>
                                             {{ apartment.price }} € / notte
                                         </div>
-                                        <!-- <div card-subtitle>{{ apartment.services.name }}</div> -->
-                                        <div class="text-right">
-                                            <router-link
-                                                class="link-custom mb-2 btn"
-                                                :to="{
-                                                    name: 'apartment-details',
-                                                    params: {
-                                                        slug: apartment.slug,
-                                                    },
-                                                }"
-                                                >Details
-                                            </router-link>
-                                        </div>
+                                    </div>
+                                    <div class="text-right">
+                                        <router-link
+                                            class="link-custom mb-2 btn"
+                                            :to="{
+                                                name: 'apartment-details',
+                                                params: {
+                                                    slug: apartment.slug,
+                                                },
+                                            }"
+                                            >Details
+                                        </router-link>
                                     </div>
                                 </div>
                             </div>
@@ -255,7 +257,7 @@
                             :key="`apartment-${index}`"
                             class="card mb-3 col-12 col-md-5 mx-3 justify-content-center"
                         >
-                            <div class="row no-gutters">
+                            <div class="row no-gutters h-100">
                                 <div class="col-md-4">
                                     <img
                                         class="img-apartment img-custom"
@@ -264,7 +266,10 @@
                                     />
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="card-body">
+                                    <div class="card-body description">
+                                        <div v-if="apartment.sponsorship == true" class="card-subtitle mb-2">
+                                            <i class="fa-solid fa-medal pink icon"></i>
+                                        </div>
                                         <h5 class="card-title"
                                             :class="{pink: apartment.sponsorship == true}">
                                             <i
@@ -538,6 +543,16 @@ width: 100%;
     transition: 0.25s all;
     &:hover{
         box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
+    }
+}
+
+.description {
+
+    .icon {
+        font-size: 1.6rem;
+        position: absolute;
+        top: 1%;
+        left: 90%;
     }
 }
 </style>
