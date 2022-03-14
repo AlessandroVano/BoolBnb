@@ -17,7 +17,7 @@
                         </a>
                         <a class="dash-hover text-pink mr-4"
                             href="{{ route('admin.apartments.create') }}"><i class="fa-solid fa-angles-right my-2 mr-2"></i>Create
-                        </a> (and more...) <br>
+                        </a><br>
                         your apartments
                     </h2>
                     @if ($apartments->count() > 0)
