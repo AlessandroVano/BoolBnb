@@ -27,7 +27,12 @@
 
         <div class=" col-11 col-md-6 col-lg-4 my-3">
             <div class="card-container rounded border p-2 mx-2">
-                <h3 class="text-center">{{$apartment->name}}</h3>
+                @if ($apartment->sponsorship == 1)
+                    <div class="card-subtitle mb-2">
+                        <i class="fa-solid fa-medal medal-icon"></i>
+                    </div>
+                @endif
+                <h3 class="text-center mt-1">{{$apartment->name}}</h3>
 
                 <div class="text-center img-container">
                     @if (! $apartment->image)
