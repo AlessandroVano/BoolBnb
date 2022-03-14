@@ -18,7 +18,7 @@
 
             {{-- Name --}}
             <div class="mb-3">
-                <label for="name" class="form-label"><i class="fa-solid fa-signature mr-2"></i>Name*</label>
+                <label for="name" class="text-pink form-label"><i class="fa-solid fa-signature text-white mr-2"></i>Name*</label>
                 <input type="text" class="form-control" name='name' id="name" value="{{ old('name') }}" required> 
                 @error('name')
                     <div class="text_danger">{{ $message }}</div>
@@ -27,8 +27,8 @@
             
             {{-- Description --}}
             <div class="mb-3">
-                <label for="description" class="form-label"><i
-                    class="fa-solid fa-rectangle-list mr-2"
+                <label for="description" class="text-pink form-label"><i
+                    class="fa-solid fa-rectangle-list mr-2 text-white"
                 ></i> Description </label>
                 <textarea class="form-control" name='description' id="description" row="6">{{ old('description') }}</textarea>
                 @error('description')
@@ -38,8 +38,8 @@
 
             {{-- Rooms --}}
             <div class="mb-3">
-                <label for="rooms" class="form-label"><i
-                    class="fa-solid fa-door-closed mr-2"
+                <label for="rooms" class="text-pink form-label"><i
+                    class="fa-solid fa-door-closed mr-2 text-white"
                 ></i
                 >Rooms* </label>
                 <input type="number" min="1" class="form-control" name='rooms' id="rooms" value="{{ old('rooms') }}" required>
@@ -50,8 +50,8 @@
 
             {{-- Price --}}
             <div class="mb-3">
-                <label for="price" class="form-label"><i
-                    class="fa-solid fa-money-bill-wave mr-2"
+                <label for="price" class="text-pink form-label"><i
+                    class="text-white fa-solid fa-money-bill-wave mr-2"
                 ></i>Price per night*</label>
                 <input type="number" min="1" class="form-control" name='price' id="price" value="{{ old('price') }}" required>
                 @error('price')
@@ -61,7 +61,7 @@
 
             {{-- Max people --}}
             <div class="mb-3">
-                <label for="max_people" class="form-label"><i class="fa-solid fa-users mr-2"></i>Max people</label>
+                <label for="max_people" class="form-label text-pink"><i class="fa-solid text-white fa-users mr-2"></i>Max people</label>
                 <input type="number" min="0" class="form-control" name='max_people' id="max_people" value="{{ old('max_people') }}">
                 @error('max_people')
                     <div class="text-danger">{{ $message }}</div>
@@ -70,7 +70,7 @@
 
             {{-- Bathrooms --}}
             <div class="mb-3">
-                <label for="bathrooms" class="form-label"><i class="fa-solid fa-bath mr-2"></i>Bathrooms*</label>
+                <label for="bathrooms" class="form-label text-pink"><i class="text-white fa-solid fa-bath mr-2"></i>Bathrooms*</label>
                 <input type="number" min="0" class="form-control" name='bathrooms' id="bathrooms" value="{{ old('bathrooms') }}" required>
                 @error('bathrooms')
                     <div class="text-danger">{{ $message }}</div>
@@ -79,8 +79,8 @@
 
             {{-- Square meters --}}
             <div class="mb-3">
-                <label for="square_meters" class="form-label"><i
-                    class="fa-solid fa-border-top-left mr-2"
+                <label for="square_meters" class="form-label text-pink"><i
+                    class="fa-solid fa-border-top-left mr-2 text-white"
                 ></i>Square meters*</label>
                 <input type="number" min="0" class="form-control" name='square_meters' id="square_meters" value="{{ old('square_meters') }}" required>
                 @error('square_meters')
@@ -90,8 +90,8 @@
 
             {{-- Address --}}
             <div id="searchbar" class="mb-3">
-                <label for="address" class="form-label"><i
-                    class="fa-solid fa-location-dot mr-2"
+                <label for="address" class="form-label text-pink"><i
+                    class="fa-solid fa-location-dot mr-2 text-white"
                 ></i>Address</label>
                 <input type="text" id="address" name="address" class="form-control">
                 {{-- Suggestions --}}

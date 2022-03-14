@@ -2,8 +2,9 @@
     <nav class="navbar navbar-expand-md navbar-dark text-white shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                <img class="icon" src="{{ asset('storage/icon/Logo-icon-color.png') }}" alt="Logo Icon">
-                {{ config('app.name') }}
+                <i class="fab fa-airbnb text-pink h2 icon"></i>
+
+                <a href="{{ url('/') }}" class=" nav-link Boolbnb text-white text-decoration-none vertical-align-center fs-c pl-0 d-none d-sm-block d-dm-block d-lg-block d-xl-block">{{ config('app.name') }}</a>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>

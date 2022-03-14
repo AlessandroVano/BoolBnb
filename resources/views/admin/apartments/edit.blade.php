@@ -20,7 +20,7 @@
                 @method('PATCH')
                 {{-- NAME --}}
                 <div class="mb-3">
-                    <label for="name" class="form-label"><i class="fa-solid fa-signature mr-2"></i>Name*</label>
+                    <label for="name" class="form-label text-pink"><i class="fa-solid fa-signature mr-2 text-white"></i>Name*</label>
                     <input type="text" name="name" id="name" class="form-control" value="{{old('name', $apartment->name) }}" required autocomplete="name" autofocus>
                     @error('name')
                         <div class="text-danger">{{$message}}</div>
@@ -28,8 +28,8 @@
                 </div>
                   {{-- DESCRIPTION --}}
                   <div class="mb-3">
-                    <label for="description" class="form-label"><i
-                        class="fa-solid fa-rectangle-list mr-2"
+                    <label for="description" class="form-label text-pink"><i
+                        class="fa-solid fa-rectangle-list mr-2 text-white"
                     ></i>Description</label>
                     <textarea type="text" name="description" id="description"  class="form-control" row="6">{{old('description', $apartment->description) }}</textarea>
                     @error('description')
@@ -38,8 +38,8 @@
                 </div>
                 {{-- ROOMS --}}
                 <div class="mb-3">
-                    <label for="rooms" class="form-label"><i
-                        class="fa-solid fa-door-closed mr-2"
+                    <label for="rooms" class="form-label text-pink"><i
+                        class="fa-solid fa-door-closed mr-2 text-white"
                     ></i
                     >Rooms*</label>
                     <input type="number" min="0" name="rooms" id="rooms"  class="form-control" value="{{old('rooms', $apartment->rooms) }}" required>
@@ -49,8 +49,8 @@
                 </div>
                   {{-- PRICE --}}
                 <div class="mb-3">
-                    <label for="price" class="form-label"><i
-                        class="fa-solid fa-money-bill-wave mr-2"
+                    <label for="price" class="form-label text-pink"><i
+                        class="fa-solid fa-money-bill-wave mr-2 text-white"
                     ></i>Price per night*</label>
                     <input type="number" min="0" name="price" id="price"  class="form-control" value="{{old('price', $apartment->price) }}" required>
                     @error('price')
@@ -59,7 +59,7 @@
                 </div>
                    {{-- MAX PEOPLE --}}
                    <div class="mb-3">
-                    <label for="max_people" class="form-label"><i class="fa-solid fa-users mr-2"></i>Max people</label>
+                    <label for="max_people" class="form-label text-pink"><i class="fa-solid fa-users mr-2 text-white"></i>Max people</label>
                     <input type="number" min="0" name="max_people"  class="form-control" id="max_people" value="{{old('max_people', $apartment->max_people) }}">
                     @error('max_people')
                         <div class="text-danger">{{$message}}</div>
@@ -67,7 +67,7 @@
                 </div>
                    {{-- BATHROOMS --}}
                      <div class="mb-3">
-                        <label for="bathrooms" class="form-label"><i class="fa-solid fa-bath mr-2"></i>Bathrooms*</label>
+                        <label for="bathrooms" class="form-label text-pink"><i class="fa-solid fa-bath mr-2 text-white"></i>Bathrooms*</label>
                         <input type="number" min="0" name="bathrooms"  class="form-control" id="bathrooms" value="{{old('bathrooms', $apartment->max_people) }}" required>
                         @error('bathrooms')
                             <div class="text-danger">{{$message}}</div>
@@ -75,8 +75,8 @@
                     </div>
                    {{-- SQUARE_METERS --}}
                    <div class="mb-3">
-                    <label for="square_meters" class="form-label"><i
-                        class="fa-solid fa-border-top-left mr-2"
+                    <label for="square_meters" class="form-label text-pink"><i
+                        class="fa-solid fa-border-top-left mr-2 text-white"
                     ></i>Square meters*</label>
                     <input type="number" min="0" name="square_meters"  class="form-control" id="square_meters" value="{{old('square_meters', $apartment->square_meters) }}" required>
                     @error('square_meters')
@@ -86,8 +86,8 @@
 
                 {{-- ADDRESS --}}
                 <div id="searchbar" class="mb-4">
-                    <label for="address" class="form-label"><i
-                        class="fa-solid fa-location-dot mr-2"
+                    <label for="address" class="form-label text-pink"><i
+                        class="fa-solid fa-location-dot mr-2 text-white"
                     ></i>Address</label>
                     <input type="text" id="address" name="address" class="form-control" value="{{old('address', $apartment->address)}}">
                     {{-- SUGGESTIONS --}}
