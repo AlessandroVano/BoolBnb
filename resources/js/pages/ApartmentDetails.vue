@@ -49,26 +49,21 @@
                 >
                     <div class="d-flex justify-content-between w-70"></div>
                     <div class="row d-flex">
-                        <div class="col-lg-6 col-md-12 mt-3">
+                        <div class="col-lg-7 col-md-12 mt-3">
                             <h2>
                                 Info
                                 <i class="fa-solid fa-circle-info mx-2"></i>
                             </h2>
                             <div class="card p-4">
-                                <div class="mb-3 d-flex">
-                                    <strong class="flex-shrink-0 mr-1"
+                                <div class="mb-3">
+                                    <h6><strong class="flex-shrink-0 mr-1"
                                         ><i
                                             class="fa-solid fa-rectangle-list mr-1"
                                         ></i>
                                         Description:</strong
-                                    >
+                                    ></h6>
                                     <p class="d-inline m-0">
-                                        {{
-                                            getExcerpt(
-                                                apartment.description,
-                                                100
-                                            )
-                                        }}
+                                        {{apartment.description}}
                                     </p>
                                 </div>
                                 <div class="mb-3">
@@ -112,7 +107,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-6 col-md-12 mt-3">
+                        <div class="col-lg-5 col-md-12 mt-3">
                             <h2>
                                 Position
                                 <i class="fa-solid fa-location-dot"></i>
@@ -152,7 +147,6 @@ export default {
     },
     created() {
         this.getApartmentDetail();
-        // this.getCartina();
     },
     methods: {
         getApartmentDetail() {
@@ -175,13 +169,8 @@ export default {
                             `https://api.tomtom.com/map/1/staticimage?key=A7Tus1YOQbGV9cHnXAwNc3DFV88QJw2X&zoom=16&center=${res.data.longitude},${res.data.latitude}&width=500&height=500&`
                         )
                         .then((res1) => {
-                            /*  console.log(res1); */
                             let cartina = document.getElementById("cartina");
                             cartina.style.backgroundImage = `url("${res1.config.url}")`;
-
-                            // let circle = document.createElement('div')
-                            // circle.classList.add('marker')
-                            // cartina.append(circle)
                         });
                 });
         },

@@ -258,7 +258,7 @@ class ApartmentController extends Controller
             'name' => 'required',
             'slug' => 'nullable|max:80',
             'price' => 'required',
-            'description' => 'nullable',
+            'description' => 'nullable|max:400',
             'rooms' => 'required',
             'max_people' => 'nullable',
             'bathrooms' => 'required',
