@@ -148,3 +148,12 @@ footer{
         }
     }
 }
+
+.b-custom {
+    &:hover .hover-door-2 {
+        display: none;
+    }
+    &:hover .hover-door {
+        display: inline !important;
+    }
+}

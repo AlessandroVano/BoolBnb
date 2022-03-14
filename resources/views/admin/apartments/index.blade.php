@@ -49,9 +49,9 @@
                     <div class="actions ">
 
                         <div class="mx-auto d-flex justify-content-around">
-                            <button class="btn btn-success">
+                            <button class="b-custom btn btn-success">
                                 <a class="text-decoration-none text-white"
-                                href="{{route('admin.apartments.show', $apartment->slug)}}">View<i class="fa-solid fa-door-open ml-2"></i></a>
+                                href="{{route('admin.apartments.show', $apartment->slug)}}">View<i class="fa-solid fa-door-open ml-2 hover-door d-none"></i><i class="fa-solid hover-door-2 fa-door-closed ml-2"></i></a>
                             </button>
                             
                             <button type="button" class="btn btn-danger" data-toggle="modal"
