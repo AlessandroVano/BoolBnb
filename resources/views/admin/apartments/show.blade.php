@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row align-items-center">
             {{-- Name --}}
-            <div class="col-12 d-flex justify-content-center align-items-center">
+            <div class="col-12 d-flex justify-content-center align-items-center my-4">
                 <h1 class="d-inline text-white">{{ $apartment->name }}</h1>
                 @if ( $apartment->visibility == 1 )
                     <img class="icon invert" src="{{ asset('storage/icon/Visible.png') }}" alt="Visible">
@@ -13,7 +13,7 @@
                 @endif
             </div>
             {{-- Image --}}
-            <div class="col-sm-12 col-md-8 offset-md-2 my-4 text-center justify-content-center">
+            <div class="col-12 col-md-8  col-lg-6 offset-md-2 offset-lg-0 my-4 text-center justify-content-center align-self-start">
                 @if (! $apartment->image)
                     <img class="img-fluid rounded" src="{{ asset('storage/img-apartments/Not-found.png') }}" alt="{{ $apartment->name }}">
                 @else
@@ -22,7 +22,7 @@
             </div>
 
             {{-- Servizi e dettgli --}}
-            <div class="col-sm-12 col-md-12">
+            <div class="col-12 col-md-12 col-lg-6">
                 <ul class="list-group list-group-flush rounded">
                     {{-- Price for night --}}
                     <li class="list-group-item">
@@ -114,7 +114,7 @@
                 <div class="m-3 text-center">
                     <a class="btn btn-pink position-relative" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample">
                       Messages <i class="fa-solid fa-comments"></i> @if (count($messages) != 0)
-                      <span class="badge badge-light text_danger badge-pill position-absolute badge-position fs-1">{{ count($messages) }}</span>    
+                      <span class="badge badge-light text_danger badge-pill position-absolute badge-position fs-1">{{ count($messages) }}</span>
                       @endif
                     </a>
                 </div>
