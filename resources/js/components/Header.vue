@@ -8,15 +8,11 @@
                         :to="{ name: 'home' }"
                         class="nav-item nav-link fs-c pr-0"
                     >
-                        <img
-                            class="icon"
-                            src="../../../public/storage/icon/Logo-icon-color.png"
-                            alt="Logo Icon"
-                        />
+                        <i class="fab fa-airbnb text-pink h2 icon"></i>
                     </router-link>
                     <router-link
                         :to="{ name: 'home' }"
-                        class="nav-link text-white fs-c pl-0 d-none d-sm-block d-dm-block d-lg-block d-xl-block"
+                        class=" nav-link Boolbnb text-white text-decoration-none vertical-align-center fs-c pl-0 d-none d-sm-block d-dm-block d-lg-block d-xl-block"
                     >
                         BoolBnb
                     </router-link>
@@ -196,6 +192,11 @@ export default {
 
 .central-side .nav-link.active{
     color:#ff385c !important;
+}
+
+.Boolbnb.active{
+        color:white !important;
+
 }
 
 </style>
