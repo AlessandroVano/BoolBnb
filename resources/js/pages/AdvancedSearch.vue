@@ -173,7 +173,7 @@
                         <div
                             v-for="(apartment, index) in apartmentsList"
                             :key="`apartment-${index}`"
-                            class="card mt-2 mb-3 col-12 col-md-5 mx-3 hover-card "
+                            class="card mt-2 mb-3 col-10 col-md-5 mx-3 hover-card "
                         >
                             <div class="row no-gutters">
                                 <div class="col-md-4">

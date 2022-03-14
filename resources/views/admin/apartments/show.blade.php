@@ -78,9 +78,9 @@
                         @else
                         <div class="row">
                             @foreach ($apartment->services as $service)
-                            <div class="col-3 col-md-2 my-2">
+                            <div class="col-3 col-md-2 my-2 px-0 text-center">
                                 <img class="icon" src="{{ asset('storage/' . $service->icon) }}" alt="{{ $service->name }}'s icon">
-                                <span class="ms-1 d-none d-lg-inline-block">{{ $service->name }}</span>
+                                <span class="ms-1 d-none d-lg-block">{{ $service->name }}</span>
                             </div>
                             @endforeach
                         </div>
@@ -143,7 +143,7 @@
                     </div>
                 @else
                     <div class="collapse bg-light p-3 border rounded text-center" id="collapseExample">
-                        <h3>The message's box is empty</h3>
+                        <h3> There is no message</h3>
                     </div>
                 @endif
             </div>

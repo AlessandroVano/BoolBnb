@@ -22,6 +22,17 @@
     height: 200px;
 }
 
+// Header
+
+.nav-link:hover{
+    color:#ff385c !important;
+}
+
+.nav-link.active{
+    color:#ff385c !important;
+
+}
+
 // Sponsorship Utilities
 .card-hover {
     cursor: pointer;
@@ -79,6 +90,10 @@ color: $primary-pink;
     }
 }
 
+.dropdown-item:active{
+    background-color: $primary-pink !important;
+}
+
 // Dashboard
 .dash-hover {
     transition: all 0.2s ease;
@@ -113,4 +128,16 @@ footer {
     height: auto;
     max-height: 280px;
     overflow-x: hidden;
+}
+
+footer{
+    a{
+        transition: all 0.4s;
+        &:hover{
+            cursor:pointer;
+            text-decoration: none;
+            color:$primary-pink;
+            
+        }
+    }
 }

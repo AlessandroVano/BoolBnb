@@ -1,9 +1,9 @@
 <template>
     <div class="container py-5">
         <h1><i class="fa-solid fa-star"></i> Best Apartments</h1>
-        <div class="row">
+        <div class="row justify-content-center">
             <div
-                class="card card-custom m-3 col-lg-5 col-sm-12"
+                class="card card-custom m-3 col-lg-5 col-10"
                 v-for="apartment in apartmentsList"
                 :key="`apartment-${apartment.id}`"
                 style="max-width: 540px"
@@ -62,7 +62,7 @@
                                             slug: apartment.slug,
                                         },
                                     }"
-                                    >Find More
+                                    >Details
                                 </router-link>
                             </div>
                         </div>

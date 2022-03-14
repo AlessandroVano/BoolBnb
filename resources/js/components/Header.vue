@@ -6,7 +6,7 @@
                 <div class="d-flex justify-content-center">
                     <router-link
                         :to="{ name: 'home' }"
-                        class="nav-item nav-link text-white fs-c pr-0"
+                        class="nav-item nav-link fs-c pr-0"
                     >
                         <img
                             class="icon"
@@ -190,4 +190,12 @@ export default {
 .icon-h {
     font-size: 1.2rem;
 }
+.nav-link:hover{
+    color:#ff385c !important;
+}
+
+.central-side .nav-link.active{
+    color:#ff385c !important;
+}
+
 </style>

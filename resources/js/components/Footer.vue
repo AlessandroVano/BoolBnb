@@ -221,4 +221,16 @@ ul {
         }
     }
 }
+
+footer{
+    a{
+        transition: all 0.4s;
+        &:hover{
+            cursor:pointer;
+            text-decoration: none;
+            color:#ff385c;
+            
+        }
+    }
+}
 </style>
