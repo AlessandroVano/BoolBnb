@@ -29,6 +29,24 @@ class ApartmentController extends Controller
         $current_id = Auth::id();
         $apartments = Apartment::where('user_id', '=', $current_id)->get();
 
+        foreach ($apartments as $apartment) {
+            //Interrogo il DB per trovare un record nella pivot con l'ID dell'appartamento
+            $lastEndDate = Carbon::parse(
+                DB::table('apartment_sponsorship')
+                    ->where('apartment_id', $apartment->id)
+                    ->pluck('end_date')
+                    ->sortDesc()
+                    ->first()
+            );
+
+            //Confronto se il dato ritornato è più avandio di ora
+            if ($lastEndDate->greaterThan(Carbon::now())) {
+                $apartment['sponsorship'] = 1;
+            } else {
+                $apartment['sponsorship'] = 0;
+            };
+        }
+
         return view('admin.apartments.index' , compact('apartments'));
     }
 
