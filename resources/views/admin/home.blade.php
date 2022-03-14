@@ -13,7 +13,7 @@
                 <div class="card-body">
                     <h2 class="mt-3">What to do now? <br>
                         <a class="dash-hover text-pink mr-4"
-                            href="{{ route('admin.apartments.index') }}"><i class="fa-solid fa-angles-right my-2 mr-2"></i>Views
+                            href="{{ route('admin.apartments.index') }}"><i class="fa-solid fa-angles-right my-2 mr-2"></i>View
                         </a>
                         <a class="dash-hover text-pink mr-4"
                             href="{{ route('admin.apartments.create') }}"><i class="fa-solid fa-angles-right my-2 mr-2"></i>Create

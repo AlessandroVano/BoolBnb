@@ -55,7 +55,7 @@
                             </div> -->
                             <div class="text-right">
                                 <router-link
-                                    class="link-custom mb-2"
+                                    class="link-custom mb-2 btn"
                                     :to="{
                                         name: 'apartment-details',
                                         params: {

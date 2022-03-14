@@ -32,7 +32,7 @@
                         @else
                         <li class="nav-item">
                             <a class="nav-link text-right @if(Request::route()->getName() == 'admin.apartments.index') active @endif" 
-                            href="{{ route('admin.apartments.index') }}">Views your apartments</a>
+                            href="{{ route('admin.apartments.index') }}">View your apartments</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-right @if(Request::route()->getName() == 'admin.apartments.create') active @endif" 

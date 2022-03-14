@@ -326,7 +326,7 @@
                 </section>
                 <!-- Loader -->
                     <div class="my-5">
-                        <Loader class="mx-auto" v-if="apartmentsList === null || filteredAparments === null"/>
+                        <Loader class="mx-auto" v-if="apartmentsList === null && filteredAparments === null"/>
                     </div>
             </section>
         </div>
