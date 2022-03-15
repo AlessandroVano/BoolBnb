@@ -1,9 +1,11 @@
 <template>
     <header class="bg-dark">
         <nav class="navbar navbar-expand-lg navbar-dark container">
-            <div class="row justify-content-between w-100">
+            <div
+                class="row justify-content-between w-100 d-flex align-items-center"
+            >
                 <!-- Left side -->
-                <div class="d-flex justify-content-center">
+                <div class="d-flex justify-content-center align-items-center">
                     <router-link
                         :to="{ name: 'home' }"
                         class="nav-item nav-link fs-c pr-0"
@@ -12,7 +14,7 @@
                     </router-link>
                     <router-link
                         :to="{ name: 'home' }"
-                        class=" nav-link Boolbnb text-white text-decoration-none vertical-align-center fs-c pl-0 d-none d-sm-block d-dm-block d-lg-block d-xl-block"
+                        class="nav-link Boolbnb text-white text-decoration-none vertical-align-center fs-c pl-0 d-none d-sm-block d-dm-block d-lg-block d-xl-block"
                     >
                         BoolBnb
                     </router-link>
@@ -68,7 +70,7 @@
                     <div class="btn-group dropleft">
                         <button
                             type="button"
-                            class="btn dropdown-toggle d-block d-md-none d-lg-none d-xl-none text-white"
+                            class="btn btn-c-after dropdown-toggle d-block d-md-none d-lg-none d-xl-none text-white"
                             data-toggle="dropdown"
                             aria-expanded="false"
                         >
@@ -102,7 +104,7 @@
                         <!-- MENU -->
                         <button
                             type="button"
-                            class="btn  bt dropdown-toggle d-none d-md-block d-lg-block d-xl-block text-white"
+                            class="btn bt dropdown-toggle d-none d-md-block d-lg-block d-xl-block text-white"
                             data-toggle="dropdown"
                             aria-expanded="false"
                         >
@@ -145,8 +147,7 @@ export default {
     name: "Header",
     /* COME CALCOLARE LA DISTANZA PD */
     data() {
-        return {
-        };
+        return {};
     },
 };
 </script>
@@ -166,20 +167,18 @@ export default {
 .icon-h {
     font-size: 1.2rem;
 }
-.nav-link:hover{
-    color:#ff385c !important;
+.nav-link:hover {
+    color: #ff385c !important;
 }
 
-.central-side .nav-link.active{
-    color:#ff385c !important;
+.central-side .nav-link.active {
+    color: #ff385c !important;
 }
 
-.Boolbnb.active{
-        color:white !important;
+.Boolbnb.active {
+    color: white !important;
 }
-.bt{
+.bt {
     box-shadow: none !important;
-
 }
-
 </style>
