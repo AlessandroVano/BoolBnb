@@ -141,7 +141,7 @@
                                 </div>
                             
                                 <div class="text-dark mb-2">
-                                        <strong class="text_danger"><i class="fa-solid fa-paper-plane"></i> Sended:</strong> <span class="ml-2">{{ $message->created_at }}</span>
+                                        <strong class="text_danger"><i class="fa-solid fa-paper-plane"></i> Sent:</strong> <span class="ml-2">{{ $message->created_at }}</span>
                                 </div>
                             </div>
                         @endforeach
