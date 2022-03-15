@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<h1 class="text-white text-center my-3"><i class="fa-solid fa-splotch"></i> Welcome to the Sponsorship Section</h1>
+<h1 class="text-white text-center my-3"><i class="fas fa-medal"></i> Welcome to the Sponsorship Section</h1>
 
 <section class="container">
     
